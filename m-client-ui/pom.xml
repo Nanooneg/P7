@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from com.nanoo.library.mmanagementaccount.repository -->
 	</parent>
 	<groupId>com.nanoo.library</groupId>
 	<artifactId>m-client-ui</artifactId>
@@ -25,7 +25,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-com.nanoo.library.mmanagementaccount.web</artifactId>
 		</dependency>
 
 		<dependency>

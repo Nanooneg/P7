@@ -5,24 +5,24 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- ============================================================= -->
-  <!--                      Project information                      -->
-  <!-- ============================================================= -->
-
   <!-- Parent information -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.2.1.RELEASE</version>
     <relativePath/>
-    <!-- lookup parent from repository -->
+    <!-- lookup parent from com.nanoo.library.mmanagementaccount.repository -->
   </parent>
+
+  <!-- ============================================================= -->
+  <!--                      Project information                      -->
+  <!-- ============================================================= -->
 
   <!-- Maven information -->
   <groupId>com.nanoo.library</groupId>
   <artifactId>m-management-account</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
   <!-- General information -->
   <name>m-management-account</name>
@@ -33,21 +33,11 @@
   <!-- ============================================================= -->
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
+    <org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
+    <lombok.version>1.18.8</lombok.version>
   </properties>
-
-  <!-- ============================================================= -->
-  <!--                             Modules                           -->
-  <!-- ============================================================= -->
-
-  <modules>
-
-    <module>m-management-account-web</module>
-    <module>m-management-account-business</module>
-    <module>m-management-account-model</module>
-    <module>m-management-account-consumer</module>
-
-  </modules>
 
   <!-- ============================================================= -->
   <!--                           Dependencies                        -->
@@ -58,7 +48,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -67,13 +56,24 @@
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <scope>runtime</scope>
     </dependency>
 
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <optional>true</optional>
+      <version>${lombok.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+      <version>${org.mapstruct.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct-processor</artifactId>
+      <version>${org.mapstruct.version}</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -98,6 +98,27 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.mapstruct</groupId>
+              <artifactId>mapstruct-processor</artifactId>
+              <version>${org.mapstruct.version}</version>
+            </path>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${lombok.version}</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
       </plugin>
     </plugins>
   </build>
