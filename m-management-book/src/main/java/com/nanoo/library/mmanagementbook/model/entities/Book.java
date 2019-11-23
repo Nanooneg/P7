@@ -1,5 +1,6 @@
 package com.nanoo.library.mmanagementbook.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nanoo.library.mmanagementbook.model.enums.Category;
 import com.nanoo.library.mmanagementbook.model.enums.Condition;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com.nanoo.library.mmanagementbook.web.controller;
 
-import com.nanoo.library.mmanagementbook.model.dto.LibraryDto;
+import com.nanoo.library.mmanagementbook.model.dto.LibraryWithoutBooksDto;
 import com.nanoo.library.mmanagementbook.service.contractService.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +23,7 @@ public class LibraryController {
     }
     
     @GetMapping("/bibliotheques")
-    public List<LibraryDto> listAllLibrary(){
+    public List<LibraryWithoutBooksDto> listAllLibrary(){
         
         return libraryService.getLibraryList();
         

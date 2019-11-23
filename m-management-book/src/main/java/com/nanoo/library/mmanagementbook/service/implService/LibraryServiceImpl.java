@@ -1,7 +1,7 @@
 package com.nanoo.library.mmanagementbook.service.implService;
 
 import com.nanoo.library.mmanagementbook.database.LibraryRepository;
-import com.nanoo.library.mmanagementbook.model.dto.LibraryDto;
+import com.nanoo.library.mmanagementbook.model.dto.LibraryWithoutBooksDto;
 import com.nanoo.library.mmanagementbook.model.entities.Library;
 import com.nanoo.library.mmanagementbook.model.mapper.LibraryMapper;
 import com.nanoo.library.mmanagementbook.service.contractService.LibraryService;
@@ -28,13 +28,13 @@ public class LibraryServiceImpl implements LibraryService {
     }
     
     @Override
-    public List<LibraryDto> getLibraryList() {
-        List<LibraryDto> libraryDtos = new ArrayList<>();
+    public List<LibraryWithoutBooksDto> getLibraryList() {
+        List<LibraryWithoutBooksDto> libraryDtos = new ArrayList<>();
         
         List<Library> libraries = libraryRepository.findAll();
         
         for (Library library : libraries){
-            libraryDtos.add(libraryMapper.fromLibraryToDto(library));
+            libraryDtos.add(libraryMapper.fromLibraryToDtoWithoutBooks(library));
         }
         
         return libraryDtos;

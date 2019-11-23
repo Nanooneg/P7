@@ -1,6 +1,6 @@
 package com.nanoo.library.mmanagementbook.service.contractService;
 
-import com.nanoo.library.mmanagementbook.model.dto.LibraryDto;
+import com.nanoo.library.mmanagementbook.model.dto.LibraryWithoutBooksDto;
 
 import java.util.List;
 
@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface LibraryService {
     
-    List<LibraryDto> getLibraryList();
+    List<LibraryWithoutBooksDto> getLibraryList();
     
 }

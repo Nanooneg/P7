@@ -1,5 +1,6 @@
 package com.nanoo.library.mmanagementbook.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,7 +31,7 @@ public class Author implements Serializable {
     @Column(name = "first_name", nullable = false)
     private String firstName;
     
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
     private Set<Book> books;
     
     @Column(name = "birth_date")

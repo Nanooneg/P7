@@ -1,7 +1,6 @@
 package com.nanoo.library.mmanagementbook.model.dto;
 
 import com.nanoo.library.mmanagementbook.model.entities.Address;
-import com.nanoo.library.mmanagementbook.model.entities.Book;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +22,6 @@ public class LibraryDto implements Serializable {
     private String name;
     private Address address;
     private String phoneNumber;
-    private Set<Book> books;
+    private Set<BookWithoutAuthorsAndLibraryDto> books;
     
 }
