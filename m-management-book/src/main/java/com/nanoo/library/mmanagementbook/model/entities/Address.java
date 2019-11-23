@@ -1,6 +1,6 @@
-package com.nanoo.library.mmanagementaccount.model.entities;
+package com.nanoo.library.mmanagementbook.model.entities;
 
-import com.nanoo.library.mmanagementaccount.model.enums.Cities;
+import com.nanoo.library.mmanagementbook.model.enums.Cities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * @author nanoo
- * @create 21/11/2019 - 15:34
+ * @create 22/11/2019 - 23:08
  */
 @Entity
 @Getter @Setter
@@ -22,15 +22,18 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
     @Column(nullable = false)
     private int number;
+    
     @Column(length = 50, nullable = false)
     private String street;
+    
     @Column(name = "postal_code", length = 5, nullable = false)
     private int postalCode;
+    
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Cities city;
-
     
 }

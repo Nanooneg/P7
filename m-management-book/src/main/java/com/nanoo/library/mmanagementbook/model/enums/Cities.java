@@ -1,16 +1,16 @@
-package com.nanoo.library.mmanagementaccount.model.enums;
+package com.nanoo.library.mmanagementbook.model.enums;
 
 /**
  * @author nanoo
  * @create 21/11/2019 - 15:36
  */
-public enum City {
+public enum Cities {
     
     BX("Bordeaux"), MGC("Mérignac"), PC("Pessac");
     
     private String name ;
     
-    City(String name) {
+    Cities(String name) {
         this.name = name ;
     }
     

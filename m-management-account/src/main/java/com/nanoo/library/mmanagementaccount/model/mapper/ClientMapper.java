@@ -15,9 +15,9 @@ public interface ClientMapper {
     
     ClientMapper MAPPER = Mappers.getMapper(ClientMapper.class);
     
-    Client fromDtoToAccount (ClientDto accountDTO);
+    Client fromDtoToClient (ClientDto clientDto);
     
     @InheritInverseConfiguration
-    ClientDto fromAccountToDto (Client account);
+    ClientDto fromClientToDto (Client client);
 
 }

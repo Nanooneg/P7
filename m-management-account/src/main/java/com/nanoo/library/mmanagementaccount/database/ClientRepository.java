@@ -1,4 +1,4 @@
-package com.nanoo.library.mmanagementaccount.repository;
+package com.nanoo.library.mmanagementaccount.database;
 
 import com.nanoo.library.mmanagementaccount.model.entities.Client;
 import org.springframework.data.jpa.repository.JpaRepository;

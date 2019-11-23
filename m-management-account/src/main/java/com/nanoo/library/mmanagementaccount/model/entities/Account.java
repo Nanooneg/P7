@@ -24,17 +24,23 @@ class Account implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
     @Column(name = "last_name", nullable = false)
     private String lastName;
+    
     @Column(name = "first_name", nullable = false)
     private String firstName;
+    
     @Column(name = "birth_date", nullable = false)
     private Date birthDate;
+    
     @Enumerated(EnumType.STRING)
     @Column(length = 10, nullable = false)
     private Gender gender;
+    
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
+    
     @Column(length = 50, unique = true, nullable = false)
     private String email;
     

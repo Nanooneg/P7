@@ -22,8 +22,8 @@ public class ClientController {
         this.clientService = clientService;
     }
     
-    @GetMapping("/Clients")
-    public List<ClientDto> test(){
+    @GetMapping("/clients")
+    public List<ClientDto> listAllClient(){
     
         return clientService.getClientList();
         

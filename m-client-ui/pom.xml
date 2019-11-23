@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from com.nanoo.library.mmanagementaccount.repository -->
+		<relativePath/> <!-- lookup parent from com.nanoo.library.mmanagementaccount.database -->
 	</parent>
 	<groupId>com.nanoo.library</groupId>
 	<artifactId>m-client-ui</artifactId>
