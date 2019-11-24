@@ -1,17 +1,17 @@
-package com.nanoo.library.mclientui;
+package com.nanoo.library.emzuulserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
-@EnableFeignClients("com.nanoo.library.mclientui")
+@EnableZuulProxy
 @EnableDiscoveryClient
-public class MClientUiApplication {
+public class EmZuulServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MClientUiApplication.class, args);
+		SpringApplication.run(EmZuulServerApplication.class, args);
 	}
 
 }
