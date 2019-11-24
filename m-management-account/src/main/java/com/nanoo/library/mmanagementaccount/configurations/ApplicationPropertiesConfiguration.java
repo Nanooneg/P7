@@ -1,7 +1,6 @@
 package com.nanoo.library.mmanagementaccount.configurations;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @ConfigurationProperties("config-account")
-@RefreshScope
+//@RefreshScope //after a refresh request, new config in could server will be picked up without restart the MS
 public class ApplicationPropertiesConfiguration {
 
 
