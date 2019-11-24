@@ -1,10 +1,10 @@
-package com.nanoo.library.mmanagementloan;
+package com.nanoo.library.emconfigserver;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MManagementLoanApplicationTests {
+class EmConfigServerApplicationTests {
 
 	@Test
 	void contextLoads() {
