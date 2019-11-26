@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api-client-web/api-client-web.iml" filepath="$PROJECT_DIR$/api-client-web/api-client-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-account/ms-account.iml" filepath="$PROJECT_DIR$/ms-account/ms-account.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-authentication/ms-authentication.iml" filepath="$PROJECT_DIR$/ms-authentication/ms-authentication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-book/ms-book.iml" filepath="$PROJECT_DIR$/ms-book/ms-book.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-common/ms-common.iml" filepath="$PROJECT_DIR$/ms-common/ms-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-loan/ms-loan.iml" filepath="$PROJECT_DIR$/ms-loan/ms-loan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-eureka/server-eureka.iml" filepath="$PROJECT_DIR$/server-eureka/server-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-zuul/server-zuul.iml" filepath="$PROJECT_DIR$/server-zuul/server-zuul.iml" />
+    </modules>
+  </component>
+</project>
