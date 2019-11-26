@@ -1,5 +1,6 @@
-package com.nanoo.library.mclientui.beans;
+package com.nanoo.library.mclientui.beans.library;
 
+import com.nanoo.library.mclientui.beans.user.AddressBean;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

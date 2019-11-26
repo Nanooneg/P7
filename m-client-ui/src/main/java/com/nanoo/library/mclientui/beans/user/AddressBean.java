@@ -1,4 +1,4 @@
-package com.nanoo.library.mclientui.beans;
+package com.nanoo.library.mclientui.beans.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

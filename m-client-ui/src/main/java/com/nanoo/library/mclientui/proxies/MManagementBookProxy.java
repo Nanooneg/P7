@@ -1,6 +1,6 @@
 package com.nanoo.library.mclientui.proxies;
 
-import com.nanoo.library.mclientui.beans.BookBean;
+import com.nanoo.library.mclientui.beans.book.BookBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
