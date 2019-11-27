@@ -1,7 +1,5 @@
 package com.nanoo.library.zuul.security;
 
-import com.nanoo.common.security.JwtConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,9 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 @EnableWebSecurity
 public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
     
-    @Autowired
-    private JwtConfig jwtConfig;
-    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -33,13 +28,11 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 .and()
                 // Add a filter to validate the tokens with every request
-                .addFilterAfter(new JwtTokenAuthenticationFilter(jwtConfig), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 // authorization requests config
                 .authorizeRequests()
                 // allow all who are accessing "auth" service
-                .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
-                // must be an admin if trying to access admin area (authentication is also required here)
-                .antMatchers("/gallery" + "/admin/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,JwtConfig.URI).permitAll()
                 // Any other request must be authenticated
                 .anyRequest().authenticated();
     }

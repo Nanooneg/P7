@@ -1,4 +1,4 @@
-package com.nanoo.authentication;
+package com.nanoo.library.authentication;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
