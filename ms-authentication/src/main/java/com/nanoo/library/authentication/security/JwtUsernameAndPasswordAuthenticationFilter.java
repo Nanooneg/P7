@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
@@ -71,8 +73,13 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
         // Grab principal
         UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
     
-        // Create JWT Token
+        // Create JWT Token and add authorities
+        //Map<String, Object> headerClaims = new HashMap<>();
+        //headerClaims.put("authorities", principal.getAuthorities());
+        
         String token = JWT.create()
+                //.withHeader(headerClaims)
+                .withClaim("authorities","ROLE_" + principal.getRole())
                 .withSubject(principal.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtConfig.EXPIRATION))
                 .sign(HMAC512(JwtConfig.SECRET.getBytes()));

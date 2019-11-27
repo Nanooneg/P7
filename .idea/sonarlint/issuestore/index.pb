@@ -67,3 +67,7 @@ Rserver-zuul/src/main/java/com/nanoo/library/zuul/security/SecurityTokenConfig.j
 yms-authentication/src/main/java/com/nanoo/library/authentication/security/JwtUsernameAndPasswordAuthenticationFilter.java,d/c/dc709e625a9d98328d0a34c2acc89175c0eca008
 ò
 hms-authentication/src/main/java/com/nanoo/library/authentication/security/SecurityCredentialsConfig.java,2/8/281a243e92f2a016558f4c5cfab658616e01afb6
+Å
+Qms-book/src/test/java/com/nanoo/library/book/MManagementBookApplicationTests.java,d/2/d29be5e32facea86d7c64584fec24f782892d2f2
+
+Oms-book/src/main/java/com/nanoo/library/book/web/controller/BookController.java,7/0/703d8f012841e6c6ff69b55e79e8e1d6cc084169

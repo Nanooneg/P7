@@ -17,6 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 @EnableWebSecurity
 public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
     
+    // Roles
+    private static final String ADMIN = "ADMIN";
+    private static final String MANAGER = "MANAGER";
+    private static final String USER = "USER";
+    // Authorities
+    private static final String ACCESS_TEST1 = "ACCESS_TEST1";
+    private static final String ACCESS_TEST2 = "ACCESS_TEST2";
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -32,7 +40,9 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 // authorization requests config
                 .authorizeRequests()
                 // allow all who are accessing "auth" service
-                .antMatchers("/auth/").permitAll()
+                .antMatchers("/auth/**").permitAll()
+                // allow all who are accessing "book" service
+                .antMatchers("/book/**").hasRole(ADMIN)
                 // Any other request must be authenticated
                 .anyRequest().authenticated();
     }

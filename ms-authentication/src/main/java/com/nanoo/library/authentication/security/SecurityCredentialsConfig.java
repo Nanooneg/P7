@@ -30,11 +30,9 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
     // Roles
     private static final String ADMIN = "ADMIN";
     private static final String MANAGER = "MANAGER";
-    
     private static final String USER = "USER";
     // Authorities
     private static final String ACCESS_TEST1 = "ACCESS_TEST1";
-    
     private static final String ACCESS_TEST2 = "ACCESS_TEST2";
     
     @Override
@@ -60,8 +58,10 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
                 // The filter needs this auth manager to authenticate the user.
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
                 .authorizeRequests()
-                // allow all POST requests
-                .antMatchers("/auth/").permitAll()
+                // allow all who are accessing "auth" service
+                .antMatchers("/auth/**").permitAll()
+                // allow all who are accessing "book" service
+                .antMatchers("/book/**").hasRole(ADMIN)
                 // any other requests must be authenticated
                 .anyRequest().authenticated();
     }

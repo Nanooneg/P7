@@ -1,8 +1,10 @@
 package com.nanoo.library.zuul.security;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -12,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,14 +58,29 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
             
             String username = jwt.getSubject();
             if(username != null) {
-                @SuppressWarnings("unchecked")
-                List<String> authorities = (List<String>) jwt.getClaim("authorities");
+                //@SuppressWarnings("unchecked")
+                //List<String> authorities = (List<String>) jwt.getHeaderClaim("authorities"); // TODO java.lang.ClassCastException: com.auth0.jwt.impl.NullClaim cannot be cast to java.util.List
+                
+                
+                    //Try to get list<GrantedAuthority from header claim... // TODO check that!!
+                    Claim claim = jwt.getClaim("authorities");
+                    String claimToString = claim.asString();
+                    List<String> listAuthorities = new ArrayList<>();
+                    if ( claimToString.length() > 0) {
+                        listAuthorities = Arrays.asList(claimToString.split(" "));
+                    }
+                    List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+                    listAuthorities.forEach(p -> {
+                        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(p);
+                        grantedAuthorities.add(grantedAuthority);
+                    });
+                
                 
                 // 5. Create auth object
                 // UsernamePasswordAuthenticationToken: A built-in object, used by spring to represent the current authenticated / being authenticated user.
                 // It needs a list of authorities, which has type of GrantedAuthority interface, where SimpleGrantedAuthority is an implementation of that interface
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
-                        username, null, authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+                        username, null, grantedAuthorities);
                 
                 // 6. Authenticate the user
                 // Now, user is authenticated

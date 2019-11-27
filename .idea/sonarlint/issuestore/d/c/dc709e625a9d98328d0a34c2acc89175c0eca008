@@ -1,4 +1,4 @@
 
-Fsquid:S11484"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8‰ή“εκ-
 gsquid:S22599"IA "NullPointerException" could be thrown; "credentials" is nullable here.(χΆ²8‰ή“εκ-
 ½%squid:RedundantThrowsDeclarationCheck-"„Remove the declaration of thrown exception 'org.springframework.security.core.AuthenticationException' which is a runtime exception.(οΑ8‰ή“εκ-
+Fsquid:S11484"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8‰ή“εκ-

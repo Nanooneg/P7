@@ -46,6 +46,10 @@ public class UserPrincipal implements UserDetails {
         
     }
     
+    String getRole(){
+        return this.user.getRoles();
+    }
+    
     /**
      * Returns the password used to authenticate the user.
      *
