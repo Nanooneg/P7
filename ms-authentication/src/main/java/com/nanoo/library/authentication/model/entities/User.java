@@ -1,5 +1,6 @@
 package com.nanoo.library.authentication.model.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "user_authentication")
-@Getter @Setter
+@Data
 @NoArgsConstructor
 public class User implements Serializable {
     
@@ -24,17 +25,16 @@ public class User implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     @Column(nullable = false)
     private String username;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
     private boolean active;
-    @Column(nullable = false)
     private String roles;
-    @Column(nullable = false)
     private String permissions;
+    
     
     public List<String> getRolesList(){
         if (this.roles.length() > 0){

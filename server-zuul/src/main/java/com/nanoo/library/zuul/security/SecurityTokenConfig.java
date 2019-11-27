@@ -25,21 +25,16 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 // handle an authorized attempts
-                .exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-                .and()
+                /*.exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                .and()*/
                 // Add a filter to validate the tokens with every request
                 .addFilterAfter(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 // authorization requests config
                 .authorizeRequests()
                 // allow all who are accessing "auth" service
-                .antMatchers(HttpMethod.POST,JwtConfig.URI).permitAll()
+                .antMatchers("/auth/").permitAll()
                 // Any other request must be authenticated
                 .anyRequest().authenticated();
-    }
-    
-    @Bean
-    public JwtConfig jwtConfig() {
-        return new JwtConfig();
     }
     
 }

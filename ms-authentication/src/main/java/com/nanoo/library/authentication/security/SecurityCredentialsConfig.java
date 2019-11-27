@@ -51,8 +51,8 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 // handle an authorized attempts
-                .exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-                .and()
+                /*.exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                .and()*/
                 // Add a filter to validate user credentials and add token in the response header
                 
                 // What's the authenticationManager()?
@@ -61,14 +61,9 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
                 .authorizeRequests()
                 // allow all POST requests
-                .antMatchers(HttpMethod.POST, JwtConfig.URI).permitAll()
+                .antMatchers("/auth/").permitAll()
                 // any other requests must be authenticated
                 .anyRequest().authenticated();
-    }
-
-    @Bean
-    public JwtConfig jwtConfig() {
-        return new JwtConfig();
     }
     
     @Bean
@@ -80,7 +75,7 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
     DaoAuthenticationProvider authenticationProvider(){
         
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        //daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         daoAuthenticationProvider.setUserDetailsService(userPrincipalDetailsService);
         
         return daoAuthenticationProvider;
