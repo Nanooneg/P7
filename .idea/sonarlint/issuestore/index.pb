@@ -71,3 +71,7 @@ hms-authentication/src/main/java/com/nanoo/library/authentication/security/Secur
 Qms-book/src/test/java/com/nanoo/library/book/MManagementBookApplicationTests.java,d/2/d29be5e32facea86d7c64584fec24f782892d2f2
 
 Oms-book/src/main/java/com/nanoo/library/book/web/controller/BookController.java,7/0/703d8f012841e6c6ff69b55e79e8e1d6cc084169
+€
+Pserver-zuul/src/test/java/com/nanoo/library/zuul/ZuulServerApplicationTests.java,d/a/da86761dcd3763cb1837852bdd2344cb83d06e5e
+”
+dms-authentication/src/main/java/com/nanoo/library/authentication/web/controller/LoginController.java,a/6/a6321124842cbb64495db5c098c28abc1fc63740

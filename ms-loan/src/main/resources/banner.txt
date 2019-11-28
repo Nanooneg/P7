@@ -1,19 +1,10 @@
 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.1.RELEASE)
 
-LLLLLLLLLLL
-L:::::::::L
-L:::::::::L
-LL:::::::LL
-  L:::::L                  ooooooooooo     aaaaaaaaaaaaa   nnnn  nnnnnnnn
-  L:::::L                oo:::::::::::oo   a::::::::::::a  n:::nn::::::::nn
-  L:::::L               o:::::::::::::::o  aaaaaaaaa:::::a n::::::::::::::nn
-  L:::::L               o:::::ooooo:::::o           a::::a nn:::::::::::::::n
-  L:::::L               o::::o     o::::o    aaaaaaa:::::a   n:::::nnnn:::::n
-  L:::::L               o::::o     o::::o  aa::::::::::::a   n::::n    n::::n
-  L:::::L               o::::o     o::::o a::::aaaa::::::a   n::::n    n::::n
-  L:::::L         LLLLLLo::::o     o::::oa::::a    a:::::a   n::::n    n::::n
-LL:::::::LLLLLLLLL:::::Lo:::::ooooo:::::oa::::a    a:::::a   n::::n    n::::n
-L::::::::::::::::::::::Lo:::::::::::::::oa:::::aaaa::::::a   n::::n    n::::n
-L::::::::::::::::::::::L oo:::::::::::oo  a::::::::::aa:::a  n::::n    n::::n
-LLLLLLLLLLLLLLLLLLLLLLLL   ooooooooooo     aaaaaaaaaa  aaaa  nnnnnn    nnnnnn
-
+< ========= Microservice Loan ========== >

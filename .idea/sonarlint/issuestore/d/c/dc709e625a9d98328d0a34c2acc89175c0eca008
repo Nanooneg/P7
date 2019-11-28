@@ -1,4 +1,5 @@
 
-gsquid:S22599"IA "NullPointerException" could be thrown; "credentials" is nullable here.(÷¢²8‰Ş“åê-
-½%squid:RedundantThrowsDeclarationCheck-"„Remove the declaration of thrown exception 'org.springframework.security.core.AuthenticationException' which is a runtime exception.(ïÁ8‰Ş“åê-
-Fsquid:S11484"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‰Ş“åê-
+gsquid:S2259;"IA "NullPointerException" could be thrown; "credentials" is nullable here.(÷¢²8›¡÷ê-
+Fsquid:S11486"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8›¡÷ê-
+nsquid:CommentedOutCodeLineM"<This block of commented-out lines of code should be removed.(õ×üÁşÿÿÿÿ8÷¡¯÷ê-
+½%squid:RedundantThrowsDeclarationCheck/"„Remove the declaration of thrown exception 'org.springframework.security.core.AuthenticationException' which is a runtime exception.(ïÁ8›¡÷ê-
