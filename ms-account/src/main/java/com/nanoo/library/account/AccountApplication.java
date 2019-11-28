@@ -1,4 +1,4 @@
-package com.nanoo.library.book;
+package com.nanoo.library.account;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class MManagementBookApplication {
+public class AccountApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MManagementBookApplication.class, args);
+		SpringApplication.run(AccountApplication.class, args);
 	}
 
 }

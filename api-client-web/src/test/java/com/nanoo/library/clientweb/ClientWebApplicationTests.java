@@ -1,10 +1,10 @@
-package com.nanoo.library.book;
+package com.nanoo.library.clientweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MManagementBookApplicationTests {
+class ClientWebApplicationTests {
 
 	@Test
 	void contextLoads() {

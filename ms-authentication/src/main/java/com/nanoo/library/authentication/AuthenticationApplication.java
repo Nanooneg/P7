@@ -1,4 +1,4 @@
-package com.nanoo.library.account;
+package com.nanoo.library.authentication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class MManagementAccountApplication {
+public class AuthenticationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MManagementAccountApplication.class, args);
+		SpringApplication.run(AuthenticationApplication.class, args);
 	}
 
 }
