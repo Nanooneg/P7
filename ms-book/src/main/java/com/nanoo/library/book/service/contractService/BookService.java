@@ -12,4 +12,5 @@ public interface BookService {
     
     List<BookDto> getBookList();
     
+    BookDto getBook(int id);
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author nanoo
@@ -38,5 +39,14 @@ public class BookServiceImpl implements BookService {
         }
         
         return bookDtos;
+    }
+    
+    @Override
+    public BookDto getBook(int id){
+        
+        Optional<Book> book = bookRepository.findById(id);
+    
+        return book.map(bookMapper::fromBookToDto).orElse(null);
+    
     }
 }
