@@ -3,6 +3,8 @@ package com.nanoo.library.authentication.security;
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nanoo.library.authentication.model.LoginViewModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,8 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
@@ -27,6 +27,8 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
  * @create 26/11/2019 - 18:29
  */
 public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+    
+    private Logger log = LoggerFactory.getLogger(this.getClass());
     
     // We use auth manager to validate the user credentials
     private AuthenticationManager authManager;
@@ -51,10 +53,11 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
         try {
             credentials = new ObjectMapper().readValue(request.getInputStream(), LoginViewModel.class);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     
         // Create login token
+        assert credentials != null;
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 credentials.getUsername(),
                 credentials.getPassword(),
@@ -72,14 +75,11 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
     
         // Grab principal
         UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
-    
-        // Create JWT Token and add authorities
-        //Map<String, Object> headerClaims = new HashMap<>();
-        //headerClaims.put("authorities", principal.getAuthorities());
+        
         
         String token = JWT.create()
                 //.withHeader(headerClaims)
-                .withClaim("authorities","ROLE_" + principal.getRole())
+                .withClaim("role","ROLE_" + principal.getRole())
                 .withSubject(principal.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtConfig.EXPIRATION))
                 .sign(HMAC512(JwtConfig.SECRET.getBytes()));

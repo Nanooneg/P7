@@ -2,7 +2,6 @@ package com.nanoo.library.authentication.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,8 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author nanoo
@@ -29,11 +26,9 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
     
     // Roles
     private static final String ADMIN = "ADMIN";
-    private static final String MANAGER = "MANAGER";
-    private static final String USER = "USER";
-    // Authorities
-    private static final String ACCESS_TEST1 = "ACCESS_TEST1";
-    private static final String ACCESS_TEST2 = "ACCESS_TEST2";
+    private static final String EMPLOYEE = "EMPLOYEE";
+    private static final String CLIENT = "CLIENT";
+
     
     @Override
     protected void configure(AuthenticationManagerBuilder auth){
@@ -48,9 +43,6 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
                 // make sure we use stateless session; session won't be used to store user's state.
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                // handle an authorized attempts
-                /*.exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-                .and()*/
                 // Add a filter to validate user credentials and add token in the response header
                 
                 // What's the authenticationManager()?
@@ -61,7 +53,20 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
                 // allow all who are accessing "auth" service
                 .antMatchers("/auth/**").permitAll()
                 // allow all who are accessing "book" service
-                .antMatchers("/book/**").hasRole(ADMIN)
+                .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/book/create/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/book/update/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/book/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
+                // allow all who are accessing "account" service
+                .antMatchers("/account/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/account/create/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/account/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/account/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
+                // allow all who are accessing "loan" service
+                .antMatchers("/loan/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/loan/create/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/loan/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/loan/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // any other requests must be authenticated
                 .anyRequest().authenticated();
     }

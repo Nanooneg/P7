@@ -16,6 +16,8 @@ import java.util.List;
 @Service
 public class DbInit implements CommandLineRunner {
     
+    public static final String PASSWORD = "456456";
+    
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     
@@ -32,21 +34,34 @@ public class DbInit implements CommandLineRunner {
      */
     @Override
     public void run(String... args) {
-
-        // Delete all
-        //this.userRepository.deleteAll();
         
-        User user = new User();
-        user.setId(1);
-        user.setUsername("admin@mail.fr");
-        user.setPassword(passwordEncoder.encode("456456"));
-        user.setActive(true);
-        user.setRoles("ADMIN");
-        user.setPermissions("");
+        User admin = new User();
+        admin.setId(1);
+        admin.setUsername("admin@mail.fr");
+        admin.setPassword(passwordEncoder.encode(PASSWORD));
+        admin.setActive(true);
+        admin.setRoles("ADMIN");
+        admin.setPermissions("");
     
-        //List<User> users = Arrays.asList(admin);
+        User client = new User();
+        client.setId(2);
+        client.setUsername("client@mail.fr");
+        client.setPassword(passwordEncoder.encode(PASSWORD));
+        client.setActive(true);
+        client.setRoles("CLIENT");
+        client.setPermissions("");
+    
+        User employee = new User();
+        employee.setId(3);
+        employee.setUsername("employee@mail.fr");
+        employee.setPassword(passwordEncoder.encode(PASSWORD));
+        employee.setActive(true);
+        employee.setRoles("EMPLOYEE");
+        employee.setPermissions("");
+    
+        List<User> users = Arrays.asList(admin,client,employee);
         
-        userRepository.save(user);
+        userRepository.saveAll(users);
         
     }
     
