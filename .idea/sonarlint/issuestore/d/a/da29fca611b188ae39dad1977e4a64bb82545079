@@ -1,7 +1,4 @@
 
-Nsquid:S1068"+Remove this unused "MANAGER" private field.(Ο†›ώÿÿÿÿ8³΅σκ-
-psquid:UselessImportCheck"@Remove this unused import 'org.springframework.http.HttpMethod'.(Κ¨Δ΅ψÿÿÿÿ8³΅σκ-
-ssquid:UselessImportCheck"HRemove this unused import 'org.springframework.context.annotation.Bean'.(‚ξ‰ή8³΅σκ-
-Fsquid:S1068"(Remove this unused "USER" private field.(β‰8³΅σκ-
-Nsquid:S1068"0Remove this unused "ACCESS_TEST2" private field.(οθΠΘ8³΅σκ-
-Nsquid:S1068"0Remove this unused "ACCESS_TEST1" private field.(ξ½τΘ8³΅σκ-
+Msquid:S1068"*Remove this unused "CLIENT" private field.(…›Ω¤ύÿÿÿÿ8Έ¦¤’λ-
+Osquid:S1068",Remove this unused "EMPLOYEE" private field.(υΠ»ύÿÿÿÿ8Έ¦¤’λ-
+Gsquid:S1068")Remove this unused "ADMIN" private field.(’§φ‚8Έ¦¤’λ-

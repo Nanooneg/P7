@@ -32,7 +32,10 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 // authorization requests config
                 .authorizeRequests()
-                // allow all who are accessing "auth" service
+               
+                .anyRequest().permitAll();
+                
+                /*// allow all who are accessing "auth" service  TODO => No security on
                 .antMatchers("/auth/**").permitAll()
                 // allow all who are accessing "book" service
                 .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
@@ -50,7 +53,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/loan/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
                 .antMatchers("/loan/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // any other requests must be authenticated
-                .anyRequest().authenticated();
+                .anyRequest().authenticated();*/
     }
     
 }

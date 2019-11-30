@@ -1,0 +1,27 @@
+/*************************************/
+/*              Common               */
+/*************************************/
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*************************************/
+/*               Test                */
+/*************************************/
+
+.test-frame-red {
+    border: 1px solid red;
+}
+.test-frame-blue {
+    border: 1px solid #2f53ff;
+}
+.test-frame-green {
+    border: 1px solid #21ff25;
+}

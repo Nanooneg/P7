@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="server-zuul" />
         <module name="ms-common" />
-        <module name="api-client-web" />
-        <module name="server-eureka" />
         <module name="ms-authentication" />
+        <module name="api-client-web" />
+        <module name="server-zuul" />
+        <module name="server-eureka" />
       </profile>
       <profile name="Annotation profile for ms-book" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />

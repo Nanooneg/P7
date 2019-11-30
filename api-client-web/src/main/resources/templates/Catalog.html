@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="fr">
+
+<head th:insert="fragments/fragments.html :: headerfiles">
+
+    <title>Bibliothèque de Bordeaux</title>
+
+</head>
+
+<body>
+
+<div th:insert="fragments/fragments.html :: nav" class="test-frame-red"></div>
+
+<div class="container-fluid">
+    <!-- Start: Simple Slider -->
+    <div class="simple-slider test-frame-red">
+        <!-- Start: Slideshow -->
+        <div class="swiper-container">
+            <!-- Start: Slide Wrapper -->
+            <div class="swiper-wrapper">
+
+
+                <!-- Start: Slide -->
+                <div th:each="book : ${books}" class="swiper-slide">
+                    <div class="row inside-slider">
+                        <div class="col-md-5 test-frame-blue">
+                            <div class="cover-book test-frame-red">
+                                <img th:src="@{/image/cover-test.jpg}" alt="couverture du livre" src="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 test-frame-blue">
+                            <div class="info-book test-frame-red">
+                                <div class="header-description test-frame-red">
+                                    <div th:text="${book.title}" class="title-book test-frame-blue"></div>
+                                </div>
+                                <div class="text-description test-frame-red">
+                                    <div class="test-frame-blue">Autheur(s) : <span th:text= "${book.authors}" ></span></div>
+                                    <div class="test-frame-blue">Genre : <span th:text= "${book.category}" ></span></div>
+                                    <div class="test-frame-blue">Résumé : **résumé**</div>
+                                    <div class="test-frame-blue">Etat général : <span th:text= "${book.condition}" ></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Slide -->
+
+
+            </div>
+            <!-- End: Slide Wrapper -->
+
+            <!-- Start: Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- End: Pagination -->
+            <!-- Start: Previous -->
+            <div class="swiper-button-prev"></div>
+            <!-- End: Previous -->
+            <!-- Start: Next -->
+            <div class="swiper-button-next"></div>
+            <!-- End: Next -->
+        </div>
+        <!-- End: Slideshow -->
+    </div>
+    <!-- End: Simple Slider -->
+</div>
+
+<div th:insert="fragments/fragments.html :: footer" class="footer test-frame-red"></div>
+
+<div th:insert="fragments/fragments.html :: script"></div>
+
+</body>
+
+</html>
