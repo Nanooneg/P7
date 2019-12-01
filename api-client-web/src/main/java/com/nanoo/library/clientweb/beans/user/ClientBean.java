@@ -13,9 +13,7 @@ import java.util.Date;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class ClientBean implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public class ClientBean {
     
     private Integer id;
     private String lastName;

@@ -13,13 +13,11 @@ import java.io.Serializable;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class LibraryWithoutBookBean implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public class LibraryWithoutBookBean {
     
     private Integer id;
     private String name;
     private AddressBean address;
     private String phoneNumber;
-    
+
 }

@@ -52,4 +52,7 @@ public class Book implements Serializable {
     @Column(length = 20, nullable = false)
     private Condition condition;
     
+    @Column(nullable = false)
+    private boolean available;
+    
 }

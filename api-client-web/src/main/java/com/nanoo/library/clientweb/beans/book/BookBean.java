@@ -14,9 +14,7 @@ import java.util.Set;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class BookBean implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public class BookBean {
     
     private Integer id;
     private String title;
@@ -26,5 +24,6 @@ public class BookBean implements Serializable {
     private String deweyCode;
     private String category;
     private String condition;
+    private boolean available;
     
 }

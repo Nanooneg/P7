@@ -24,16 +24,16 @@ INSERT INTO public.author(id, birth_date, death_date, first_name, last_name) VAL
 
 /* Books */
 
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (1,'NOVEL','GOOD','XXXXXXXXXX','Les misérables',1,1);
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (2,'NOVEL','NEW','XXXXXXXXXX','Notre-Dame de Paris',1,1);
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (3,'NOVEL','DAMAGING','XXXXXXXXXX','J''accuse',1,1);
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (4,'NOVEL','WORN','XXXXXXXXXX','L''oeuvre',1,2);
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (5,'NOVEL','GOOD','XXXXXXXXXX','L''assommoir',1,2);
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (6,'NOVEL','WORN','XXXXXXXXXX','Les paradis artificiels',1,2);
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (7,'NOVEL','NEW','XXXXXXXXXX','Les fleurs du mal',1,3);
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (8,'NOVEL','NEW','XXXXXXXXXX','L''homme qui rit',1,3);
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (9,'NOVEL','WORN','XXXXXXXXXX','Germinal',1,3);
-INSERT INTO public.book(id, category, condition, dewey_code, title, cover_id, id_library) VALUES (10,'NOVEL','DAMAGING','XXXXXXXXXX','Nana',1,3);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (1,true,'NOVEL','GOOD','XXXXXXXXXX','Les misérables',1,1);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (2,true,'NOVEL','NEW','XXXXXXXXXX','Notre-Dame de Paris',1,1);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (3,true,'NOVEL','DAMAGING','XXXXXXXXXX','J''accuse',1,1);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (4,false,'NOVEL','WORN','XXXXXXXXXX','L''oeuvre',1,2);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (5,true,'NOVEL','GOOD','XXXXXXXXXX','L''assommoir',1,2);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (6,true,'NOVEL','WORN','XXXXXXXXXX','Les paradis artificiels',1,2);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (7,false,'NOVEL','NEW','XXXXXXXXXX','Les fleurs du mal',1,3);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (8,false,'NOVEL','NEW','XXXXXXXXXX','L''homme qui rit',1,3);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (9,true,'NOVEL','WORN','XXXXXXXXXX','Germinal',1,3);
+INSERT INTO public.book(id, available, category, condition, dewey_code, title, cover_id, id_library) VALUES (10,false,'NOVEL','DAMAGING','XXXXXXXXXX','Nana',1,3);
 
 /* Join table Books/Authors */
 

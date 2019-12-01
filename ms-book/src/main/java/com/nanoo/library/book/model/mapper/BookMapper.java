@@ -3,9 +3,7 @@ package com.nanoo.library.book.model.mapper;
 import com.nanoo.library.book.model.dto.BookDto;
 import com.nanoo.library.book.model.dto.BookWithoutAuthorsAndLibraryDto;
 import com.nanoo.library.book.model.entities.Book;
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -17,11 +15,22 @@ public interface BookMapper {
     
     BookMapper MAPPER = Mappers.getMapper(BookMapper.class);
     
+    @InheritInverseConfiguration
     Book fromDtoToBook (BookDto bookDto);
     
-    @InheritInverseConfiguration
+    @Mappings({
+        @Mapping(source = "condition.entitled", target = "condition"),
+        @Mapping(source = "category.name", target = "category")
+    })
     BookDto fromBookToDto (Book book);
     
-    BookWithoutAuthorsAndLibraryDto fromBookToDtoWithoutAuthors (Book book);
+    @InheritInverseConfiguration
+    Book fromDtoToBook (BookWithoutAuthorsAndLibraryDto bookWithoutAuthorsAndLibraryDto);
     
+    @Mappings({
+        @Mapping(source = "condition.entitled", target = "condition"),
+        @Mapping(source = "category.name", target = "category")
+    })
+    BookWithoutAuthorsAndLibraryDto fromBookToDtoWithoutAuthors (Book book);
+  
 }

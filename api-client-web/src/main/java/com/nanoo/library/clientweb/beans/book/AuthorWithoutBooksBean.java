@@ -13,14 +13,12 @@ import java.util.Date;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class AuthorWithoutBooksBean implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public class AuthorWithoutBooksBean{
     
     private Integer id;
     private String lastName;
     private String firstName;
     private Date birthDate;
     private Date deathDate;
-    
+
 }

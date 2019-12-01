@@ -4,18 +4,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
-
 /**
  * @author nanoo
- * @create 24/11/2019 - 00:27
+ * @create 01/12/2019 - 20:22
  */
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
-public class CoverBean {
+public class BookSearchAttributBean {
     
-    private Integer id;
     private String title;
-    private String path;
+    private AuthorWithoutBooksBean author;
+    private boolean available;
     
 }

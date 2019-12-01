@@ -17,15 +17,17 @@
     <div class="search-frame">
         <form>
             <div class="row align-items-center text-center">
-                <div class="col-md-4">
-                    <label class="mr-sm-2 sr-only" for="author"></label>
-                    <input type="text" class="form-control" id="author" placeholder="Auteur/Titre...">
+                <div class="custom-checkbox col-md-1">
+                    <input type="checkbox" class="custom-control-input" id="available"> <!--TODO remove customControlInput-->
+                    <label class="custom-control-label" for="available">Disponible</label>
                 </div>
-                <div class="col-md-2">
-                    <div class="custom-control custom-checkbox mr-sm-2">
-                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                        <label class="custom-control-label" for="customControlAutosizing">Disponible</label>
-                    </div>
+                <div class="col-md-3">
+                    <label class="mr-sm-2 sr-only" for="title"></label>
+                    <input type="text" class="form-control" id="title" placeholder="Titre...">
+                </div>
+                <div class="col-md-3">
+                    <label class="mr-sm-2 sr-only" for="author"></label>
+                    <input type="text" class="form-control" id="author" placeholder="Auteur...">
                 </div>
                 <div class="col-md-1">
                     <button type="submit" class="btn btn-light action-button">Rechercher</button>
@@ -51,12 +53,18 @@
                                     <div th:text="${book.title}" class="title-book"></div>
                                 </div>
                                 <div class="text-description">
-                                    <div>Autheur(s) : <span th:text= "${book.getAuthors()}" ></span></div>
-                                    <div>Bibliothèque : <span th:text= "${book.getLibrary()}" ></span></div>
+                                    <div>Autheur(s) : <span th:each="author : ${book.getAuthors()}">
+                                        <span th:text="${author.firstName}"></span>
+                                        <span th:text="${author.lastName}"></span>
+                                    </span></div>
+                                    <div>Bibliothèque : <span th:text="${book.library.name}"></span></div>
                                     <div>Genre : <span th:text= "${book.category}" ></span></div>
                                     <div>Résumé : ** résumé **</div>
                                     <div>Etat général : <span th:text= "${book.condition}" ></span></div>
-                                    <div>Exemplaire(s) disponible(s) : x</div>
+                                    <div>Disponible :
+                                        <span th:if="${book.available == true}">Oui</span>
+                                        <span th:unless="${book.available == true}">Non</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -37,7 +37,7 @@
   height: 540px;
   text-align: center;
   padding: 10px 0 10px;
-  border: 1px solid #808080;
+  border: none !important;
 }
 .cover-book img{
   height: 100%;
