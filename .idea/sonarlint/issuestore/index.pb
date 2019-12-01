@@ -93,3 +93,5 @@ Rapi-client-web/src/main/java/com/nanoo/library/clientweb/ClientWebApplication.j
 Wapi-client-web/src/main/java/com/nanoo/library/clientweb/controller/BookController.java,4/d/4da2310485a7bb8b2f28e1a1864730d0bdc470e0
 Š
 Zapi-client-web/src/main/java/com/nanoo/library/clientweb/proxies/MManagementBookProxy.java,0/0/0096d3178e4d0b6fc44ed400e116fe18a8407af0
+ˆ
+Xapi-client-web/src/main/java/com/nanoo/library/clientweb/controller/LoginController.java,e/4/e402c95dac8dbfddb110ad86ffefd2573b318ebb

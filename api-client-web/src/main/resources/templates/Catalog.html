@@ -10,62 +10,68 @@
 
 <body>
 
-<div th:insert="fragments/fragments.html :: nav" class="test-frame-red"></div>
+<div th:insert="fragments/fragments.html :: nav"></div>
 
 <div class="container-fluid">
-    <!-- Start: Simple Slider -->
-    <div class="simple-slider test-frame-red">
-        <!-- Start: Slideshow -->
+    <!-- Search options -->
+    <div class="search-frame">
+        <form>
+            <div class="row align-items-center text-center">
+                <div class="col-md-4">
+                    <label class="mr-sm-2 sr-only" for="author"></label>
+                    <input type="text" class="form-control" id="author" placeholder="Auteur/Titre...">
+                </div>
+                <div class="col-md-2">
+                    <div class="custom-control custom-checkbox mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Disponible</label>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-light action-button">Rechercher</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Slider -->
+    <div class="simple-slider">
         <div class="swiper-container">
-            <!-- Start: Slide Wrapper -->
             <div class="swiper-wrapper">
 
-
-                <!-- Start: Slide -->
                 <div th:each="book : ${books}" class="swiper-slide">
                     <div class="row inside-slider">
-                        <div class="col-md-5 test-frame-blue">
-                            <div class="cover-book test-frame-red">
+                        <div class="col-md-5">
+                            <div class="cover-book">
                                 <img th:src="@{/image/cover-test.jpg}" alt="couverture du livre" src="">
                             </div>
                         </div>
-                        <div class="col-md-7 test-frame-blue">
-                            <div class="info-book test-frame-red">
-                                <div class="header-description test-frame-red">
-                                    <div th:text="${book.title}" class="title-book test-frame-blue"></div>
+                        <div class="col-md-7">
+                            <div class="info-book">
+                                <div class="header-description">
+                                    <div th:text="${book.title}" class="title-book"></div>
                                 </div>
-                                <div class="text-description test-frame-red">
-                                    <div class="test-frame-blue">Autheur(s) : <span th:text= "${book.authors}" ></span></div>
-                                    <div class="test-frame-blue">Genre : <span th:text= "${book.category}" ></span></div>
-                                    <div class="test-frame-blue">Résumé : **résumé**</div>
-                                    <div class="test-frame-blue">Etat général : <span th:text= "${book.condition}" ></span></div>
+                                <div class="text-description">
+                                    <div>Autheur(s) : <span th:text= "${book.getAuthors()}" ></span></div>
+                                    <div>Bibliothèque : <span th:text= "${book.getLibrary()}" ></span></div>
+                                    <div>Genre : <span th:text= "${book.category}" ></span></div>
+                                    <div>Résumé : ** résumé **</div>
+                                    <div>Etat général : <span th:text= "${book.condition}" ></span></div>
+                                    <div>Exemplaire(s) disponible(s) : x</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End: Slide -->
-
 
             </div>
-            <!-- End: Slide Wrapper -->
-
-            <!-- Start: Pagination -->
             <div class="swiper-pagination"></div>
-            <!-- End: Pagination -->
-            <!-- Start: Previous -->
             <div class="swiper-button-prev"></div>
-            <!-- End: Previous -->
-            <!-- Start: Next -->
             <div class="swiper-button-next"></div>
-            <!-- End: Next -->
         </div>
-        <!-- End: Slideshow -->
     </div>
-    <!-- End: Simple Slider -->
 </div>
 
-<div th:insert="fragments/fragments.html :: footer" class="footer test-frame-red"></div>
+<div th:insert="fragments/fragments.html :: footer" class="footer"></div>
 
 <div th:insert="fragments/fragments.html :: script"></div>
 

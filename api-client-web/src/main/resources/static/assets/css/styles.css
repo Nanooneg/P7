@@ -10,6 +10,8 @@ body {
     min-height: 100%;
     margin: 0;
     padding: 0;
+    /*background-image: url('/image/bibliotheque-bordeaux-3.jpg') ;
+    background-size: cover;*/
 }
 
 /*************************************/
@@ -25,3 +27,4 @@ body {
 .test-frame-green {
     border: 1px solid #21ff25;
 }
+

@@ -31,6 +31,7 @@ public class BookController {
         return "Catalog";
     }
     
+    //TODO maybe not necessary
     @GetMapping("/detail/{id}")
     public String displayDetailBook(@PathVariable int id, Model model){
         
@@ -38,4 +39,6 @@ public class BookController {
         
         return "Book";
     }
+    
+    
 }

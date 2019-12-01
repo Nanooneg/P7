@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -13,7 +14,9 @@ import java.util.Set;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class BookBean {
+public class BookBean implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
     
     private Integer id;
     private String title;
