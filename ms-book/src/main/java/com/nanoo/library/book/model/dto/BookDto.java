@@ -23,6 +23,7 @@ public class BookDto implements Serializable {
     private Integer id;
     private String title;
     private Set<AuthorWithoutBooksDto> authors;
+    private String summary;
     private CoverOnlyPathDto cover;
     private LibraryWithoutBooksDto library;
     private String deweyCode;

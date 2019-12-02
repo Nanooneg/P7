@@ -21,6 +21,7 @@ public class BookWithoutAuthorsAndLibraryDto implements Serializable {
     
     private Integer id;
     private String title;
+    private String summary;
     private CoverOnlyPathDto cover;
     private String deweyCode;
     private String category;

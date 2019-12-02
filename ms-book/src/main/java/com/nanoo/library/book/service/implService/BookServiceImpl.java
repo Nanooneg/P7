@@ -2,6 +2,7 @@ package com.nanoo.library.book.service.implService;
 
 import com.nanoo.library.book.database.BookRepository;
 import com.nanoo.library.book.model.dto.BookDto;
+import com.nanoo.library.book.model.dto.SearchAttributDto;
 import com.nanoo.library.book.model.entities.Book;
 import com.nanoo.library.book.model.mapper.BookMapper;
 import com.nanoo.library.book.service.contractService.BookService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +44,24 @@ public class BookServiceImpl implements BookService {
     }
     
     @Override
+    public List<BookDto> getSearchResult(boolean available, String title, String author){
+    
+        List<BookDto> bookDtos = new ArrayList<>();
+        /*boolean available = searchAttribut.isAvailable();
+        String title = searchAttribut.getTitle();
+        String author = searchAttribut.getAuthor();*/
+        
+        List<Book> books = bookRepository.findBySearchAttribut(available);
+    
+        for (Book book : books){
+            bookDtos.add(bookMapper.fromBookToDto(book));
+        }
+        
+        return bookDtos;
+    
+    }
+    
+    @Override
     public BookDto getBook(int id){
         
         Optional<Book> book = bookRepository.findById(id);
@@ -49,4 +69,5 @@ public class BookServiceImpl implements BookService {
         return book.map(bookMapper::fromBookToDto).orElse(null);
     
     }
+    
 }

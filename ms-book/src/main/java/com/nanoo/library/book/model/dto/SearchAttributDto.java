@@ -1,4 +1,4 @@
-package com.nanoo.library.clientweb.beans.book;
+package com.nanoo.library.book.model.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -6,19 +6,22 @@ import lombok.Setter;
 
 /**
  * @author nanoo
- * @create 01/12/2019 - 20:22
+ * @create 02/12/2019 - 12:01
  */
 @Getter @Setter
 @NoArgsConstructor
-public class BookSearchAttributBean {
+public class SearchAttributDto {
     
     private String title;
     private String author;
     private boolean available;
     
+    public SearchAttributDto(String title, String author, boolean available) {
+    }
+    
     @Override
     public String toString() {
-        return "BookSearchAttributBean{" +
+        return "SearchAttributDto{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", available=" + available +

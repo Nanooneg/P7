@@ -19,6 +19,7 @@ public class BookBean {
     private Integer id;
     private String title;
     private Set<AuthorWithoutBooksBean> authors;
+    private String summary;
     private CoverBean cover;
     private LibraryWithoutBookBean library;
     private String deweyCode;

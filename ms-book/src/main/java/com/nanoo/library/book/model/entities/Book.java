@@ -34,6 +34,9 @@ public class Book implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "id_author"))
     private Set<Author> authors;
     
+    @Column(length = 400)
+    private String summary;
+    
     @ManyToOne(cascade = CascadeType.ALL)
     private Cover cover;
     
