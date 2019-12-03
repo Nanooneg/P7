@@ -17,19 +17,22 @@
     <div class="search-frame">
         <form method="post" th:action="@{/livre/catalogue/search}" th:object="${searchAttribut}">
             <div class="row align-items-center text-center">
-                <div class="custom-checkbox col-md-1">
+                <div class="col-md-4">
+                    <label class="mr-sm-2 sr-only" for="search"></label>
+                    <input type="text" th:field="*{searchValue}" class="form-control" id="search" placeholder="Je recherche...">
+                </div>
+                <div class="col-md-2">
+                    <label class="mr-sm-2 sr-only" for="criteria"></label>
+                    <select class="form-control" th:field="*{searchCriteria}" id="criteria">
+                        <option th:value="title">Recherche par titre</option>
+                        <option th:value="author">Recherche par auteur</option>
+                    </select>
+                </div>
+                <div class="custom-checkbox col-md-2">
                     <input type="checkbox" th:field="*{available}" class="custom-control-input" id="available"> <!--TODO remove customControlInput-->
                     <label class="custom-control-label" for="available">Disponible</label>
                 </div>
-                <div class="col-md-3">
-                    <label class="mr-sm-2 sr-only" for="title"></label>
-                    <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="Titre...">
-                </div>
-                <div class="col-md-3">
-                    <label class="mr-sm-2 sr-only" for="author"></label>
-                    <input type="text" th:field="*{author}" class="form-control" id="author" placeholder="Auteur...">
-                </div>
-                <div class="col-md-1">
+                <div class="col-md-auto">
                     <button type="submit" class="btn btn-light action-button">Rechercher</button>
                 </div>
             </div>

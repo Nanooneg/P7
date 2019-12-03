@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -39,4 +40,16 @@ public class Author implements Serializable {
     @Column(name = "death_date")
     private Date deathDate;
     
+    /* Custom getter to return only available books */
+    public Set<Book> getAvailableBooks() {
+        Set<Book> availableBooks = new HashSet<>();
+        
+        for (Book book : books){
+            if (book.isAvailable()){
+                availableBooks.add(book);
+            }
+        }
+        
+        return availableBooks;
+    }
 }

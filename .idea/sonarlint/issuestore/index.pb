@@ -91,8 +91,6 @@ Wapi-client-web/src/test/java/com/nanoo/library/clientweb/ClientWebApplicationTe
 Rapi-client-web/src/main/java/com/nanoo/library/clientweb/ClientWebApplication.java,7/8/782a7aad35198195bcb1af394c907668baec7c1d
 ‡
 Wapi-client-web/src/main/java/com/nanoo/library/clientweb/controller/BookController.java,4/d/4da2310485a7bb8b2f28e1a1864730d0bdc470e0
-Š
-Zapi-client-web/src/main/java/com/nanoo/library/clientweb/proxies/MManagementBookProxy.java,0/0/0096d3178e4d0b6fc44ed400e116fe18a8407af0
 ˆ
 Xapi-client-web/src/main/java/com/nanoo/library/clientweb/controller/LoginController.java,e/4/e402c95dac8dbfddb110ad86ffefd2573b318ebb
 „
@@ -135,3 +133,9 @@ s
 Cms-book/src/main/java/com/nanoo/library/book/model/dto/BookDto.java,e/e/ee92740a6efd2389bda5175ab6bef3ff39af64bc
 ‹
 [ms-book/src/main/java/com/nanoo/library/book/model/dto/BookWithoutAuthorsAndLibraryDto.java,3/b/3b774aadbca22a07c1db622308a278fcb8c2ed04
+
+Oapi-client-web/src/main/java/com/nanoo/library/clientweb/proxies/BookProxy.java,4/4/4403398d4fea5597c15d52540ed4c146529daca2
+y
+Ims-book/src/main/java/com/nanoo/library/book/database/BookRepository.java,3/3/33059ce8f74617941fece6a7c64708d0019feb92
+}
+Mms-book/src/main/java/com/nanoo/library/book/model/dto/SearchAttributDto.java,2/0/20b402c33aed73fb8d3ccea9c4163f6c445ab9b9

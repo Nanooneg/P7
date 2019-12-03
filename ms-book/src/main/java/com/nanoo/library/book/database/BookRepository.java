@@ -15,9 +15,12 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book,Integer> {
     
-    @Query(value = "SELECT distinct book.* FROM book  " +
-            "WHERE (:available = false OR book.available = :available)",
+    @Query(value = "SELECT distinct b.* FROM book b " +
+            "WHERE (:available = false OR b.available = :available)" +
+            "AND (:title = '' OR LOWER(b.title) LIKE LOWER(:title) )",
             nativeQuery = true)
-    List<Book> findBySearchAttribut(@Param("available") boolean available);
+    List<Book> findBySearchAttribut(@Param("available") boolean available,
+                                    @Param("title") String title);
+    
     
 }

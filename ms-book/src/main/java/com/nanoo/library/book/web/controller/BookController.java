@@ -1,13 +1,10 @@
 package com.nanoo.library.book.web.controller;
 
 import com.nanoo.library.book.model.dto.BookDto;
-import com.nanoo.library.book.model.dto.SearchAttributDto;
 import com.nanoo.library.book.service.contractService.BookService;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -35,15 +32,11 @@ public class BookController {
     @GetMapping("/search-result")
     @ResponseBody
     public List<BookDto> getSearchResult(@RequestParam(value = "available",required = false) boolean available,
-                                         @RequestParam(value = "title",required = false) String title,
-                                         @RequestParam(value = "author",required = false) String author){
+                                         @RequestParam(value = "searchValue",required = false) String searchValue,
+                                         @RequestParam(value = "searchCriteria",required = false) String searchCriteria){
         
-        SearchAttributDto searchAttributDto =
-                new SearchAttributDto(title,author,available);
     
-        System.out.println("MS book controller" + searchAttributDto);
-    
-        return bookService.getSearchResult(available,title,author);
+        return bookService.getSearchResult(available,searchValue,searchCriteria);
         
     }
     

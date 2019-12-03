@@ -10,17 +10,17 @@ import lombok.Setter;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class BookSearchAttributBean {
+public class BookSearchAttribut {
     
-    private String title;
-    private String author;
+    private String searchValue;
+    private String searchCriteria;
     private boolean available;
     
     @Override
     public String toString() {
         return "BookSearchAttributBean{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
+                "title='" + searchValue + '\'' +
+                ", author='" + searchCriteria + '\'' +
                 ", available=" + available +
                 '}';
     }

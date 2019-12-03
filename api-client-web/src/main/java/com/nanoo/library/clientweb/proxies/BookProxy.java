@@ -1,7 +1,7 @@
 package com.nanoo.library.clientweb.proxies;
 
 import com.nanoo.library.clientweb.beans.book.BookBean;
-import com.nanoo.library.clientweb.beans.book.BookSearchAttributBean;
+import com.nanoo.library.clientweb.beans.book.BookSearchAttribut;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ public interface BookProxy {
     List<BookBean> listAllBook();
     
     @GetMapping("/book/consult/search-result")
-    List<BookBean> listSearchResult(@SpringQueryMap BookSearchAttributBean searchAttribut);
+    List<BookBean> listSearchResult(@SpringQueryMap BookSearchAttribut searchAttribut);
     
     @GetMapping("/book/consult/book-detail/{id}")
     BookBean getBookDetail(@PathVariable("id") int id);

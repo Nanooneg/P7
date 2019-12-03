@@ -1,6 +1,6 @@
 package com.nanoo.library.clientweb.controller;
 
-import com.nanoo.library.clientweb.beans.book.BookSearchAttributBean;
+import com.nanoo.library.clientweb.beans.book.BookSearchAttribut;
 import com.nanoo.library.clientweb.proxies.BookProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,18 +26,16 @@ public class BookController {
     public String displayAllBooks(Model model){
         
         model.addAttribute("books",bookProxy.listAllBook());
-        model.addAttribute("searchAttribut",new BookSearchAttributBean());
+        model.addAttribute("searchAttribut",new BookSearchAttribut());
         
         return "Catalog";
     }
     
     @PostMapping("/catalogue/search")
-    public String displaySearchResult(@ModelAttribute("searchAttribut") BookSearchAttributBean searchAttribut,
+    public String displaySearchResult(@ModelAttribute("searchAttribut") BookSearchAttribut searchAttribut,
                                       Model model){
-    
-        System.out.println("API controller : " + searchAttribut);
         
-        model.addAttribute("books",bookProxy.listSearchResult(searchAttribut));
+        model.addAttribute("books",bookProxy.listSearchResult(searchAttribut)); //TODO send search result and disable slider
         model.addAttribute("searchAttribut",searchAttribut);
     
         return "Catalog";
