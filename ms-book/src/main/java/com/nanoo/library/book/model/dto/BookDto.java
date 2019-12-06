@@ -23,10 +23,12 @@ public class BookDto implements Serializable {
     private Integer id;
     private String title;
     private Set<AuthorWithoutBooksDto> authors;
-    private Cover cover;
+    private String summary;
+    private CoverOnlyPathDto cover;
     private LibraryWithoutBooksDto library;
     private String deweyCode;
-    private Category category;
-    private Condition condition;
+    private String category;
+    private String condition;
+    private boolean available;
     
 }

@@ -1,0 +1,113 @@
+/*        Slider       */
+.simple-slider{
+  background-color: rgba(255,255,255,0.8);
+}
+
+.inside-slider{
+  width: 90%;
+  height: 90%;
+  margin: 30px auto 0 auto;
+  box-shadow: 1px 1px 4px rgba(119, 119, 119,0.5);
+}
+
+.simple-slider .swiper-slide {
+  width: 90%;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.simple-slider .swiper-button-next, .simple-slider .swiper-button-prev {
+  width: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.swiper-button-prev{
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%5e5e5eae'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.swiper-button-next{
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%5e5e5eae'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+
+/*    cover and info    */
+.cover-book{
+  height: 540px;
+  text-align: center;
+  padding: 10px 0 10px;
+  border: none !important;
+}
+.cover-book img{
+  height: 100%;
+  width: auto;
+  box-shadow: 1px 1px 4px rgba(119, 119, 119,0.5);
+}
+
+.info-book{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.title-book{
+  margin: 30px 0 50px !important;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.text-description{
+  text-align: justify;
+}
+
+.text-description div{
+  width: 100%;
+  margin: 10px auto 10px auto;
+  padding: 0 20px 0 20px;
+}
+
+
+/*         media        */
+@media (max-width:767px) {
+  .simple-slider .swiper-button-next, .simple-slider .swiper-button-prev {
+    display: none;
+  }
+}
+
+@media (max-width:767px) {
+  .simple-slider .swiper-slide {
+    height: 360px;
+  }
+}
+
+
+/*************************************/
+/*              Search               */
+/*************************************/
+
+.search-frame{
+  padding-top: 10px;
+  margin: 30px 50px 20px 50px;
+  background: none;
+}
+
+.search-frame form{
+  display: flex;
+  justify-content: center;
+}
+
+.search-frame .custom-checkbox{
+  padding-left: 40px;
+}
+
+.search-frame .row{
+  width: 80%;
+  justify-content: center;
+}

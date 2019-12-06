@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * @author nanoo
  * @create 24/11/2019 - 00:27
@@ -18,4 +20,13 @@ public class LibraryWithoutBookBean {
     private AddressBean address;
     private String phoneNumber;
     
+    @Override
+    public String toString() {
+        return "LibraryWithoutBookBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

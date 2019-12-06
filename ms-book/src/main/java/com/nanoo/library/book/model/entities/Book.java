@@ -8,7 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author nanoo
@@ -34,6 +34,9 @@ public class Book implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "id_author"))
     private Set<Author> authors;
     
+    @Column(length = 400)
+    private String summary;
+    
     @ManyToOne(cascade = CascadeType.ALL)
     private Cover cover;
     
@@ -52,4 +55,9 @@ public class Book implements Serializable {
     @Column(length = 20, nullable = false)
     private Condition condition;
     
+    @Column(nullable = false)
+    private boolean available;
+    
+    @Column(nullable = false)
+    private Date registration;
 }

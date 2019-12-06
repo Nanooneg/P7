@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,12 +13,12 @@ import java.util.Date;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class AuthorWithoutBooksBean {
+public class AuthorWithoutBooksBean{
     
     private Integer id;
     private String lastName;
     private String firstName;
     private Date birthDate;
     private Date deathDate;
-    
+
 }
