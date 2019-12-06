@@ -19,5 +19,14 @@ public class LibraryWithoutBookBean {
     private String name;
     private AddressBean address;
     private String phoneNumber;
-
+    
+    @Override
+    public String toString() {
+        return "LibraryWithoutBookBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

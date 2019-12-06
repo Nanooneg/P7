@@ -15,13 +15,15 @@ public class BookSearchAttribut {
     private String searchValue;
     private String searchCriteria;
     private boolean available;
+    private int libraryId;
     
     @Override
     public String toString() {
-        return "BookSearchAttributBean{" +
-                "title='" + searchValue + '\'' +
-                ", author='" + searchCriteria + '\'' +
+        return "BookSearchAttribut{" +
+                "searchValue='" + searchValue + '\'' +
+                ", searchCriteria='" + searchCriteria + '\'' +
                 ", available=" + available +
+                ", libraryId=" + libraryId +
                 '}';
     }
 }

@@ -40,10 +40,9 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Bibliothèques </a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Bibliothèque 1</a>
-                            <a class="dropdown-item" href="#">Bibliothèque 2</a>
-                            <a class="dropdown-item" href="#">Bibliothèque 3</a>
-                            <a class="dropdown-item" href="#">Toutes les bibliothèques</a>
+                            <!--TODO insert library with th:each-->
+                            <a class="dropdown-item" th:each="library : ${libraries}" th:href="@{/livre/${library.id}/catalogue}" th:text="${library.name}"></a>
+                            <a class="dropdown-item" th:href="@{/livre/catalogue}">Toutes les bibliothèques</a>
                         </div>
                     </li>
                 </ul>
@@ -72,13 +71,13 @@
     <!-- Start: Footer Basic -->
     <div class="footer-basic">
         <footer>
-            <!-- Start: Social Icons -->
+            <!-- Start: Social Icons TODO-->
             <div class="social">
                 <a href="#"><i class="icon ion-social-instagram"></i></a>
                 <a href="#"><i class="icon ion-social-twitter"></i></a>
                 <a href="#"><i class="icon ion-social-facebook"></i></a>
             </div>
-            <!-- End: Social Icons -->
+            <!-- End: Social Icons TODO-->
             <!-- Start: Links -->
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Accueil</a></li>
@@ -102,7 +101,6 @@
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js}"></script>
-    <script th:src="@{/assets/js/Simple-Slider.js}"></script>
 </div>
 
 </body>

@@ -10,13 +10,55 @@
 
 <body>
 
-<div th:insert="fragments/fragments.html :: nav"></div>
+<!--<div th:insert="fragments/fragments.html :: nav"></div>-->
+<div>
+    <!-- Start: Navigation with Search -->
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Bibliothèques de Bordeaux</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"
+                 id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/livre/catalogue}">Les livres</a></li>
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                           th:text="${actualLibrary != null ? actualLibrary.name : 'Bibliothèques'}"></a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" th:each="library : ${libraries}" th:href="@{|/livre/${library.id}/catalogue|}" th:text="${library.name}"></a>
+                            <a class="dropdown-item" th:href="@{/livre/catalogue}">Toutes les bibliothèques</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div id="search-field-navbar">
+                <form class="form-inline mr-auto" target="_self">
+                    <div class="form-group">
+                        <label for="search-field"><i class="fa fa-search"></i></label>
+                        <input class="form-control search-field" type="search" id="search-field" name="search">
+                    </div>
+                </form>
+            </div>
+            <div class="login-button">
+                <a class="btn btn-light action-button" role="button" th:href="@{/login}">Se connecter</a>
+            </div>
+        </div>
+    </nav>
+    <!-- End: Navigation with Search -->
+</div>
 
 <div class="container-fluid">
-    <!-- Search options -->
+    <!-- Search form -->
     <div class="search-frame">
         <form method="post" th:action="@{/livre/catalogue/search}" th:object="${searchAttribut}">
             <div class="row align-items-center text-center">
+                <div>
+                    <input type="hidden" th:field="*{libraryId}">
+                </div>
                 <div class="col-md-4">
                     <label class="mr-sm-2 sr-only" for="search"></label>
                     <input type="text" th:field="*{searchValue}" class="form-control" id="search" placeholder="Je recherche...">
@@ -28,8 +70,8 @@
                         <option th:value="author">Recherche par auteur</option>
                     </select>
                 </div>
-                <div class="custom-checkbox col-md-2">
-                    <input type="checkbox" th:field="*{available}" class="custom-control-input" id="available"> <!--TODO remove customControlInput-->
+                <div class="custom-checkbox col-md-1">
+                    <input type="checkbox" th:field="*{available}" class="custom-control-input" id="available">
                     <label class="custom-control-label" for="available">Disponible</label>
                 </div>
                 <div class="col-md-auto">
@@ -39,11 +81,12 @@
         </form>
     </div>
     <!-- Slider -->
-    <div class="simple-slider">
+    <div id="slider" class="simple-slider">
         <div class="swiper-container">
             <div class="swiper-wrapper">
 
-                <div th:each="book : ${books}" class="swiper-slide">
+                <!-- Condition for data to display in slider (in books searched page, display the same in slider and list below) handle in controller -->
+                <div th:each="book : ${sliderBooks}" class="swiper-slide">
                     <div class="row inside-slider">
                         <div class="col-md-5">
                             <div class="cover-book">
@@ -80,11 +123,34 @@
             <div class="swiper-button-next"></div>
         </div>
     </div>
+    <!-- Books cards -->
+    <div class="catalog">
+        <div th:each="book :${books}" class="catalog-item">
+            <a href="#slider" class="link-item">
+                <div class="inside-item">
+                    <div class="cover-item">
+                        <img th:src="${book.cover.path}" alt="couverture du livre" src="">
+                    </div>
+                    <div class="info-item">
+                        <div class="header-item">
+                            <div th:text="${book.title}" class="title-book"></div>
+                            <div th:each="author : ${book.getAuthors()}" class="author-book">
+                                ( <span th:text="${author.firstName}"></span> <span th:text="${author.lastName}"></span> )
+                            </div>
+                        </div>
+                        <div th:text="${book.summary}" class="description-item"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
 
+<!-- Footer insert -->
 <div th:insert="fragments/fragments.html :: footer" class="footer"></div>
-
+<!-- Scripts insert -->
 <div th:insert="fragments/fragments.html :: script"></div>
+<script th:src="@{/assets/js/Simple-Slider.js}"></script>
 
 </body>
 

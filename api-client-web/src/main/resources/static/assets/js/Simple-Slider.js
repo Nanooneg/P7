@@ -4,7 +4,7 @@ $(function(){
     // Read more here: http://idangero.us/swiper/api/
     
     var mySwiper = new Swiper ('.swiper-container', {
-        loop: true,
+        loop: false,
         pagination: '.swiper-pagination',
         paginationClickable: true,
         nextButton: '.swiper-button-next',

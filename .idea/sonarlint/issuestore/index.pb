@@ -107,8 +107,6 @@ w
 Gms-book/src/main/java/com/nanoo/library/book/model/enums/Condition.java,b/9/b97f82eef549c9d7213a9e2edb45958dfaf16332
 v
 Fms-book/src/main/java/com/nanoo/library/book/model/enums/Category.java,c/b/cb730e8ba462f67aa5666540f72e3d49c4e1719c
-è
-_api-client-web/src/main/java/com/nanoo/library/clientweb/beans/book/BookSearchAttributBean.java,0/6/0636993fd57a3141772c73e4042855207082fb01
 |
 Lms-book/src/main/java/com/nanoo/library/book/database/LibraryRepository.java,2/c/2c851a8f8f263fb0553ef27d31e762c182c6db46
 {
@@ -137,5 +135,13 @@ Cms-book/src/main/java/com/nanoo/library/book/model/dto/BookDto.java,e/e/ee9274
 Oapi-client-web/src/main/java/com/nanoo/library/clientweb/proxies/BookProxy.java,4/4/4403398d4fea5597c15d52540ed4c146529daca2
 y
 Ims-book/src/main/java/com/nanoo/library/book/database/BookRepository.java,3/3/33059ce8f74617941fece6a7c64708d0019feb92
-}
-Mms-book/src/main/java/com/nanoo/library/book/model/dto/SearchAttributDto.java,2/0/20b402c33aed73fb8d3ccea9c4163f6c445ab9b9
+ã
+[api-client-web/src/main/java/com/nanoo/library/clientweb/beans/book/BookSearchAttribut.java,2/a/2a495ced9927735122ca48948fb74835ffb0a0fa
+w
+Gms-book/src/main/java/com/nanoo/library/book/model/entities/Author.java,c/5/c5d29f5eeeacc895936f617cc59aa8bfe06c54a3
+Ç
+Rms-book/src/main/java/com/nanoo/library/book/web/controller/LibraryController.java,0/1/01277c4f1a8a2a95c479f2b1d467e53a984fafa9
+à
+Xms-book/src/main/java/com/nanoo/library/book/service/implService/LibraryServiceImpl.java,1/4/14abe1724c1529381ac1b1bc1faaa6da93cad056
+à
+Xms-book/src/main/java/com/nanoo/library/book/service/contractService/LibraryService.java,3/6/3699c24ba88dd9ea0c82f39f1050b9bb740d666f

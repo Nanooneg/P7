@@ -1,6 +1,10 @@
 package com.nanoo.library.book.database;
 
 import com.nanoo.library.book.model.entities.Book;
+import com.nanoo.library.book.model.entities.Library;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,12 +19,17 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book,Integer> {
     
-    @Query(value = "SELECT distinct b.* FROM book b " +
-            "WHERE (:available = false OR b.available = :available)" +
-            "AND (:title = '' OR LOWER(b.title) LIKE LOWER(:title) )",
-            nativeQuery = true)
-    List<Book> findBySearchAttribut(@Param("available") boolean available,
-                                    @Param("title") String title);
+    Page<Book> findAll(Pageable page);
     
+    Page<Book> findAllByLibrary(Library library, Pageable pageable);
+    
+    @Query(value = "SELECT distinct b FROM Book b " +
+            "WHERE (:available = false OR b.available = :available) " +
+            "AND (:title = '' OR LOWER(b.title) LIKE LOWER(:title))" +
+            "AND (:libraryId = 0 OR b.library = :libraryId)")
+    List<Book> findBySearchAttributAndByLibrary(@Param("available") boolean available,
+                                                @Param("title") String title,
+                                                @Param("libraryId") int libraryId,
+                                                Sort sort);
     
 }

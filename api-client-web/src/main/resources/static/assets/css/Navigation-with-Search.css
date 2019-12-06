@@ -26,6 +26,15 @@
   color: inherit;
 }
 
+.navigation-clean-search a{
+  cursor: pointer !important;
+  border-bottom: 1px solid white !important;
+}
+
+.navigation-clean-search a:hover, .navigation-clean-search a:focus{
+  border-bottom: 1px solid rgba(155,155,155,0.5); /* TODO only for "livre" and "Bibliotèques" */
+}
+
 .navigation-clean-search .navbar-brand:hover {
   color: #303030;
 }

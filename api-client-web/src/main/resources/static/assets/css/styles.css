@@ -10,8 +10,6 @@ body {
     min-height: 100%;
     margin: 0;
     padding: 0;
-    /*background-image: url('/image/bibliotheque-bordeaux-3.jpg') ;
-    background-size: cover;*/
 }
 
 /*************************************/
@@ -28,3 +26,80 @@ body {
     border: 1px solid #21ff25;
 }
 
+/*************************************/
+/*             Catalog               */
+/*************************************/
+
+.catalog{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.catalog-item{
+    width: 90%;
+    height: 200px;
+    margin: 35px auto 0 auto;
+    /*border: 1px solid grey;*/
+    box-shadow: 1px 1px 4px rgba(119, 119, 119,0.5);
+}
+
+.catalog-item a{
+    color: inherit;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition-duration: 0.5s; /* TODO make transition slow */
+
+}
+
+.inside-item{
+    height: 100%;
+    max-width: 95%;
+    margin: 5px auto 5px auto;
+    display: flex;
+    overflow-x: visible;
+}
+
+.cover-item{
+    height: 230px;
+    width: 180px;
+    position: relative;
+    top: -20px;
+    left: 30px;
+    box-shadow: 1px 1px 4px rgba(119, 119, 119,0.5);
+}
+
+.cover-item img{
+    height: 100%;
+    width: 100%;
+}
+
+.info-item{
+    height: 100%;
+    width: 100%;
+    padding: 20px 40px 20px 40px;
+    margin-left: 50px;
+}
+
+.header-item{
+    display: flex;
+}
+
+.description-item{
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.info-item .title-book{
+    margin: 0    !important;
+    text-align: left !important;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.info-item .author-book{
+    font-size: 20px;
+    font-style: italic;
+    margin-left: 20px;
+    padding-bottom: 2px;
+    align-self: flex-end;
+}

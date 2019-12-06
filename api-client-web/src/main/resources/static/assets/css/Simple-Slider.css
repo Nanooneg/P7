@@ -1,20 +1,22 @@
 /*        Slider       */
 .simple-slider{
-  margin: 0 50px 0 50px;
   background-color: rgba(255,255,255,0.8);
 }
 
 .inside-slider{
   width: 90%;
   height: 90%;
-  margin: 20px auto 0 auto;
+  margin: 30px auto 0 auto;
+  box-shadow: 1px 1px 4px rgba(119, 119, 119,0.5);
 }
 
 .simple-slider .swiper-slide {
+  width: 90%;
   height: 600px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  margin-bottom: 20px;
 }
 
 .simple-slider .swiper-button-next, .simple-slider .swiper-button-prev {
@@ -42,6 +44,7 @@
 .cover-book img{
   height: 100%;
   width: auto;
+  box-shadow: 1px 1px 4px rgba(119, 119, 119,0.5);
 }
 
 .info-book{
@@ -91,13 +94,17 @@
 
 .search-frame{
   padding-top: 10px;
-  margin: 30px 50px 0 50px;
-  background-color: rgba(255,255,255,0.8);
+  margin: 30px 50px 20px 50px;
+  background: none;
 }
 
 .search-frame form{
   display: flex;
   justify-content: center;
+}
+
+.search-frame .custom-checkbox{
+  padding-left: 40px;
 }
 
 .search-frame .row{
