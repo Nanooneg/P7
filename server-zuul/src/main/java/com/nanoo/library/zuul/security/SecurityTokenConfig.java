@@ -33,12 +33,12 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 // authorization requests config
                 .authorizeRequests()
                
-                .anyRequest().permitAll();
+                /*.anyRequest().permitAll();*/
                 
-                /*// allow all who are accessing "auth" service  TODO => No security on
+                // allow all who are accessing "auth" service
                 .antMatchers("/auth/**").permitAll()
                 // allow all who are accessing "book" service
-                .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/create/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/update/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
@@ -53,7 +53,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/loan/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
                 .antMatchers("/loan/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // any other requests must be authenticated
-                .anyRequest().authenticated();*/
+                .anyRequest().authenticated();
     }
     
 }

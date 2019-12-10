@@ -1,0 +1,31 @@
+<!--
+-
+- @create 06/12/2019 - 21:19
+- @author nanoo
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head th:insert="fragments/fragments.html :: headerfiles">
+
+    <title>Home</title>
+
+</head>
+
+<body>
+
+<div th:insert="fragments/fragments.html :: nav"></div>
+
+<div class="container">
+    <p>TEST</p>
+    <!--<p th:text="${user.username}"></p>
+    <p th:text="${user.password}"></p>-->
+</div>
+
+<div th:insert="fragments/fragments.html :: footer" class="footer"></div>
+
+<div th:insert="fragments/fragments.html :: script"></div>
+
+</body>
+
+</html>

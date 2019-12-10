@@ -2,6 +2,7 @@ package com.nanoo.library.authentication.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -40,23 +41,25 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                /*.formLogin().loginPage("/login")
+                .and()
+                .exceptionHandling().accessDeniedPage("/login")
+                .and()*/
+                
                 // make sure we use stateless session; session won't be used to store user's state.
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+        
                 // Add a filter to validate user credentials and add token in the response header
-                
-                // What's the authenticationManager()?
-                // An object provided by WebSecurityConfigurerAdapter, used to authenticate the user passing user's credentials
-                // The filter needs this auth manager to authenticate the user.
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
                 .authorizeRequests()
                 
-                .anyRequest().permitAll();
+                /*.anyRequest().permitAll();*/
                 
-                /*// allow all who are accessing "auth" service  TODO => No security on
-                .antMatchers("/auth/**").permitAll()
-                // allow all who are accessing "book" service
-                .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                // allow all who are accessing "auth" service
+                .antMatchers(HttpMethod.POST,"/auth/Login").permitAll()
+                // allow all who are accessing "book" service TODO get back client authorization to /book/consult/**
+                .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/create/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/update/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
@@ -71,7 +74,7 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/loan/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
                 .antMatchers("/loan/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // any other requests must be authenticated
-                .anyRequest().authenticated();*/
+                .anyRequest().authenticated();
     }
     
     @Bean
