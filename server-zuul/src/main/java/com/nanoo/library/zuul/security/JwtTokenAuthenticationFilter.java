@@ -2,6 +2,7 @@ package com.nanoo.library.zuul.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.nanoo.library.zuul.utils.CookieUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -30,23 +31,18 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain chain)
                                     throws ServletException, IOException {
         
-        // 1. get the authentication header. Tokens are supposed to be passed in the authentication header
-        String header = request.getHeader(JwtConfig.HEADER);
+        // check for cookie
+        String token = CookieUtil.cookieValue(request,JwtConfig.HEADER);
         
-        // 2. validate the header and check the prefix
-        if(header == null || !header.startsWith(JwtConfig.PREFIX)) {
-            chain.doFilter(request, response);  		// If not valid, go to the next filter.
+        // 1. get the authentication header. Tokens are supposed to be passed in the authentication header
+        //String header = request.getHeader(JwtConfig.HEADER);
+        
+        // 2. If there is no token provided and hence the user won't be authenticated.
+        // It's Ok. Maybe the user accessing a public path or asking for a token.
+        if(token == null) {
+            chain.doFilter(request, response);
             return;
         }
-        
-        // If there is no token provided and hence the user won't be authenticated.
-        // It's Ok. Maybe the user accessing a public path or asking for a token.
-        
-        // All secured paths that needs a token are already defined and secured in config class.
-        // And If user tried to access without access token, then he won't be authenticated and an exception will be thrown.
-        
-        // 3. Get the token
-        String token = header.replace(JwtConfig.PREFIX, "");
         
         try {	// exceptions might be thrown in creating the claims if for example the token is expired
             

@@ -84,9 +84,9 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
                 .withSubject(principal.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtConfig.EXPIRATION))
                 .sign(HMAC512(JwtConfig.SECRET.getBytes()));
-    
+        
         // ADD COOKIES ##################################################
-        Cookie cookie = new Cookie("JWTtoken", token);
+        Cookie cookie = new Cookie(JwtConfig.HEADER, token);
         cookie.setSecure(false);
         cookie.setHttpOnly(true);
         // 12 days about 999999
@@ -95,11 +95,13 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
         cookie.setPath("/");
     
         // Add token in response
-        //response.addHeader(JwtConfig.HEADER, JwtConfig.PREFIX + token);
+        response.addHeader(JwtConfig.HEADER, JwtConfig.PREFIX + token);
         response.addCookie(cookie);
         
+        response.setStatus(HttpServletResponse.SC_OK);
+        
         // REDIRECT ##################################################
-        //response.sendRedirect("/livre/catalogue");
+        //response.sendRedirect("/home");
     }
     
 }

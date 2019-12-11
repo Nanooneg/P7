@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
     
     private final BookProxy bookProxy;
-    private BookController bookController;
     private CookieUtil cookieUtil;
     
     @Autowired
@@ -29,7 +28,7 @@ public class LoginController {
         this.bookProxy = bookProxy;
     }
     
-    @GetMapping("/connexion")
+    @GetMapping("/login")
     public String loginForm(Model model){
         
         model.addAttribute("user",new UserBean());
@@ -38,25 +37,37 @@ public class LoginController {
         
     }
     
-    @PostMapping("/connexion")
+    @PostMapping("/login")
     public String doLogin(Model model, @ModelAttribute UserBean user,
                           HttpServletResponse response,
                           HttpServletRequest request){
         
-        bookController = new BookController(bookProxy);
         cookieUtil = new CookieUtil();
         
-        /* authenticate user and jwt token is add to ResponseHeader */
+        // authenticate user and jwt token is add to ResponseHeader
         bookProxy.authenticateClient(user);
-        model.addAttribute("user",user);
-    
-        String token = cookieUtil.cookieValue(request, "JWTtoken");
-        System.out.println(token);
-        response.addHeader("Authorization", "Bearer " + token);
+        System.out.println("response : "+ response.getHeader("Authorization"));
         
-        return "login";
+        String token = response.getHeader("Authorization");
+        
+        //String token = cookieUtil.cookieValueFromResponse(response, "Authorization");
+        System.out.println(token);
+        //response.addHeader("Authorization", "Bearer " + token);
+        
+        return "Home";
     }
     
+    @PostMapping("/home")
+    public String home (Model model, HttpServletResponse response){
+    
+        cookieUtil = new CookieUtil();
+        
+        String token = cookieUtil.cookieValueFromResponse(response, "Authorization");
+        System.out.println(token);
+        //response.addHeader("Authorization", "Bearer " + token);
+        
+        return "Home";
+    }
     
     
 }

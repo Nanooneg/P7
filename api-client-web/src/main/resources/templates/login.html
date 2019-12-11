@@ -12,12 +12,18 @@
 <div th:insert="fragments/fragments.html :: nav"></div>
 
 <div class="login-clean">
-    <form method="post" th:action="@{/connexion}" th:object="${user}">
+    <form method="post" th:action="@{/login}" th:object="${user}">
         <h2 class="sr-only">Login Form</h2>
         <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
-        <div class="form-group"><input class="form-control" th:field="*{username}" type="email" name="email" placeholder="Email"></div>
-        <div class="form-group"><input class="form-control" th:field="*{password}" type="password" name="password" placeholder="Mot de passe"></div>
-        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Connexion</button></div>
+        <div class="form-group">
+            <input class="form-control" th:field="*{username}" type="text" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input class="form-control" th:field="*{password}" type="password" name="password" placeholder="Mot de passe">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">Connexion</button>
+        </div>
         <a class="forgot" href="#">J'ai oublié mon identifiant/mot de passe</a></form>
 </div>
 

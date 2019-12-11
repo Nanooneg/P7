@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author nanoo
  * @create 26/11/2019 - 18:24
@@ -41,21 +43,16 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                /*.formLogin().loginPage("/login")
-                .and()
-                .exceptionHandling().accessDeniedPage("/login")
-                .and()*/
-                
                 // make sure we use stateless session; session won't be used to store user's state.
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-        
+                // handle an authorized attempts
+                /*.exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                .and()*/
                 // Add a filter to validate user credentials and add token in the response header
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
+                // authorization requests config
                 .authorizeRequests()
-                
-                /*.anyRequest().permitAll();*/
-                
                 // allow all who are accessing "auth" service
                 .antMatchers(HttpMethod.POST,"/auth/Login").permitAll()
                 // allow all who are accessing "book" service TODO get back client authorization to /book/consult/**

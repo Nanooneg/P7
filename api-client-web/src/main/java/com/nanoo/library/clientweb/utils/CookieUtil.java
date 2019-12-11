@@ -18,6 +18,10 @@ public class CookieUtil {
         return cookie != null ? cookie.getValue() : null;
     }
     
+    public String cookieValueFromResponse(HttpServletResponse response, String name) {
+        return response.getHeader(name);
+    }
+    
     //TODO is a good method to destroy cookie ?
     public void clear(HttpServletResponse httpServletResponse, String name) {
         Cookie cookie = new Cookie(name, null);
