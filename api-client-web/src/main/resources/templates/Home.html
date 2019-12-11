@@ -1,0 +1,34 @@
+<!--
+-
+- @create 11/12/2019 - 15:55
+- @author nanoo
+-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head th:insert="fragments/fragments.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+<body>
+
+<div th:insert="fragments/fragments.html :: nav"></div>
+
+
+<div class="container-fluid jumbotron-container">
+    <div class="jumbotron card card-image">
+        <div class="inside-jumbotron text-white text-center py-5 px-4">
+            <div class="welcome-text"> <!-- TODO put message in .properties and use Thymeleaf tags -->
+                <h1 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Bienvenue dans les Bibliothèques de Bordeaux</strong></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:insert="fragments/fragments.html :: footer" class="footer"></div>
+
+<div th:insert="fragments/fragments.html :: script"></div>
+
+</body>
+</html>

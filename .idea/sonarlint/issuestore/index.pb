@@ -131,8 +131,6 @@ s
 Cms-book/src/main/java/com/nanoo/library/book/model/dto/BookDto.java,e/e/ee92740a6efd2389bda5175ab6bef3ff39af64bc
 ‹
 [ms-book/src/main/java/com/nanoo/library/book/model/dto/BookWithoutAuthorsAndLibraryDto.java,3/b/3b774aadbca22a07c1db622308a278fcb8c2ed04
-
-Oapi-client-web/src/main/java/com/nanoo/library/clientweb/proxies/BookProxy.java,4/4/4403398d4fea5597c15d52540ed4c146529daca2
 y
 Ims-book/src/main/java/com/nanoo/library/book/database/BookRepository.java,3/3/33059ce8f74617941fece6a7c64708d0019feb92
 ‹

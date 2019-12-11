@@ -2,7 +2,7 @@ package com.nanoo.library.clientweb.controller;
 
 import com.nanoo.library.clientweb.beans.book.BookSearchAttribut;
 import com.nanoo.library.clientweb.beans.library.LibraryWithoutBookBean;
-import com.nanoo.library.clientweb.proxies.BookProxy;
+import com.nanoo.library.clientweb.proxies.MicroServicesProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,21 +27,21 @@ public class BookController {
     
     private static final String CATALOG_VIEW = "Catalog";
     
-    private final BookProxy bookProxy;
+    private final MicroServicesProxy microServicesProxy;
     
     @Autowired
-    public BookController(BookProxy bookProxy) {
-        this.bookProxy = bookProxy;
+    public BookController(MicroServicesProxy microServicesProxy) {
+        this.microServicesProxy = microServicesProxy;
     }
     
   
     @GetMapping("/catalogue")
     public String displayAllBooks(Model model){
         
-        model.addAttribute(SLIDER_ATT,bookProxy.getLastRegisteredBook());
-        model.addAttribute(LIST_ATT,bookProxy.listAllBook());
+        model.addAttribute(SLIDER_ATT, microServicesProxy.getLastRegisteredBook());
+        model.addAttribute(LIST_ATT, microServicesProxy.listAllBook());
         
-        model.addAttribute(LIBRARY_ATT,bookProxy.listAllLibrary());
+        model.addAttribute(LIBRARY_ATT, microServicesProxy.listAllLibrary());
         model.addAttribute(SEARCH_ATT,new BookSearchAttribut());
     
         return CATALOG_VIEW;
@@ -49,7 +49,7 @@ public class BookController {
     
     @GetMapping("/{library}/catalogue")
     public String displayAllBooksOfLibrary(Model model, @PathVariable("library") String library){
-        List<LibraryWithoutBookBean> libraries = bookProxy.listAllLibrary();
+        List<LibraryWithoutBookBean> libraries = microServicesProxy.listAllLibrary();
         LibraryWithoutBookBean actualLibrary = libraries.stream()
                 .filter(libraryToFind -> Integer.parseInt(library)  == libraryToFind.getId())
                 .findAny()
@@ -58,8 +58,8 @@ public class BookController {
         BookSearchAttribut searchAttribut = new BookSearchAttribut();
         searchAttribut.setLibraryId(Integer.parseInt(library));
         
-        model.addAttribute(SLIDER_ATT,bookProxy.getLastRegisteredBookOfLibrary(actualLibrary.getId().toString()));
-        model.addAttribute(LIST_ATT,bookProxy.listAllBookOfLibrary(actualLibrary.getId().toString()));
+        model.addAttribute(SLIDER_ATT, microServicesProxy.getLastRegisteredBookOfLibrary(actualLibrary.getId().toString()));
+        model.addAttribute(LIST_ATT, microServicesProxy.listAllBookOfLibrary(actualLibrary.getId().toString()));
     
         model.addAttribute(LIBRARY_ATT,libraries);
         model.addAttribute(SEARCH_ATT,searchAttribut);
@@ -71,7 +71,7 @@ public class BookController {
     
     @PostMapping("/catalogue/search")
     public String displaySearchResult(@ModelAttribute("searchAttribut") BookSearchAttribut searchAttribut, Model model){
-        List<LibraryWithoutBookBean> libraries = bookProxy.listAllLibrary();
+        List<LibraryWithoutBookBean> libraries = microServicesProxy.listAllLibrary();
         LibraryWithoutBookBean actualLibrary = libraries.stream()
                 .filter(libraryToFind -> searchAttribut.getLibraryId()  == libraryToFind.getId())
                 .findAny()
@@ -79,8 +79,8 @@ public class BookController {
     
         System.out.println(searchAttribut);
         
-        model.addAttribute(SLIDER_ATT,bookProxy.listSearchResult(searchAttribut));
-        model.addAttribute(LIST_ATT,bookProxy.listSearchResult(searchAttribut));
+        model.addAttribute(SLIDER_ATT, microServicesProxy.listSearchResult(searchAttribut));
+        model.addAttribute(LIST_ATT, microServicesProxy.listSearchResult(searchAttribut));
     
         model.addAttribute(LIBRARY_ATT,libraries);
         model.addAttribute(SEARCH_ATT,searchAttribut);

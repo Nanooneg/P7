@@ -15,7 +15,7 @@ import java.util.List;
  * @create 24/11/2019 - 00:21
  */
 @FeignClient(name = "zuul-server", url = "localhost:8762")
-public interface BookProxy {
+public interface MicroServicesProxy {
     
     /* Call for books list in all libraries */
     @GetMapping("/book/consult/book-catalog")
