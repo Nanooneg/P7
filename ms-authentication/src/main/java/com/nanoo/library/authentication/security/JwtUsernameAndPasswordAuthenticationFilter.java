@@ -3,6 +3,7 @@ package com.nanoo.library.authentication.security;
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nanoo.library.authentication.model.LoginViewModel;
+import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -64,7 +66,7 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
                 new ArrayList<>());
     
         // Return authenticate user
-        return authManager.authenticate(authenticationToken);
+            return authManager.authenticate(authenticationToken);
     }
     
     // Upon successful authentication, generate a token.
@@ -83,9 +85,23 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
                 .withSubject(principal.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtConfig.EXPIRATION))
                 .sign(HMAC512(JwtConfig.SECRET.getBytes()));
+        
+        // ADD COOKIES ##################################################
+        Cookie cookie = new Cookie(JwtConfig.HEADER, token);
+        cookie.setSecure(false);
+        cookie.setHttpOnly(true);
+        // 12 days about 999999
+        cookie.setMaxAge(999999);
+        cookie.setDomain("localhost");
+        cookie.setPath("/");
     
         // Add token in response
         response.addHeader(JwtConfig.HEADER, JwtConfig.PREFIX + token);
+        response.addCookie(cookie);
+        
+        //response.setStatus(HttpServletResponse.SC_OK);
+        
+        
     }
     
 }

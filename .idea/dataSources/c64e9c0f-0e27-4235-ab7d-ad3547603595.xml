@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.16">
     <root id="1">
       <ServerVersion>10.10</ServerVersion>
-      <StartupTime>1574793754</StartupTime>
+      <StartupTime>1576590826</StartupTime>
     </root>
     <database id="2" parent="1" name="escalade_soutenance">
       <ObjectId>59593</ObjectId>
@@ -16,7 +16,7 @@
     <database id="4" parent="1" name="library-account">
       <ObjectId>68344</ObjectId>
       <Owner>nanoo</Owner>
-      <IntrospectionStateNumber>16579</IntrospectionStateNumber>
+      <IntrospectionStateNumber>30672</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="5" parent="1" name="library-authentication">
@@ -86,7 +86,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>351</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>16580</IntrospectionStateNumber>
+      <IntrospectionStateNumber>30673</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="20" parent="4" name="btree">

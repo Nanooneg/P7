@@ -6,6 +6,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author nanoo
  * @create 26/11/2019 - 18:07
@@ -26,19 +28,16 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 // handle an authorized attempts
-                /*.exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-                .and()*/
+                .exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                .and()
                 // Add a filter to validate the tokens with every request
                 .addFilterAfter(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 // authorization requests config
                 .authorizeRequests()
-               
-                .anyRequest().permitAll();
-                
-                /*// allow all who are accessing "auth" service  TODO => No security on
+                // allow all who are accessing "auth" service
                 .antMatchers("/auth/**").permitAll()
                 // allow all who are accessing "book" service
-                .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/create/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/update/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
@@ -53,7 +52,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/loan/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
                 .antMatchers("/loan/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // any other requests must be authenticated
-                .anyRequest().authenticated();*/
+                .anyRequest().authenticated();
     }
     
 }

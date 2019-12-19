@@ -3,18 +3,24 @@ package com.nanoo.library.clientweb.proxies;
 import com.nanoo.library.clientweb.beans.book.BookBean;
 import com.nanoo.library.clientweb.beans.book.BookSearchAttribut;
 import com.nanoo.library.clientweb.beans.library.LibraryWithoutBookBean;
+import com.nanoo.library.clientweb.beans.user.ClientBean;
+import com.nanoo.library.clientweb.beans.user.UserBean;
+import org.apache.coyote.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.ResponseWrapper;
 import java.util.List;
 
 /**
  * @author nanoo
  * @create 24/11/2019 - 00:21
  */
-@FeignClient(name = "zuul-server", url = "localhost:8762")
+@FeignClient(name = "zuul-server", url = "localhost:8762") //TODO try to remove url (ms is register in zuul properties)
 public interface BookProxy {
     
     /* Call for books list in all libraries */
@@ -39,4 +45,9 @@ public interface BookProxy {
     /* Call for libraries list */
     @GetMapping("/book/consult/libraries")
     List<LibraryWithoutBookBean> listAllLibrary();
+    
+    /* Login */
+    @PostMapping("/auth/login")
+    void authenticateClient(@RequestBody UserBean user);
+    
 }
