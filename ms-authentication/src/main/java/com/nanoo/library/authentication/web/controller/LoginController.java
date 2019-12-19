@@ -1,11 +1,8 @@
 package com.nanoo.library.authentication.web.controller;
 
 import com.nanoo.library.authentication.database.UserRepository;
-import com.nanoo.library.authentication.model.LoginViewModel;
-import com.nanoo.library.authentication.model.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,14 +19,12 @@ public class LoginController {
         this.userRepository = userRepository;
     }
     
-    //TODO send httpServletResponse with cookie inside
-    @PostMapping(value = "/auth/login")
-    public User authenticateClient (@RequestParam("user")LoginViewModel user){
+    /*@PostMapping(value = "/auth/login")
+    public ResponseEntity authenticateClient (HttpServletResponse response){
     
-        System.out.println(user);
-        System.out.println(userRepository.findByUsername(user.getUsername()));
+        System.out.println("response : " + response);
         
-        return userRepository.findByUsername(user.getUsername());
-    }
+        return new ResponseEntity(HttpStatus.OK);
+    }*/
     
 }

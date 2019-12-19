@@ -54,7 +54,7 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
                 // authorization requests config
                 .authorizeRequests()
                 // allow all who are accessing "auth" service
-                .antMatchers(HttpMethod.POST,"/auth/Login").permitAll()
+                .antMatchers(HttpMethod.POST,"/auth/**").permitAll()
                 // allow all who are accessing "book" service TODO get back client authorization to /book/consult/**
                 .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/create/**").hasAnyRole(ADMIN,EMPLOYEE)

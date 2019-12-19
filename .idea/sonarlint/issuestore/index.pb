@@ -149,3 +149,5 @@ Qapi-client-web/src/main/java/com/nanoo/library/clientweb/beans/user/UserBean.ja
 dms-authentication/src/main/java/com/nanoo/library/authentication/web/controller/LoginController.java,a/6/a6321124842cbb64495db5c098c28abc1fc63740
 ~
 Napi-client-web/src/main/java/com/nanoo/library/clientweb/utils/CookieUtil.java,d/b/db8c1538dffa7bf68ac47fed52fef051ebd63efe
+€
+Papi-client-web/src/main/java/com/nanoo/library/clientweb/proxies/LoginProxy.java,f/9/f9c15342c62a5cc1cc5488889bd194cf95092bd0

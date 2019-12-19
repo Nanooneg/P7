@@ -3,6 +3,7 @@ package com.nanoo.library.authentication.security;
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nanoo.library.authentication.model.LoginViewModel;
+import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -98,10 +99,9 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
         response.addHeader(JwtConfig.HEADER, JwtConfig.PREFIX + token);
         response.addCookie(cookie);
         
-        response.setStatus(HttpServletResponse.SC_OK);
+        //response.setStatus(HttpServletResponse.SC_OK);
         
-        // REDIRECT ##################################################
-        //response.sendRedirect("/home");
+        
     }
     
 }
