@@ -27,20 +27,21 @@
     <!-- Start: Navigation with Search -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Bibliothèques de Bordeaux</a>
+            <a class="navbar-brand" th:href="@{/home}">Bibliothèques de Bordeaux</a>
             <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
                 <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse"
                  id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/livre/catalogue}">Les livres</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/utilisateur/home}">Mon espace</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/livre/catalogue}">Catalogue</a></li>
                     <!-- Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Bibliothèques </a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <!--TODO insert library with th:each-->
+                            <!--TODO insert library in cookie to be accessible from each html page ??-->
                             <a class="dropdown-item" th:each="library : ${libraries}" th:href="@{/livre/${library.id}/catalogue}" th:text="${library.name}"></a>
                             <a class="dropdown-item" th:href="@{/livre/catalogue}">Toutes les bibliothèques</a>
                         </div>

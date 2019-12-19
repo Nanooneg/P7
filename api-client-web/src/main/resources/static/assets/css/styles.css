@@ -103,3 +103,124 @@ body {
     padding-bottom: 2px;
     align-self: flex-end;
 }
+
+/*************************************/
+/*           User Dashboard          */
+/*************************************/
+
+.dashboard{
+    min-height: 70vh;
+    margin-top: 30px;
+}
+
+.info-user-container{
+    min-height: 600px;
+}
+
+.dashboard-card{
+    padding: 20px;
+}
+
+.info-user-buttons-container{
+    padding-top: 50px;
+    padding-left: 90px;
+}
+
+.card-user{
+    box-shadow: 1px 1px 4px rgba(119, 119, 119,0.5);
+    margin-bottom: 50px;
+}
+
+.picture-profil{
+    height: 150px;
+    width: 150px;
+    margin: 10px 30px 30px;
+}
+
+.picture-profil img{
+    height: 100%;
+    width: 100%;
+}
+
+.info-user{
+    margin-left: 30px;
+}
+
+.info-loan-container{
+    min-height: 600px;
+    padding: 20px;
+}
+
+.loan-list{
+    padding: 20px 0 20px 0;
+}
+
+.loan-list .header-item div:last-child{
+    margin-left: auto;
+}
+
+.loan-status-late{
+    color: red;
+    margin-left: 20px;
+    padding-bottom: 2px;
+    align-self: flex-end;
+}
+.loan-status-finish{
+    color: darkgrey;
+    margin-left: 20px;
+    padding-bottom: 2px;
+    align-self: flex-end;
+}
+.loan-status-ongoing{
+    color: limegreen;
+    margin-left: 20px;
+    padding-bottom: 2px;
+    align-self: flex-end;
+}
+
+.dashboard .action-button{
+    width: 270px;
+    border-radius: 20px;
+    font-size: inherit;
+    box-shadow: none;
+    text-shadow: none;
+    margin: 10px auto 10px auto;
+    padding: 8px 20px;
+    transition: 0.5s;
+    color: #303030 !important;
+    background: white !important;
+    border: 1px solid #616161 !important;
+}
+
+.dashboard .action-button:hover, .dashboard .action-button:focus{
+    color: #fffdf9 !important;
+    background: #616161 !important;
+    border: 1px solid #616161 !important;
+}
+
+/*************************************/
+/*                Home               */
+/*************************************/
+
+.jumbotron-container{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.jumbotron{
+    margin: 50px auto 50px auto;
+    background: url(/image/bordeaux-resized.jpg) center;
+    background-size: cover;
+    border: none !important;
+    height: 600px;
+}
+
+.inside-jumbotron{
+    padding: 375px 300px 0 300px !important;
+    height: 100%;
+}
+
+.welcome-text{
+    background: rgba(255,255,255,0.2);
+    height: 100%;
+}

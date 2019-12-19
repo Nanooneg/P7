@@ -1,0 +1,109 @@
+<!--
+-
+- @create 11/12/2019 - 13:13
+- @author nanoo
+-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head th:insert="fragments/fragments.html :: headerfiles">
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+
+<div th:insert="fragments/fragments.html :: nav"></div>
+
+<div class="container-fluid">
+    <div class="row dashboard">
+        <div class="col-md-4 info-user-container">
+            <div class="info-user-buttons-container">
+                <div class="dashboard-card card-user">
+                    <div class="picture-profil">
+                        <img th:src="@{/image/profil-picture.jpeg}" alt="photo de profil" src="">
+                    </div>
+                    <div class="info-user">
+                        <p>Nom : Dupond</p>
+                        <p>Prénom : Jean</p>
+                        <p>Profession : Etudiant</p>
+                        <p>Adresse : 11 chemin de la liberté, 33000 Bordeaux</p>
+                        <p>Date de naissance : 15/06/1990</p>
+                        <p>Inscris depuis : 16/11/2019</p>
+                    </div>
+                </div> <!-- TODO put link on buttons -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-light action-button">Modifier mon profil</button>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-light action-button">Afficher tous les emprunts</button>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-light action-button">Afficher les emprunts en cours</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 info-loan-container">
+            <div class="dashboard-card">
+                <div class="loan-title text-center">
+                    <h2>Mes livres empruntés</h2>
+                </div>
+                <!-- List of book borrow by user -->
+                <div class="loan-list">
+                    <!-- Test -->
+                    <div class="catalog-item">
+                        <div class="inside-item">
+                            <div class="cover-item">
+                                <img th:src="@{/image/cover-1.jpg}" alt="couverture du livre" src="">
+                            </div>
+                            <div class="info-item">
+                                <div class="header-item">
+                                    <div class="title-book">Titre </div>
+                                    <div class="author-book">(Autheur)</div>
+                                    <div class="loan-status-late">Statut du prêt : En retard</div>
+                                </div>
+                                <div class="description-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis semper luctus. Cras quis maximus justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec quis bibendum nisl. Phasellus sollicitudin, eros sit amet suscipit interdum, lectus ipsum fringilla est, sed pretium libero ipsum id elit. Aliquam interdum, ligula aliquet congue turpis duis.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-item">
+                        <div class="inside-item">
+                            <div class="cover-item">
+                                <img th:src="@{/image/cover-2.jpg}" alt="couverture du livre" src="">
+                            </div>
+                            <div class="info-item">
+                                <div class="header-item">
+                                    <div class="title-book">Titre </div>
+                                    <div class="author-book">(Autheur)</div>
+                                    <div class="loan-status-ongoing">Statut du prêt : En cours</div>
+                                </div>
+                                <div class="description-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis semper luctus. Cras quis maximus justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec quis bibendum nisl. Phasellus sollicitudin, eros sit amet suscipit interdum, lectus ipsum fringilla est, sed pretium libero ipsum id elit. Aliquam interdum, ligula aliquet congue turpis duis.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-item">
+                        <div class="inside-item">
+                            <div class="cover-item">
+                                <img th:src="@{/image/cover-3.jpg}" alt="couverture du livre" src="">
+                            </div>
+                            <div class="info-item">
+                                <div class="header-item">
+                                    <div class="title-book">Titre </div>
+                                    <div class="author-book">(Autheur)</div>
+                                    <div class="loan-status-finish">Statut du prêt : Rendu</div>
+                                </div>
+                                <div class="description-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis semper luctus. Cras quis maximus justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec quis bibendum nisl. Phasellus sollicitudin, eros sit amet suscipit interdum, lectus ipsum fringilla est, sed pretium libero ipsum id elit. Aliquam interdum, ligula aliquet congue turpis duis.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="fragments/fragments.html :: footer" class="footer"></div>
+
+<div th:insert="fragments/fragments.html :: script"></div>
+
+</body>
+</html>
