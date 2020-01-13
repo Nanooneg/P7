@@ -55,21 +55,6 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // allow all who are accessing "auth" service
                 .antMatchers(HttpMethod.POST,"/auth/**").permitAll()
-                // allow all who are accessing "book" service TODO get back client authorization to /book/consult/**
-                .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/book/create/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/book/update/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/book/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
-                // allow all who are accessing "account" service
-                .antMatchers("/account/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/account/create/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/account/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/account/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
-                // allow all who are accessing "loan" service
-                .antMatchers("/loan/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/loan/create/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/loan/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/loan/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // any other requests must be authenticated
                 .anyRequest().authenticated();
     }

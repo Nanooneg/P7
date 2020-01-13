@@ -145,8 +145,6 @@ Xms-book/src/main/java/com/nanoo/library/book/service/implService/LibraryService
 Xms-book/src/main/java/com/nanoo/library/book/service/contractService/LibraryService.java,3/6/3699c24ba88dd9ea0c82f39f1050b9bb740d666f
 Å
 Qapi-client-web/src/main/java/com/nanoo/library/clientweb/beans/user/UserBean.java,c/6/c62e434cda3e863725514295f1b415f9d629fd15
-î
-dms-authentication/src/main/java/com/nanoo/library/authentication/web/controller/LoginController.java,a/6/a6321124842cbb64495db5c098c28abc1fc63740
 ~
 Napi-client-web/src/main/java/com/nanoo/library/clientweb/utils/CookieUtil.java,d/b/db8c1538dffa7bf68ac47fed52fef051ebd63efe
 Ä

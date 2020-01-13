@@ -1,24 +1,42 @@
 package com.nanoo.library.zuul.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author nanoo
- * @create 26/11/2019 - 18:07
+ * @create 26/11/2019 - 18:24
  */
 @EnableWebSecurity
-public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    
+    private final UserPrincipalDetailsService userPrincipalDetailsService;
+    
+    @Autowired
+    public SecurityConfig(UserPrincipalDetailsService userPrincipalDetailsService) {
+        this.userPrincipalDetailsService = userPrincipalDetailsService;
+    }
     
     // Roles
     private static final String ADMIN = "ADMIN";
     private static final String EMPLOYEE = "EMPLOYEE";
     private static final String CLIENT = "CLIENT";
+
+    
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth){
+        auth
+                .authenticationProvider(authenticationProvider());
+    }
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -28,14 +46,16 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 // handle an authorized attempts
-                .exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-                .and()
-                // Add a filter to validate the tokens with every request
+                /*.exceptionHandling().authenticationEntryPoint((req, rsp, e) -> rsp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                .and()*/
+                // Add a filter to validate user credentials and add token in the response header
+                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
                 .addFilterAfter(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 // authorization requests config
                 .authorizeRequests()
-                // allow all who are accessing "auth" service
-                .antMatchers("/auth/**").permitAll()
+                // authorize login process for everyone
+                .antMatchers("/login")
+                .permitAll()
                 // allow all who are accessing "book" service
                 .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE)
                 .antMatchers("/book/create/**").hasAnyRole(ADMIN,EMPLOYEE)
@@ -53,6 +73,22 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/loan/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // any other requests must be authenticated
                 .anyRequest().authenticated();
+    }
+    
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    
+    @Bean
+    DaoAuthenticationProvider authenticationProvider(){
+        
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(userPrincipalDetailsService);
+        
+        return daoAuthenticationProvider;
+        
     }
     
 }
