@@ -49,8 +49,6 @@ Yms-authentication/src/main/java/com/nanoo/library/authentication/model/entities
 Ums-authentication/src/main/java/com/nanoo/library/authentication/database/DbInit.java,4/1/41d32504d71c14d7b0eed1cd1bf6966f1c382150
 ‹
 [server-zuul/src/main/java/com/nanoo/library/zuul/security/JwtTokenAuthenticationFilter.java,a/5/a51d442c74ba7e3c828562221771a1723b01450e
-‚
-Rserver-zuul/src/main/java/com/nanoo/library/zuul/security/SecurityTokenConfig.java,d/a/da29fca611b188ae39dad1977e4a64bb82545079
 ©
 yms-authentication/src/main/java/com/nanoo/library/authentication/security/JwtUsernameAndPasswordAuthenticationFilter.java,d/c/dc709e625a9d98328d0a34c2acc89175c0eca008
 ˜
@@ -129,8 +127,6 @@ s
 Cms-book/src/main/java/com/nanoo/library/book/model/dto/BookDto.java,e/e/ee92740a6efd2389bda5175ab6bef3ff39af64bc
 ‹
 [ms-book/src/main/java/com/nanoo/library/book/model/dto/BookWithoutAuthorsAndLibraryDto.java,3/b/3b774aadbca22a07c1db622308a278fcb8c2ed04
-
-Oapi-client-web/src/main/java/com/nanoo/library/clientweb/proxies/BookProxy.java,4/4/4403398d4fea5597c15d52540ed4c146529daca2
 y
 Ims-book/src/main/java/com/nanoo/library/book/database/BookRepository.java,3/3/33059ce8f74617941fece6a7c64708d0019feb92
 ‹
@@ -147,5 +143,7 @@ Xms-book/src/main/java/com/nanoo/library/book/service/contractService/LibrarySer
 Qapi-client-web/src/main/java/com/nanoo/library/clientweb/beans/user/UserBean.java,c/6/c62e434cda3e863725514295f1b415f9d629fd15
 ~
 Napi-client-web/src/main/java/com/nanoo/library/clientweb/utils/CookieUtil.java,d/b/db8c1538dffa7bf68ac47fed52fef051ebd63efe
+}
+Mserver-zuul/src/main/java/com/nanoo/library/zuul/security/SecurityConfig.java,0/6/069aec11ae07a40dcf414783280370490b5283ec
 €
-Papi-client-web/src/main/java/com/nanoo/library/clientweb/proxies/LoginProxy.java,f/9/f9c15342c62a5cc1cc5488889bd194cf95092bd0
+Pserver-zuul/src/main/java/com/nanoo/library/zuul/controller/LoginController.java,f/4/f4a784963f7a56a5b6553ffecea5facc43c84700
