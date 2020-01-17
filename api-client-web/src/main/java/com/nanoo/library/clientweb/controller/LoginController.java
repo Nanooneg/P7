@@ -43,7 +43,8 @@ public class LoginController {
     
         String jwtToken = proxy.doLogin(user);
         model.addAttribute("user",user);
-    
+        System.out.println(jwtToken);
+        
         if (jwtToken.length() > 0) {
             response.addCookie(CookieUtil.generateCookie(jwtToken));
             response.addHeader(CookieUtil.COOKIE_NAME,jwtToken);

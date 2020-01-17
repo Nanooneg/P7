@@ -8,7 +8,8 @@
         <option value="$PROJECT_DIR$/ms-book/pom.xml" />
         <option value="$PROJECT_DIR$/ms-loan/pom.xml" />
         <option value="$PROJECT_DIR$/server-eureka/pom.xml" />
-        <option value="$PROJECT_DIR$/server-zuul/pom.xml" />
+        <option value="$PROJECT_DIR$/server-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/ms-authentication/pom.xml" />
       </list>
     </option>
   </component>

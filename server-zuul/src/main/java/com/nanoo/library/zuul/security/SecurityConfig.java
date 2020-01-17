@@ -58,21 +58,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // authorize login process for everyone
                 .antMatchers("/login").permitAll()
                 // allow all who are accessing "book" service
-                .antMatchers("/book/consult/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/ms-book/consult/**").hasAnyRole(ADMIN,EMPLOYEE)
                 //.antMatchers("/book/consult/**").permitAll()
-                .antMatchers("/book/create/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/book/update/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/book/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/ms-book/create/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/ms-book/update/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/ms-book/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // allow all who are accessing "account" service
-                .antMatchers("/account/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/account/create/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/account/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/account/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/ms-account/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/ms-account/create/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/ms-account/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/ms-account/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // allow all who are accessing "loan" service
-                .antMatchers("/loan/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/loan/create/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/loan/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/loan/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/ms-loan/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/ms-loan/create/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/ms-loan/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
+                .antMatchers("/ms-loan/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
                 // any other requests must be authenticated
                 .anyRequest().authenticated()
                 .and().httpBasic();

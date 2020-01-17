@@ -2,13 +2,13 @@ package com.nanoo.library.authentication.security;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @author nanoo
  * @create 26/11/2019 - 18:25
  */
-@Getter @Setter
+@Getter
+@Setter
 public class JwtConfig {
     
     public static final String URI = "/auth/**";
