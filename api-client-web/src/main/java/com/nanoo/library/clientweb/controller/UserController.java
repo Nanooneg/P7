@@ -15,7 +15,7 @@ public class UserController {
     @GetMapping("/home")
     public String displayUserDashBoard (){
         
-        return "UserHome";
+        return "userHome";
         
     }
     

@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author nanoo
@@ -36,6 +37,7 @@ public class UserPrincipalDetailsService implements UserDetailsService {
      *                                   GrantedAuthority
      */
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) {
     
         User user = userRepository.findByUsername(username);

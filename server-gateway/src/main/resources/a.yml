@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id : server-authentication
+          uri : http://localhost:9100
+          predicates :
+            - Path=/server-authentication/**
+        - id : ms-book
+          uri : http://localhost:9002
+          predicates :
+            - Path=/ms-book/**
+        - id : ms-account
+          uri : http://localhost:9001
+          predicates :
+            - Path=/ms-account/**
+        - id : ms-loan
+          uri : http://localhost:9003
+          predicates :
+            - Path=/ms-loan/**

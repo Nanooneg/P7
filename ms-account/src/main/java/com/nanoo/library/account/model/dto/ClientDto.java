@@ -30,5 +30,8 @@ public class ClientDto implements Serializable {
     private Address address;
     private Role role;
     private Long clientNumber;
-
+    private Date dateOfCreation;
+    private Date dateOfUpdate;
+    
+    
 }

@@ -25,5 +25,7 @@ public class ClientBean {
     private AddressBean address;
     private String role;
     private Long clientNumber;
+    private Date dateOfCreation;
+    private Date dateOfUpdate;
     
 }

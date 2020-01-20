@@ -6,10 +6,12 @@ import com.nanoo.library.account.model.dto.ClientDto;
 import com.nanoo.library.account.model.entities.Client;
 import com.nanoo.library.account.model.mapper.ClientMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author nanoo
@@ -38,5 +40,12 @@ public class ClientServiceImpl implements ClientService {
         }
         
         return clientDtos;
+    }
+    
+    @Override
+    public ClientDto getLoggedClientInfo() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    
+        return clientMapper.fromClientToDto(clientRepository.findByEmail(email));
     }
 }

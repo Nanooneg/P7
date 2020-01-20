@@ -30,6 +30,8 @@ public class EmployeeDto implements Serializable {
     private Address address;
     private Role role;
     private Long employeeNumber;
+    private Date dateOfCreation;
+    private Date dateOfUpdate;
     private Long socialNumber;
 
 }

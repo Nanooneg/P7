@@ -12,4 +12,5 @@ public interface ClientService {
     
     List<ClientDto> getClientList();
     
+    ClientDto getLoggedClientInfo();
 }

@@ -3,11 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/api-client-web/api-client-web.iml" filepath="$PROJECT_DIR$/api-client-web/api-client-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common-security/common-security.iml" filepath="$PROJECT_DIR$/common-security/common-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms-account/ms-account.iml" filepath="$PROJECT_DIR$/ms-account/ms-account.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms-book/ms-book.iml" filepath="$PROJECT_DIR$/ms-book/ms-book.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms-loan/ms-loan.iml" filepath="$PROJECT_DIR$/ms-loan/ms-loan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-authentication/server-authentication.iml" filepath="$PROJECT_DIR$/server-authentication/server-authentication.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-eureka/server-eureka.iml" filepath="$PROJECT_DIR$/server-eureka/server-eureka.iml" />
-      <module fileurl="file://$PROJECT_DIR$/server-zuul/server-zuul.iml" filepath="$PROJECT_DIR$/server-zuul/server-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-gateway/server-gateway.iml" filepath="$PROJECT_DIR$/server-gateway/server-gateway.iml" />
     </modules>
   </component>
 </project>

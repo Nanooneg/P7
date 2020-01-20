@@ -1,5 +1,6 @@
 package com.nanoo.library.clientweb.utils;
 
+import com.nanoo.library.commonsecurity.JwtConfig;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
@@ -12,18 +13,28 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CookieUtil {
     
+    private CookieUtil() {
+    }
     
-    public String cookieValue(HttpServletRequest httpServletRequest, String name) {
-        Cookie cookie = WebUtils.getCookie(httpServletRequest, name);
+    public static Cookie generateCookie (String token){
+        
+        Cookie cookie = new Cookie(JwtConfig.HEADER, token);
+        cookie.setSecure(false);
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(999999); // 12 days
+        cookie.setDomain("localhost");
+        cookie.setPath("/");
+        
+        return cookie;
+    }
+    
+    public static String getCookieValue(HttpServletRequest request) {
+        Cookie cookie = WebUtils.getCookie(request, JwtConfig.HEADER);
         return cookie != null ? cookie.getValue() : null;
     }
     
-    public String cookieValueFromResponse(HttpServletResponse response, String name) {
-        return response.getHeader(name);
-    }
-    
     //TODO is a good method to destroy cookie ?
-    public void clear(HttpServletResponse httpServletResponse, String name) {
+    public static void clear(HttpServletResponse httpServletResponse, String name) {
         Cookie cookie = new Cookie(name, null);
         cookie.setPath("/");
         cookie.setHttpOnly(true);

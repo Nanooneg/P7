@@ -2,7 +2,7 @@ package com.nanoo.library.clientweb.controller;
 
 import com.nanoo.library.clientweb.beans.book.BookSearchAttribut;
 import com.nanoo.library.clientweb.beans.library.LibraryWithoutBookBean;
-import com.nanoo.library.clientweb.proxies.BookProxy;
+import com.nanoo.library.clientweb.proxies.FeignProxy;
 import com.nanoo.library.clientweb.utils.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,29 +28,24 @@ public class BookController {
     
     private static final String ACTUAL_LIBRARY_ATT = "actualLibrary";
     
-    private static final String CATALOG_VIEW = "Catalog";
+    private static final String CATALOG_VIEW = "catalog";
     
-    private final BookProxy bookProxy;
-    private CookieUtil cookieUtil;
+    private final FeignProxy bookProxy;
     
     @Autowired
-    public BookController(BookProxy bookProxy) {
+    public BookController(FeignProxy bookProxy) {
         this.bookProxy = bookProxy;
     }
     
   
     @GetMapping("/catalogue")
     public String displayAllBooks(Model model, HttpServletRequest request, HttpServletResponse response) {
-        cookieUtil = new CookieUtil();
         
         model.addAttribute(SLIDER_ATT,bookProxy.getLastRegisteredBook());
         model.addAttribute(LIST_ATT,bookProxy.listAllBook());
         
         model.addAttribute(LIBRARY_ATT,bookProxy.listAllLibrary());
         model.addAttribute(SEARCH_ATT,new BookSearchAttribut());
-    
-        String token = cookieUtil.cookieValue(request, "JWTtoken");
-        response.addHeader("Authorization", "Bearer " + token);
         
         return CATALOG_VIEW;
     }
