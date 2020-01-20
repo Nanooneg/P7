@@ -40,8 +40,6 @@ public class BookController {
   
     @GetMapping("/catalogue")
     public String displayAllBooks(Model model, HttpServletRequest request, HttpServletResponse response) {
-    
-        System.out.println(CookieUtil.getCookieValue(request));
         
         model.addAttribute(SLIDER_ATT,bookProxy.getLastRegisteredBook());
         model.addAttribute(LIST_ATT,bookProxy.listAllBook());

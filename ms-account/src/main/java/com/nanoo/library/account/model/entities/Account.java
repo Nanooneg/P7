@@ -51,4 +51,10 @@ class Account implements Serializable {
     @Column(nullable = false)
     private Role role;
     
+    @Column(name = "date_of_creation",nullable = false)
+    private Date dateOfCreation;
+    
+    @Column(name = "date_of_update",nullable = false)
+    private Date dateOfUpdate;
+    
 }

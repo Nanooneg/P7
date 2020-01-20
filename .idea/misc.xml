@@ -10,6 +10,8 @@
         <option value="$PROJECT_DIR$/server-eureka/pom.xml" />
         <option value="$PROJECT_DIR$/server-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/ms-authentication/pom.xml" />
+        <option value="$PROJECT_DIR$/server-authentication/pom.xml" />
+        <option value="$PROJECT_DIR$/common-security/pom.xml" />
       </list>
     </option>
   </component>

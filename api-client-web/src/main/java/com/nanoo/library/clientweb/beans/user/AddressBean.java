@@ -1,5 +1,6 @@
 package com.nanoo.library.clientweb.beans.user;
 
+import com.nanoo.library.clientweb.beans.enums.Cities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,4 +21,8 @@ public class AddressBean {
     private int postalCode;
     private String city;
     
+    @Override
+    public String toString() {
+        return number + " " + street + " " + postalCode + " " + Cities.valueOf(city).getName();
+    }
 }

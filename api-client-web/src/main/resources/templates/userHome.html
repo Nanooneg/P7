@@ -23,12 +23,12 @@
                         <img th:src="@{/image/profil-picture.jpeg}" alt="photo de profil" src="">
                     </div>
                     <div class="info-user">
-                        <p>Nom : Dupond</p>
-                        <p>Prénom : Jean</p>
-                        <p>Profession : Etudiant</p>
-                        <p>Adresse : 11 chemin de la liberté, 33000 Bordeaux</p>
-                        <p>Date de naissance : 15/06/1990</p>
-                        <p>Inscris depuis : 16/11/2019</p>
+                        <p>Nom : <span th:text="${account.lastName}"></span></p>
+                        <p>Prénom : <span th:text="${account.firstName}"></span></p>
+                        <p>Profession : **add to info**</p>
+                        <p>Adresse : <span th:text="${account.address}"></span></p>
+                        <p>Date de naissance : <span th:text="${#dates.format(account.birthDate,'dd MMM YYYY')}"></span></p>
+                        <p>Inscris depuis : <span th:text="${#dates.format(account.dateOfCreation,'dd MMM YYYY')}"></span></p>
                     </div>
                 </div> <!-- TODO put link on buttons -->
                 <div class="text-center">

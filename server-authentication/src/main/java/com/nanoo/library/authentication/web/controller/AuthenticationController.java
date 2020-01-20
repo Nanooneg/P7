@@ -2,8 +2,8 @@ package com.nanoo.library.authentication.web.controller;
 
 import com.auth0.jwt.JWT;
 import com.nanoo.library.authentication.model.LoginViewModel;
-import com.nanoo.library.authentication.security.JwtConfig;
 import com.nanoo.library.authentication.security.UserPrincipal;
+import com.nanoo.library.commonsecurity.JwtConfig;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

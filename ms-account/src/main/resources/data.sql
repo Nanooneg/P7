@@ -8,6 +8,6 @@ INSERT INTO public.address (id,city,number,postal_code,street) VALUES (3,'BX',3,
 
 /* Clients */
 
-INSERT INTO public.client (id,birth_date,email,first_name,gender,last_name,phone_number,role,client_number,address_id) VALUES (1,'1987-05-03 23:00:00.000','arnaud@mail.fr','Arnaud','MALE','Laval','0655065506','CLIENT',13365,1);
-INSERT INTO public.client (id,birth_date,email,first_name,gender,last_name,phone_number,role,client_number,address_id) VALUES (2,'1987-05-03 23:00:00.000','jean@mail.fr','Jean','MALE','Laval','0655065506','CLIENT',13366,2);
-INSERT INTO public.client (id,birth_date,email,first_name,gender,last_name,phone_number,role,client_number,address_id) VALUES (3,'1987-05-03 23:00:00.000','marc@mail.fr','Marc','MALE','Laval','0655065506','CLIENT',13367,3);
+INSERT INTO public.client (id,birth_date,date_of_creation,date_of_update,email,first_name,gender,last_name,phone_number,role,client_number,address_id) VALUES (1,'1987-05-03 23:00:00.000','2020-01-20 23:00:00.000','2020-01-20 23:00:00.000','admin@mail.fr','Arnaud','MALE','Laval','0655065506','ADMIN',13365,1);
+INSERT INTO public.client (id,birth_date,date_of_creation,date_of_update,email,first_name,gender,last_name,phone_number,role,client_number,address_id) VALUES (2,'1987-05-03 23:00:00.000','2020-01-20 23:00:00.000','2020-01-20 23:00:00.000','client@mail.fr','Jean','MALE','Laval','0655065506','CLIENT',13366,2);
+INSERT INTO public.client (id,birth_date,date_of_creation,date_of_update,email,first_name,gender,last_name,phone_number,role,client_number,address_id) VALUES (3,'1987-05-03 23:00:00.000','2020-01-20 23:00:00.000','2020-01-20 23:00:00.000','employee@mail.fr','Marc','MALE','Laval','0655065506','EMPLOYEE',13367,3);

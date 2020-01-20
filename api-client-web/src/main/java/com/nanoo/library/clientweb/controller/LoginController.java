@@ -1,5 +1,6 @@
 package com.nanoo.library.clientweb.controller;
 
+import com.nanoo.library.clientweb.beans.user.AccountBean;
 import com.nanoo.library.clientweb.beans.user.UserBean;
 import com.nanoo.library.clientweb.proxies.FeignProxy;
 import com.nanoo.library.clientweb.utils.CookieUtil;
@@ -39,17 +40,21 @@ public class LoginController {
     
     @PostMapping("/login")
     public String loginUser(@ModelAttribute ("user") UserBean user, Model model,
-                            HttpServletResponse response, HttpServletRequest request){
+                            HttpServletResponse response){
     
         String jwtToken = proxy.doLogin(user);
-        model.addAttribute("user",user);
-        System.out.println(jwtToken);
         
         if (jwtToken.length() > 0) {
-            response.addCookie(CookieUtil.generateCookie(jwtToken));
-            response.addHeader(CookieUtil.COOKIE_NAME,jwtToken);
-            return "redirect:/utilisateur/home";
+            Cookie cookie = CookieUtil.generateCookie(jwtToken);
+            response.addCookie(cookie);
+
+            AccountBean accountInfo = proxy.getAccountInfo(jwtToken);
+            System.out.println(accountInfo);
+            model.addAttribute("account",accountInfo);
+            
+            return "userHome";
         }else {
+            model.addAttribute("user",user);
             return "login";
         }
         

@@ -43,12 +43,12 @@
 	<!-- ============================================================= -->
 
 	<dependencies>
-		<!-- add common service to dependencies to access common class -->
-		<!--<dependency>
-			<groupId>com.nanoo</groupId>
-			<artifactId>ms-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>-->
+		<!-- add common configuration to dependencies -->
+		<dependency>
+			<groupId>com.nanoo.library</groupId>
+			<artifactId>common-security</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 
 		<!-- Security -->
 		<dependency>
@@ -72,6 +72,10 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
 		<dependency>
