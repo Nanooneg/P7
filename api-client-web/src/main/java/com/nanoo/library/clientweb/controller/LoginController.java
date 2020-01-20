@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LoginController {
     
+    private static final String LIBRARY_ATT = "libraries";
+    
     private FeignProxy proxy;
     
     @Autowired
@@ -31,7 +33,8 @@ public class LoginController {
     
     @GetMapping("/login")
     public String loginForm(Model model){
-        
+    
+        model.addAttribute(LIBRARY_ATT,proxy.listAllLibrary());
         model.addAttribute("user",new UserBean());
         
         return "login";
@@ -41,7 +44,9 @@ public class LoginController {
     @PostMapping("/login")
     public String loginUser(@ModelAttribute ("user") UserBean user, Model model,
                             HttpServletResponse response){
-    
+        
+        model.addAttribute(LIBRARY_ATT,proxy.listAllLibrary());
+        // Authenticate user and get back token
         String jwtToken = proxy.doLogin(user);
         
         if (jwtToken.length() > 0) {
@@ -49,7 +54,6 @@ public class LoginController {
             response.addCookie(cookie);
 
             AccountBean accountInfo = proxy.getAccountInfo(jwtToken);
-            System.out.println(accountInfo);
             model.addAttribute("account",accountInfo);
             
             return "userHome";

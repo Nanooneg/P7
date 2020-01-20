@@ -20,7 +20,10 @@ import java.util.List;
 @FeignClient(name = "server-gateway", url = "localhost:8763")
 public interface FeignProxy {
     
-    /* Call for books list in all libraries */
+    /* ================================ */
+    /* === No Authentication needed === */
+    /* ================================ */
+    
     @GetMapping("/ms-book/consult/book-catalog")
     List<BookBean> listAllBook();
     
@@ -30,28 +33,22 @@ public interface FeignProxy {
     @GetMapping("/ms-book/consult/search-result")
     List<BookBean> listSearchResult(@SpringQueryMap BookSearchAttribut searchAttribut);
     
-    /* Call for books list in a specific library */
     @GetMapping("/ms-book/consult/{library}/book-catalog")
     List<BookBean> listAllBookOfLibrary(@PathVariable("library") String library);
     
     @GetMapping("/ms-book/consult/{library}/book-last")
     List<BookBean> getLastRegisteredBookOfLibrary(@PathVariable("library") String library);
     
-    /* =================================================================================== */
-    
-    /* Call for libraries list */
     @GetMapping("/ms-book/consult/libraries")
     List<LibraryWithoutBookBean> listAllLibrary();
     
-    /* =================================================================================== */
-    
-    /* Login */
     @PostMapping("/ms-authentication/login")
     String doLogin (@RequestBody UserBean userBean);
     
-    /* =================================================================================== */
+    /* =============================== */
+    /* ==== Authentication needed ==== */
+    /* =============================== */
     
-    /* Get users infos */
     @GetMapping("/ms-account/consult/user-info")
     AccountBean getAccountInfo(@RequestHeader("Authorization") String accessToken);
     

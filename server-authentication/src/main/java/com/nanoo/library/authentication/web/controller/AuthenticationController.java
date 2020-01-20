@@ -3,7 +3,7 @@ package com.nanoo.library.authentication.web.controller;
 import com.auth0.jwt.JWT;
 import com.nanoo.library.authentication.model.LoginViewModel;
 import com.nanoo.library.authentication.security.UserPrincipal;
-import com.nanoo.library.commonsecurity.JwtConfig;
+import com.nanoo.library.commonsecurity.CommonSecurityConfig;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -43,8 +43,8 @@ public class AuthenticationController {
                 .create()
                 .withClaim("role","ROLE_" + principal.getRole())
                 .withSubject(principal.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + JwtConfig.EXPIRATION))
-                .sign(HMAC512(JwtConfig.SECRET.getBytes()));
+                .withExpiresAt(new Date(System.currentTimeMillis() + CommonSecurityConfig.EXPIRATION))
+                .sign(HMAC512(CommonSecurityConfig.SECRET.getBytes()));
         
     }
 

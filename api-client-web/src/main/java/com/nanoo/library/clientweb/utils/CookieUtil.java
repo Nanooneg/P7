@@ -1,6 +1,6 @@
 package com.nanoo.library.clientweb.utils;
 
-import com.nanoo.library.commonsecurity.JwtConfig;
+import com.nanoo.library.commonsecurity.CommonSecurityConfig;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
@@ -18,7 +18,7 @@ public class CookieUtil {
     
     public static Cookie generateCookie (String token){
         
-        Cookie cookie = new Cookie(JwtConfig.HEADER, token);
+        Cookie cookie = new Cookie(CommonSecurityConfig.HEADER, token);
         cookie.setSecure(false);
         cookie.setHttpOnly(true);
         cookie.setMaxAge(999999); // 12 days
@@ -28,8 +28,8 @@ public class CookieUtil {
         return cookie;
     }
     
-    public static String getCookieValue(HttpServletRequest request) {
-        Cookie cookie = WebUtils.getCookie(request, JwtConfig.HEADER);
+    public static String getToken(HttpServletRequest request) {
+        Cookie cookie = WebUtils.getCookie(request, CommonSecurityConfig.HEADER);
         return cookie != null ? cookie.getValue() : null;
     }
     

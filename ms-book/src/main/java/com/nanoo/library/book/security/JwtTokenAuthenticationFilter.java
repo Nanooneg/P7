@@ -2,7 +2,7 @@ package com.nanoo.library.book.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.nanoo.library.commonsecurity.JwtConfig;
+import com.nanoo.library.commonsecurity.CommonSecurityConfig;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -33,7 +33,7 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
         
         // 1. Check for token in cookie
         //Cookie cookie = WebUtils.getCookie(request, JwtConfig.HEADER);
-        String token = request.getHeader(JwtConfig.HEADER);
+        String token = request.getHeader(CommonSecurityConfig.HEADER);
         
         // 2. If there is no token provided and hence the user won't be authenticated.
         // It's Ok. Maybe the user accessing a public path or asking for a token.
@@ -47,7 +47,7 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
         try {	// exceptions might be thrown in creating the claims if for example the token is expired
             
             // 4. Validate the token
-            DecodedJWT jwt = JWT.require(HMAC512(JwtConfig.SECRET.getBytes()))
+            DecodedJWT jwt = JWT.require(HMAC512(CommonSecurityConfig.SECRET.getBytes()))
                     .build()
                     .verify(token);
             

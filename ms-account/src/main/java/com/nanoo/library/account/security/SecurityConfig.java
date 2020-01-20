@@ -1,5 +1,6 @@
 package com.nanoo.library.account.security;
 
+import com.nanoo.library.commonsecurity.CommonSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,18 +17,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
-    private AuthEntryPointJwt unauthorizedHandler;
-    
-    @Autowired
-    public SecurityConfig(AuthEntryPointJwt unauthorizedHandler) {
-        this.unauthorizedHandler = unauthorizedHandler;
-    }
-    
-    // Roles
-    private static final String ADMIN = "ADMIN";
-    private static final String EMPLOYEE = "EMPLOYEE";
-    private static final String CLIENT = "CLIENT";
-    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -38,10 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 // authorization requests config
                 .authorizeRequests()
-                .antMatchers("/consult/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/create/**").hasAnyRole(ADMIN,EMPLOYEE)
-                .antMatchers("/update/**").hasAnyRole(ADMIN,EMPLOYEE,CLIENT)
-                .antMatchers("/delete/**").hasAnyRole(ADMIN,EMPLOYEE)
+                .antMatchers("/consult/**").authenticated()
+                .antMatchers("/create/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
+                .antMatchers("/update/**").authenticated()
+                .antMatchers("/delete/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
                 // any other requests must be authenticated
                 .anyRequest().authenticated()
                 .and().httpBasic();
@@ -51,5 +40,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     
     }
-    
 }
