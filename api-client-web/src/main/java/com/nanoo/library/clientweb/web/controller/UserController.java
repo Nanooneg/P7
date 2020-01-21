@@ -4,7 +4,7 @@ import com.nanoo.library.clientweb.beans.loan.LoanBean;
 import com.nanoo.library.clientweb.beans.user.AccountBean;
 import com.nanoo.library.clientweb.beans.user.UserBean;
 import com.nanoo.library.clientweb.web.proxy.FeignProxy;
-import com.nanoo.library.commonsecurity.JwtTokenUtils;
+import com.nanoo.library.commonsecurity.security.JwtTokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

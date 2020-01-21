@@ -1,6 +1,6 @@
 package com.nanoo.library.account.model.entities;
 
-import com.nanoo.library.account.model.enums.Cities;
+import com.nanoo.library.commonsecurity.model.Cities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

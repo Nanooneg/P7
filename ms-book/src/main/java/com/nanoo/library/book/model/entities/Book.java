@@ -1,7 +1,7 @@
 package com.nanoo.library.book.model.entities;
 
-import com.nanoo.library.book.model.enums.Category;
-import com.nanoo.library.book.model.enums.Condition;
+import com.nanoo.library.commonsecurity.model.Category;
+import com.nanoo.library.commonsecurity.model.Condition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -2,7 +2,7 @@ package com.nanoo.library.account.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.nanoo.library.commonsecurity.CommonSecurityConfig;
+import com.nanoo.library.commonsecurity.security.CommonSecurityConfig;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

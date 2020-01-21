@@ -1,6 +1,6 @@
 package com.nanoo.library.loan.model.entities;
 
-import com.nanoo.library.loan.model.enums.Status;
+import com.nanoo.library.commonsecurity.model.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

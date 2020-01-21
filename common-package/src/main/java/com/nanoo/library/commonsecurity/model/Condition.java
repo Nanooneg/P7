@@ -1,4 +1,4 @@
-package com.nanoo.library.book.model.enums;
+package com.nanoo.library.commonsecurity.model;
 
 /**
  * @author nanoo

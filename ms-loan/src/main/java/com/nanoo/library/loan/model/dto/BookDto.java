@@ -1,6 +1,5 @@
 package com.nanoo.library.loan.model.dto;
 
-import com.nanoo.library.loan.model.enums.Condition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
