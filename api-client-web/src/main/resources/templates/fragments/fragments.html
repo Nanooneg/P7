@@ -42,7 +42,7 @@
                            aria-haspopup="true" aria-expanded="false">Bibliothèques </a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                             <!--TODO insert library in cookie to be accessible from each html page ??-->
-                            <a class="dropdown-item" th:each="library : ${libraries}" th:href="@{/livre/${library.id}/catalogue}" th:text="${library.name}"></a>
+                            <a class="dropdown-item" th:each="library : ${libraries}" th:href="@{|/livre/${library.id}/catalogue|}" th:text="${library.name}"></a>
                             <a class="dropdown-item" th:href="@{/livre/catalogue}">Toutes les bibliothèques</a>
                         </div>
                     </li>

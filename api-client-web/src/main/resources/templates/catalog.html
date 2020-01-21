@@ -10,10 +10,10 @@
 
 <body>
 
-<!--<div th:insert="fragments/fragments.html :: nav"></div>-->
+<div th:insert="fragments/fragments.html :: nav"></div>
 
-<div>
-    <!-- Start: Navigation with Search -->
+<!--<div>
+    &lt;!&ndash; Start: Navigation with Search &ndash;&gt;
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/home}">Bibliothèques de Bordeaux</a>
@@ -25,7 +25,7 @@
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/utilisateur/home}">Mon espace</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/livre/catalogue}">Catalogue</a></li>
-                    <!-- Dropdown -->
+                    &lt;!&ndash; Dropdown &ndash;&gt;
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                            th:text="${actualLibrary != null ? actualLibrary.name : 'Bibliothèques'}"></a>
@@ -50,8 +50,8 @@
             </div>
         </div>
     </nav>
-    <!-- End: Navigation with Search -->
-</div>
+    &lt;!&ndash; End: Navigation with Search &ndash;&gt;
+</div>-->
 
 <div class="container-fluid">
     <!-- Search form -->

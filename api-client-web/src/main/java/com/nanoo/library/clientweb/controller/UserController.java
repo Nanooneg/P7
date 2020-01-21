@@ -20,6 +20,13 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/utilisateur")
 public class UserController {
     
+    private static final String LIBRARY_ATT = "libraries";
+    private static final String USER_ATT = "user";
+    private static final String ACCOUNT_ATT = "account";
+    
+    private static final String LOGIN_VIEW = "login";
+    private static final String USER_HOME_VIEW = "userHome";
+    
     private FeignProxy proxy;
     
     @Autowired
@@ -30,17 +37,19 @@ public class UserController {
     @GetMapping("/home")
     public String displayUserDashBoard (HttpServletRequest request, Model model){
     
+        model.addAttribute(LIBRARY_ATT,proxy.listAllLibrary());
+    
         String token = CookieUtil.getToken(request);
         
         if (token == null){
-            model.addAttribute("user",new UserBean());
-            return "login";
+            model.addAttribute(USER_ATT,new UserBean());
+            return LOGIN_VIEW;
         }
     
         AccountBean accountInfo = proxy.getAccountInfo(token);
-        model.addAttribute("account",accountInfo);
+        model.addAttribute(ACCOUNT_ATT,accountInfo);
         
-        return "userHome";
+        return USER_HOME_VIEW;
         
     }
     

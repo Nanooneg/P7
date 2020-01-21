@@ -33,18 +33,27 @@ public class AuthenticationController {
     @PostMapping("/login")
     public String doLogin (@RequestBody LoginViewModel viewModel){
         
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(viewModel.getUsername(), viewModel.getPassword()));
+        String authenticationToken;
         
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
+        try{
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(viewModel.getUsername(), viewModel.getPassword()));
+    
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
+    
+            authenticationToken = JWT
+                    .create()
+                    .withClaim("role","ROLE_" + principal.getRole())
+                    .withSubject(principal.getUsername())
+                    .withExpiresAt(new Date(System.currentTimeMillis() + CommonSecurityConfig.EXPIRATION))
+                    .sign(HMAC512(CommonSecurityConfig.SECRET.getBytes()));
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
         
-        return JWT
-                .create()
-                .withClaim("role","ROLE_" + principal.getRole())
-                .withSubject(principal.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + CommonSecurityConfig.EXPIRATION))
-                .sign(HMAC512(CommonSecurityConfig.SECRET.getBytes()));
+        return authenticationToken;
         
     }
 
