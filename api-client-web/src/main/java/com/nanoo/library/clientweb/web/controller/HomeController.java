@@ -1,6 +1,6 @@
-package com.nanoo.library.clientweb.controller;
+package com.nanoo.library.clientweb.web.controller;
 
-import com.nanoo.library.clientweb.proxies.FeignProxy;
+import com.nanoo.library.clientweb.web.proxy.FeignProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

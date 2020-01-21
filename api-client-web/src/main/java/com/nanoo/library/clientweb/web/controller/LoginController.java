@@ -1,9 +1,10 @@
-package com.nanoo.library.clientweb.controller;
+package com.nanoo.library.clientweb.web.controller;
 
+import com.nanoo.library.clientweb.beans.loan.LoanBean;
 import com.nanoo.library.clientweb.beans.user.AccountBean;
 import com.nanoo.library.clientweb.beans.user.UserBean;
-import com.nanoo.library.clientweb.proxies.FeignProxy;
-import com.nanoo.library.clientweb.utils.CookieUtil;
+import com.nanoo.library.clientweb.web.proxy.FeignProxy;
+import com.nanoo.library.commonsecurity.JwtTokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author nanoo
@@ -32,6 +32,7 @@ public class LoginController {
     private static final String LIBRARY_ATT = "libraries";
     private static final String USER_ATT = "user";
     private static final String ACCOUNT_ATT = "account";
+    private static final String LOAN_LIST_ATT = "loans";
     
     private static final String USERNAME_FIELD = "username";
     
@@ -84,11 +85,13 @@ public class LoginController {
         } else {
             
             // Add token to response in a cookie
-            Cookie cookie = CookieUtil.generateCookie(jwtToken);
+            Cookie cookie = JwtTokenUtils.generateCookie(jwtToken);
             response.addCookie(cookie);
 
             AccountBean accountInfo = proxy.getAccountInfo(jwtToken);
+            List<LoanBean> userLoans = proxy.getUserLoanList(jwtToken,accountInfo.getId());
             model.addAttribute(ACCOUNT_ATT,accountInfo);
+            model.addAttribute(LOAN_LIST_ATT,userLoans);
             
             return USER_HOME_VIEW;
         }

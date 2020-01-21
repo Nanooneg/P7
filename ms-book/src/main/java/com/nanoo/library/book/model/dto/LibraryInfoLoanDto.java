@@ -1,28 +1,22 @@
-package com.nanoo.library.loan.model.entities;
+package com.nanoo.library.book.model.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * @author nanoo
- * @create 23/11/2019 - 17:01
+ * @create 21/01/2020 - 13:41
  */
-@Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Library implements Serializable {
+public class LibraryInfoLoanDto implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    
-    @Column(nullable = false)
     private String name;
     
 }

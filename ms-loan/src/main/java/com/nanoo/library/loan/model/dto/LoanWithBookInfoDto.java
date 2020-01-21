@@ -10,20 +10,20 @@ import java.util.Date;
 
 /**
  * @author nanoo
- * @create 23/11/2019 - 20:40
+ * @create 21/01/2020 - 11:26
  */
 @Getter @Setter
 @NoArgsConstructor
-public class LoanDto implements Serializable {
+public class LoanWithBookInfoDto implements Serializable {
     
     private static final long serialVersionUID = 1L;
-
+    
     private Integer id;
-    private Integer bookId;
+    private BookDto book;
     private Integer accountId;
     private Date loanDate;
     private Date expectedReturnDate;
     private boolean extended;
-    private Status status;
+    private String status;
     
 }

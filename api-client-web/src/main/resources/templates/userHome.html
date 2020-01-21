@@ -47,8 +47,27 @@
                 </div>
                 <!-- List of book borrow by user -->
                 <div class="loan-list">
+                    <!-- List from back -->
+                    <div th:each="loan :${loans}" class="catalog-item">
+                        <div class="inside-item">
+                            <div class="cover-item">
+                                <img th:src="@{/image/cover-1.jpg}" alt="couverture du livre" src="">
+                            </div>
+                            <div class="info-item">
+                                <div class="header-item">
+                                    <div class="title-book" th:text="${loan.book.title}"></div>
+                                    <div class="author-book" >(<span th:text="${loan.book.condition}"></span>)</div>
+                                    <div th:classappend="${(loan.status.equalsIgnoreCase('fini')? 'finish' : '' ) +
+                                                           (loan.status.equalsIgnoreCase('en retard')? 'outdated' : '' ) +
+                                                           (loan.status.equalsIgnoreCase('en cours')? 'ongoing' : '' )
+                                                          }">Statut du prêt : <span th:text="${loan.status}"></span></div>
+                                </div>
+                                <div class="description-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis semper luctus. Cras quis maximus justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec quis bibendum nisl. Phasellus sollicitudin, eros sit amet suscipit interdum, lectus ipsum fringilla est, sed pretium libero ipsum id elit. Aliquam interdum, ligula aliquet congue turpis duis.</div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Test -->
-                    <div class="catalog-item">
+                    <!--<div class="catalog-item">
                         <div class="inside-item">
                             <div class="cover-item">
                                 <img th:src="@{/image/cover-1.jpg}" alt="couverture du livre" src="">
@@ -92,7 +111,7 @@
                                 <div class="description-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis semper luctus. Cras quis maximus justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec quis bibendum nisl. Phasellus sollicitudin, eros sit amet suscipit interdum, lectus ipsum fringilla est, sed pretium libero ipsum id elit. Aliquam interdum, ligula aliquet congue turpis duis.</div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

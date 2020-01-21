@@ -1,12 +1,11 @@
-package com.nanoo.library.clientweb.proxies;
+package com.nanoo.library.clientweb.web.proxy;
 
 import com.nanoo.library.clientweb.beans.book.BookBean;
 import com.nanoo.library.clientweb.beans.book.BookSearchAttribut;
 import com.nanoo.library.clientweb.beans.library.LibraryWithoutBookBean;
+import com.nanoo.library.clientweb.beans.loan.LoanBean;
 import com.nanoo.library.clientweb.beans.user.AccountBean;
 import com.nanoo.library.clientweb.beans.user.UserBean;
-import feign.Headers;
-import feign.Param;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.*;
@@ -51,5 +50,8 @@ public interface FeignProxy {
     
     @GetMapping("/ms-account/consult/user-info")
     AccountBean getAccountInfo(@RequestHeader("Authorization") String accessToken);
+    
+    @GetMapping("/ms-loan/consult/loans/{userId}")
+    List<LoanBean> getUserLoanList(@RequestHeader("Authorization") String accessToken, @PathVariable int userId);
     
 }

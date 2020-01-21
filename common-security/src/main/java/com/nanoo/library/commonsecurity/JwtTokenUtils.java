@@ -1,6 +1,5 @@
-package com.nanoo.library.clientweb.utils;
+package com.nanoo.library.commonsecurity;
 
-import com.nanoo.library.commonsecurity.CommonSecurityConfig;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
@@ -11,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author nanoo
  * @create 09/12/2019 - 18:23
  */
-public class CookieUtil {
+public class JwtTokenUtils {
     
-    private CookieUtil() {
+    private JwtTokenUtils() {
     }
     
     public static Cookie generateCookie (String token){

@@ -1,6 +1,6 @@
-package com.nanoo.library.loan.model.dto;
+package com.nanoo.library.book.model.dto;
 
-import com.nanoo.library.loan.model.enums.Condition;
+import com.nanoo.library.book.model.enums.Condition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,17 +9,17 @@ import java.io.Serializable;
 
 /**
  * @author nanoo
- * @create 23/11/2019 - 20:43
+ * @create 21/01/2020 - 13:35
  */
 @Getter @Setter
 @NoArgsConstructor
-public class BookDto implements Serializable {
+public class BookInfoLoanDto implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     private Integer id;
     private String title;
-    private LibraryDto library;
+    private LibraryInfoLoanDto library;
     private String condition;
     
 }

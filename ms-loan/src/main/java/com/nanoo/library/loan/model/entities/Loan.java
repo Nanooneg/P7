@@ -24,11 +24,11 @@ public class Loan implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
-    @ManyToOne
-    private Book book;
+    @Column(name = "book_id", nullable = false)
+    private Integer bookId;
     
-    @ManyToOne
-    private Account account;
+    @Column(name = "account_id", nullable = false)
+    private Integer accountId;
     
     @Column(name = "loan_date", nullable = false)
     private Date loanDate;

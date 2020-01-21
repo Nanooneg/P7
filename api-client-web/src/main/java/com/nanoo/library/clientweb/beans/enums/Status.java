@@ -1,4 +1,4 @@
-package com.nanoo.library.loan.model.enums;
+package com.nanoo.library.clientweb.beans.enums;
 
 /**
  * @author nanoo
