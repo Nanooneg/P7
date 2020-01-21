@@ -1,57 +1,16 @@
+<!--
+-
+- @create 10/12/2019 - 10:51
+- @author nanoo
+-->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      lang="fr">
-
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head th:insert="fragments/fragments.html :: headerfiles">
-
     <title>Bibliothèque de Bordeaux</title>
-
 </head>
-
 <body>
 
 <div th:insert="fragments/fragments.html :: nav"></div>
-
-<!--<div>
-    &lt;!&ndash; Start: Navigation with Search &ndash;&gt;
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
-        <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/home}">Bibliothèques de Bordeaux</a>
-            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse"
-                 id="navcol-1">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/utilisateur/home}">Mon espace</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/livre/catalogue}">Catalogue</a></li>
-                    &lt;!&ndash; Dropdown &ndash;&gt;
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                           th:text="${actualLibrary != null ? actualLibrary.name : 'Bibliothèques'}"></a>
-                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" th:each="library : ${libraries}" th:href="@{|/livre/${library.id}/catalogue|}" th:text="${library.name}"></a>
-                            <a class="dropdown-item" th:href="@{/livre/catalogue}">Toutes les bibliothèques</a>
-                        </div>
-                    </li>
-                </ul>
-
-            </div>
-            <div id="search-field-navbar">
-                <form class="form-inline mr-auto" target="_self">
-                    <div class="form-group">
-                        <label for="search-field"><i class="fa fa-search"></i></label>
-                        <input class="form-control search-field" type="search" id="search-field" name="search">
-                    </div>
-                </form>
-            </div>
-            <div class="login-button">
-                <a class="btn btn-light action-button" role="button" th:href="@{/login}">Se connecter</a>
-            </div>
-        </div>
-    </nav>
-    &lt;!&ndash; End: Navigation with Search &ndash;&gt;
-</div>-->
 
 <div class="container-fluid">
     <!-- Search form -->

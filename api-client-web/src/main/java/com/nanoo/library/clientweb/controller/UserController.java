@@ -46,6 +46,7 @@ public class UserController {
             return LOGIN_VIEW;
         }
     
+        // TODO problem when i try to access few minutes later...
         AccountBean accountInfo = proxy.getAccountInfo(token);
         model.addAttribute(ACCOUNT_ATT,accountInfo);
         
