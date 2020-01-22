@@ -4,17 +4,38 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- ============================================================= -->
+    <!--                      Project information                      -->
+    <!-- ============================================================= -->
+
+    <!-- Maven information -->
     <groupId>com.nanoo.library</groupId>
     <artifactId>common-package</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- General information -->
+    <name>common-package</name>
+    <description>common utils class for project 7 of DA JAVA course from OC</description>
+
+    <!-- ============================================================= -->
+    <!--                           Properties                          -->
+    <!-- ============================================================= -->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <!-- ============================================================= -->
+    <!--                           Dependencies                        -->
+    <!-- ============================================================= -->
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
-            <version>1.18.2</version>
+            <version>1.18.10</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

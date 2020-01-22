@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.jws.WebParam;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
@@ -46,6 +48,7 @@ public class LoginController {
         this.proxy = proxy;
     }
     
+    // TODO validation doesn't work
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
         StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
@@ -96,6 +99,14 @@ public class LoginController {
             return USER_HOME_VIEW;
         }
     
+    }
+    
+    @GetMapping("/logout")
+    public String logoutUser (Model model, HttpServletResponse response){
+        
+        JwtTokenUtils.clear(response);
+        
+        return loginForm(model);
     }
     
 }

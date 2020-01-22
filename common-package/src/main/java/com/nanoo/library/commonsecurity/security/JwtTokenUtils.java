@@ -32,9 +32,8 @@ public class JwtTokenUtils {
         return cookie != null ? cookie.getValue() : null;
     }
     
-    //TODO is a good method to destroy cookie ?
-    public static void clear(HttpServletResponse httpServletResponse, String name) {
-        Cookie cookie = new Cookie(name, null);
+    public static void clear(HttpServletResponse httpServletResponse) {
+        Cookie cookie = new Cookie(CommonSecurityConfig.HEADER, null);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
         cookie.setMaxAge(0);

@@ -1,13 +1,10 @@
 package com.nanoo.library.commonsecurity.security;
 
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @author nanoo
  * @create 18/01/2020 - 12:27
  */
-@Getter @Setter
 public class CommonSecurityConfig {
     
     private CommonSecurityConfig() {
