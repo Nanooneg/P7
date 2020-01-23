@@ -18,7 +18,8 @@ public class BookDto implements Serializable {
     
     private Integer id;
     private String title;
-    private LibraryDto library;
+    private String summary;
+    private String cover;
     private String condition;
     
 }

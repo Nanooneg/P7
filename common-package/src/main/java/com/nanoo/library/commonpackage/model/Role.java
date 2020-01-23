@@ -1,4 +1,4 @@
-package com.nanoo.library.commonsecurity.model;
+package com.nanoo.library.commonpackage.model;
 
 /**
  * @author nanoo

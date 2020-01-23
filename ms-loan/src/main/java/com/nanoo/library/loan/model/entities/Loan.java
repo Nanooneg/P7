@@ -1,6 +1,6 @@
 package com.nanoo.library.loan.model.entities;
 
-import com.nanoo.library.commonsecurity.model.Status;
+import com.nanoo.library.commonpackage.model.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,15 +20,16 @@ public class Loan implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
-    @Column(name = "book_id", nullable = false)
-    private Integer bookId;
+    @OneToOne
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
     
-    @Column(name = "account_id", nullable = false)
-    private Integer accountId;
+    @ManyToOne
+    @JoinColumn(name = "account_id", nullable = false)
+    private Client client;
     
     @Column(name = "loan_date", nullable = false)
     private Date loanDate;

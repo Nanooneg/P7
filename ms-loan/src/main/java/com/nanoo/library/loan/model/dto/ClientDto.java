@@ -12,11 +12,14 @@ import java.io.Serializable;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class LibraryDto implements Serializable {
+public class ClientDto implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     private Integer id;
-    private String name;
+    private String lastName;
+    private String firstName;
+    private String email;
+    private Long clientNumber;
     
 }

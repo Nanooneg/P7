@@ -1,6 +1,6 @@
 package com.nanoo.library.book.security;
 
-import com.nanoo.library.commonsecurity.security.CommonSecurityConfig;
+import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;

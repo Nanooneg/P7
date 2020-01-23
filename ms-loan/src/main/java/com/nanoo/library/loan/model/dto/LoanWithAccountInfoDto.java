@@ -1,6 +1,6 @@
 package com.nanoo.library.loan.model.dto;
 
-import com.nanoo.library.commonsecurity.model.Status;
+import com.nanoo.library.commonpackage.model.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,13 +14,12 @@ import java.util.Date;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class LoanDto implements Serializable {
+public class LoanWithAccountInfoDto implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    private Integer bookId;
-    private Integer accountId;
+    private ClientDto client;
     private Date loanDate;
     private Date expectedReturnDate;
     private boolean extended;

@@ -1,6 +1,6 @@
 package com.nanoo.library.loan.web.controller;
 
-import com.nanoo.library.loan.model.dto.LoanDto;
+import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
 import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
 import com.nanoo.library.loan.service.contractService.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +24,17 @@ public class LoanController {
     }
     
     @GetMapping("/loans")
-    public List<LoanDto> listAllLoans (){
+    public List<LoanWithAccountInfoDto> listAllLoans (){
         
         return loanService.getLoanList();
         
     }
     
-    @GetMapping("/loans/{userId}")
-    public List<LoanWithBookInfoDto> listUserLoans(@PathVariable int userId, @RequestHeader("Authorization") String token){
+    @GetMapping("/loans/{userId}/{loanProperty}")
+    public List<LoanWithBookInfoDto> listUserLoans(@PathVariable int userId, @PathVariable String loanProperty){
         
-        return loanService.getUserLoanList(userId,token);
+        return loanService.getUserLoanList(userId,loanProperty);
         
     }
+    
 }

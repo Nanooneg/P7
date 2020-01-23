@@ -1,6 +1,6 @@
 package com.nanoo.library.loan.model.mapper;
 
-import com.nanoo.library.loan.model.dto.LoanDto;
+import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
 import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
 import com.nanoo.library.loan.model.entities.Loan;
 import org.mapstruct.InheritInverseConfiguration;
@@ -13,17 +13,16 @@ import org.mapstruct.factory.Mappers;
  * @author nanoo
  * @create 23/11/2019 - 20:51
  */
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = {BookMapper.class,ClientMapper.class})
 public interface LoanMapper {
     
     LoanMapper MAPPER = Mappers.getMapper(LoanMapper.class);
     
-    Loan fromDtoToLoan (LoanDto loanDto);
+    Loan fromDtoWithAccountInfoToLoan (LoanWithAccountInfoDto loanWithAccountInfoDto);
+    Loan fromDtoWithBookInfoToLoan (LoanWithBookInfoDto loanWithBookInfoDto);
     
     @InheritInverseConfiguration
-    LoanDto fromLoanToDto (Loan loan);
-    
-    //TODO check if possible to call for another class to map only one attribut
+    LoanWithAccountInfoDto fromLoanToDtoWithAccountInfo (Loan loan);
     @Mapping(source = "status.entitled", target = "status")
     LoanWithBookInfoDto fromLoanToDtoWithBookInfo(Loan loan);
 

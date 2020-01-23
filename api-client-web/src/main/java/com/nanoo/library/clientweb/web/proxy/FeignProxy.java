@@ -51,7 +51,9 @@ public interface FeignProxy {
     @GetMapping("/ms-account/consult/user-info")
     AccountBean getAccountInfo(@RequestHeader("Authorization") String accessToken);
     
-    @GetMapping("/ms-loan/consult/loans/{userId}")
-    List<LoanBean> getUserLoanList(@RequestHeader("Authorization") String accessToken, @PathVariable int userId);
-    
+    @GetMapping("/ms-loan/consult/loans/{userId}/{loanProperty}")
+    List<LoanBean> getUserLoanList(@RequestHeader("Authorization") String accessToken,
+                                   @PathVariable int userId,
+                                   @PathVariable String loanProperty);
+
 }

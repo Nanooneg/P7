@@ -1,6 +1,6 @@
 package com.nanoo.library.book.model.entities;
 
-import com.nanoo.library.commonsecurity.model.Cities;
+import com.nanoo.library.commonpackage.model.Cities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

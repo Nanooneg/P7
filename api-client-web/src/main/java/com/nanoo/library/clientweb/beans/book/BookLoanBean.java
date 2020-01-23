@@ -16,7 +16,8 @@ public class BookLoanBean {
     
     private Integer id;
     private String title;
-    private LibraryLoanBean library;
+    private String summary;
+    private String cover;
     private String condition;
     
 }

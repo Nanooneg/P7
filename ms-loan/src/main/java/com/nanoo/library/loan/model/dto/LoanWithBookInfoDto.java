@@ -19,7 +19,6 @@ public class LoanWithBookInfoDto implements Serializable {
     
     private Integer id;
     private BookDto book;
-    private Integer accountId;
     private Date loanDate;
     private Date expectedReturnDate;
     private boolean extended;

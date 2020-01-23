@@ -1,10 +1,8 @@
 package com.nanoo.library.clientweb.web.controller;
 
-import com.nanoo.library.clientweb.beans.loan.LoanBean;
-import com.nanoo.library.clientweb.beans.user.AccountBean;
 import com.nanoo.library.clientweb.beans.user.UserBean;
 import com.nanoo.library.clientweb.web.proxy.FeignProxy;
-import com.nanoo.library.commonsecurity.security.JwtTokenUtils;
+import com.nanoo.library.commonpackage.security.JwtTokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -17,12 +15,9 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.jws.WebParam;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * @author nanoo
@@ -37,9 +32,11 @@ public class LoginController {
     private static final String LOAN_LIST_ATT = "loans";
     
     private static final String USERNAME_FIELD = "username";
+    private static final String BAD_CREDENTIALS_MSG = "Mauvais login/mot de passe";
     
     private static final String LOGIN_VIEW = "login";
-    private static final String USER_HOME_VIEW = "userHome";
+    private static final String REDIRECT_LOGIN_VIEW = "redirect:/login";
+    private static final String REDIRECT_USER_HOME_VIEW = "redirect:/utilisateur/home";
     
     private FeignProxy proxy;
     
@@ -81,7 +78,7 @@ public class LoginController {
         String jwtToken = proxy.doLogin(user);
         if (jwtToken == null) {
             
-            bindingResult.addError(new FieldError(USER_ATT, USERNAME_FIELD, "Mauvais login/mot de passe"));
+            bindingResult.addError(new FieldError(USER_ATT,USERNAME_FIELD,BAD_CREDENTIALS_MSG));
             model.addAttribute(USER_ATT,user);
             
             return LOGIN_VIEW;
@@ -90,23 +87,18 @@ public class LoginController {
             // Add token to response in a cookie
             Cookie cookie = JwtTokenUtils.generateCookie(jwtToken);
             response.addCookie(cookie);
-
-            AccountBean accountInfo = proxy.getAccountInfo(jwtToken);
-            List<LoanBean> userLoans = proxy.getUserLoanList(jwtToken,accountInfo.getId());
-            model.addAttribute(ACCOUNT_ATT,accountInfo);
-            model.addAttribute(LOAN_LIST_ATT,userLoans);
             
-            return USER_HOME_VIEW;
+            return REDIRECT_USER_HOME_VIEW;
         }
     
     }
     
     @GetMapping("/logout")
-    public String logoutUser (Model model, HttpServletResponse response){
+    public String logoutUser (HttpServletResponse response){
         
         JwtTokenUtils.clear(response);
         
-        return loginForm(model);
+        return REDIRECT_LOGIN_VIEW;
     }
     
 }

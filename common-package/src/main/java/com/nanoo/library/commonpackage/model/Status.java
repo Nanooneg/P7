@@ -1,19 +1,18 @@
-package com.nanoo.library.commonsecurity.model;
+package com.nanoo.library.commonpackage.model;
 
 /**
  * @author nanoo
  * @create 23/11/2019 - 00:01
  */
-public enum Condition {
+public enum Status {
     
-    NEW("neuf"),
-    GOOD("bon état"),
-    WORN("usé"),
-    DAMAGING("abimé");
+    ONGOING("en cours"),
+    OUTDATED("en retard"),
+    FINISH("fini");
     
     private String entitled ;
     
-    Condition(String entitled) {
+    Status(String entitled) {
         this.entitled = entitled ;
     }
     

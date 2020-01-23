@@ -1,4 +1,4 @@
-package com.nanoo.library.commonsecurity.security;
+package com.nanoo.library.commonpackage.security;
 
 import org.springframework.web.util.WebUtils;
 
