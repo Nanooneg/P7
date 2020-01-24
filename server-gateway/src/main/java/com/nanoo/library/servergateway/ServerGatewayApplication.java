@@ -46,10 +46,10 @@ public class ServerGatewayApplication {
         
     }*/
 	
-	@Bean
+	/*@Bean
 	DiscoveryClientRouteDefinitionLocator dynamicsRoutes (ReactiveDiscoveryClient reactiveDiscoveryClient,
 														  DiscoveryLocatorProperties discoveryLocatorProperties){
 		return new DiscoveryClientRouteDefinitionLocator(reactiveDiscoveryClient,discoveryLocatorProperties);
-	}
+	}*/
 	
 }

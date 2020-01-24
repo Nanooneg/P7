@@ -1,6 +1,6 @@
 package com.nanoo.library.loan.security;
 
-import com.nanoo.library.commonsecurity.CommonSecurityConfig;
+import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -26,7 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/consult/**").authenticated()
                 .antMatchers("/create/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
-                .antMatchers("/update/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
+                .antMatchers("/edit/extend/**").authenticated()
+                .antMatchers("/edit/all/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
                 .antMatchers("/delete/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
                 // any other requests must be authenticated
                 .anyRequest().authenticated()

@@ -1,15 +1,18 @@
 package com.nanoo.library.loan.service.implService;
 
+import com.nanoo.library.commonpackage.model.Status;
+import com.nanoo.library.loan.database.ClientRepository;
 import com.nanoo.library.loan.database.LoanRepository;
-import com.nanoo.library.loan.model.dto.LoanDto;
+import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
+import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
 import com.nanoo.library.loan.model.entities.Loan;
 import com.nanoo.library.loan.model.mapper.LoanMapper;
 import com.nanoo.library.loan.service.contractService.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author nanoo
@@ -18,25 +21,80 @@ import java.util.List;
 @Service
 public class LoanServiceImpl implements LoanService {
     
+    private static final int LOAN_DAYS_DURATION = 14;
+    
     private final LoanRepository loanRepository;
+    private final ClientRepository clientRepository;
     private final LoanMapper loanMapper;
     
     @Autowired
-    public LoanServiceImpl(LoanRepository loanRepository, LoanMapper loanMapper) {
+    public LoanServiceImpl(LoanRepository loanRepository, ClientRepository clientRepository, LoanMapper loanMapper) {
         this.loanRepository = loanRepository;
+        this.clientRepository = clientRepository;
         this.loanMapper = loanMapper;
     }
     
     @Override
-    public List<LoanDto> getLoanList() {
-        List<LoanDto> loanDtos =  new ArrayList<>();
+    public List<LoanWithAccountInfoDto> getLoanList() {
+        List<LoanWithAccountInfoDto> loanWithAccountInfoDtos =  new ArrayList<>();
         
         List<Loan> loans = loanRepository.findAll();
         
         for (Loan loan : loans){
-            loanDtos.add(loanMapper.fromLoanToDto(loan));
+            loanWithAccountInfoDtos.add(loanMapper.fromLoanToDtoWithAccountInfo(loan));
         }
         
-        return loanDtos;
+        return loanWithAccountInfoDtos;
+    }
+    
+    @Override
+    public List<LoanWithBookInfoDto> getUserLoanList(int userId,String loanProperty){
+        List<LoanWithBookInfoDto> loanWithBookInfoDtos =  new ArrayList<>();
+        
+        List<Loan> loans = clientRepository.findAllLoanByClientId(userId);
+        loans.sort(Comparator.comparing(Loan::getLoanDate,Comparator.reverseOrder()));
+    
+        if (loanProperty.equalsIgnoreCase("all")){
+            for (Loan loan : loans){
+                loanWithBookInfoDtos.add(loanMapper.fromLoanToDtoWithBookInfo(loan));
+            }
+        }else {
+            for (Loan loan : loans){
+                if (loan.getStatus() != Status.FINISH){
+                    loanWithBookInfoDtos.add(loanMapper.fromLoanToDtoWithBookInfo(loan));
+                }
+            }
+        }
+    
+        return loanWithBookInfoDtos;
+    }
+    
+    @Override
+    public LoanWithBookInfoDto extendLoan(int loanId) {
+        Optional<Loan> loanWithBookInfo = loanRepository.findById(loanId);
+        
+        if (loanWithBookInfo.isPresent()){
+            Loan existingLoanWithBookInfo = loanWithBookInfo.get();
+            if (existingLoanWithBookInfo.isExtended()){
+                return null;
+            }else {
+                existingLoanWithBookInfo.setExtended(true);
+                existingLoanWithBookInfo.setExpectedReturnDate(
+                        extendExpectedReturnDate(existingLoanWithBookInfo.getExpectedReturnDate()));
+                if (existingLoanWithBookInfo.getStatus().equals(Status.OUTDATED)) {
+                    existingLoanWithBookInfo.setStatus(Status.ONGOING);
+                } // TODO compare date to handle "not extensible" loan
+                return loanMapper.fromLoanToDtoWithBookInfo(loanRepository.save(existingLoanWithBookInfo));
+            }
+        }
+        
+        return null;
+    }
+    
+    private Date extendExpectedReturnDate (Date oldDate){
+        Calendar c = Calendar.getInstance();
+        c.setTime(oldDate);
+        c.add(Calendar.DAY_OF_WEEK,LOAN_DAYS_DURATION);
+        return c.getTime();
     }
 }

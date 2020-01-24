@@ -3,6 +3,8 @@ package com.nanoo.library.book.service.implService;
 import com.nanoo.library.book.database.AuthorRepository;
 import com.nanoo.library.book.database.BookRepository;
 import com.nanoo.library.book.model.dto.BookDto;
+import com.nanoo.library.book.model.dto.BookInfoLoanDto;
+import com.nanoo.library.book.model.dto.BookWithoutAuthorsAndLibraryDto;
 import com.nanoo.library.book.model.entities.Book;
 import com.nanoo.library.book.model.entities.Library;
 import com.nanoo.library.book.model.mapper.BookMapper;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author nanoo
@@ -120,5 +123,15 @@ public class BookServiceImpl implements BookService {
         return bookDtos;
     
     }
-  
+    
+    @Override
+    public BookInfoLoanDto getBookInfo(int bookId) {
+        BookInfoLoanDto bookDto = new BookInfoLoanDto();
+        Optional<Book> book = bookRepository.findById(bookId);
+        
+        if (book.isPresent()){
+            bookDto = bookMapper.fromBookToForLoanDto(book.get());
+        }
+        return bookDto;
+    }
 }

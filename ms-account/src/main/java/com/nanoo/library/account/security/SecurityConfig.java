@@ -1,9 +1,6 @@
 package com.nanoo.library.account.security;
 
-import com.nanoo.library.commonsecurity.CommonSecurityConfig;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.AuthenticationManager;
+import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;

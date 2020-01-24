@@ -1,6 +1,8 @@
 package com.nanoo.library.book.web.controller;
 
 import com.nanoo.library.book.model.dto.BookDto;
+import com.nanoo.library.book.model.dto.BookInfoLoanDto;
+import com.nanoo.library.book.model.dto.BookWithoutAuthorsAndLibraryDto;
 import com.nanoo.library.book.model.entities.Library;
 import com.nanoo.library.book.service.contractService.BookService;
 import com.nanoo.library.book.service.contractService.LibraryService;
@@ -59,6 +61,11 @@ public class BookController {
     
         return bookService.getSearchResult(available,searchValue,searchCriteria,libraryId);
         
+    }
+    
+    @GetMapping("/book/{bookId}")
+    public BookInfoLoanDto getBookInfo(@PathVariable int bookId){
+        return bookService.getBookInfo(bookId);
     }
   
 }

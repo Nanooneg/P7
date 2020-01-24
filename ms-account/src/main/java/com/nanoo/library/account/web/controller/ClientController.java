@@ -32,7 +32,7 @@ public class ClientController {
         
     }
     
-    //@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
     @GetMapping("/user-info")
     public ClientDto getClientInfo(){
     

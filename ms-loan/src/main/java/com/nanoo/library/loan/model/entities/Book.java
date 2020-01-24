@@ -1,17 +1,16 @@
 package com.nanoo.library.loan.model.entities;
 
-import com.nanoo.library.loan.model.enums.Condition;
+import com.nanoo.library.commonpackage.model.Condition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 /**
  * @author nanoo
- * @create 23/11/2019 - 17:01
+ * @create 23/01/2020 - 10:58
  */
 @Entity
 @Getter @Setter
@@ -20,19 +19,20 @@ public class Book implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
     @Column(length = 50, nullable = false)
     private String title;
     
-    @ManyToOne
-    private Library library;
+    @Column(length = 400)
+    private String summary;
+    
+    @Column(nullable = false)
+    private String cover;
     
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
     private Condition condition;
     
-    @OneToMany(mappedBy = "book")
-    private Set<Loan> loans;
 }

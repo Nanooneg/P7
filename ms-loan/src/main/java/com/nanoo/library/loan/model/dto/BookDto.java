@@ -1,6 +1,5 @@
 package com.nanoo.library.loan.model.dto;
 
-import com.nanoo.library.loan.model.enums.Condition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +18,8 @@ public class BookDto implements Serializable {
     
     private Integer id;
     private String title;
-    private LibraryDto library;
-    private Condition condition;
+    private String summary;
+    private String cover;
+    private String condition;
     
 }

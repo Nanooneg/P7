@@ -103,11 +103,11 @@ body {
     font-weight: bold;
 }
 
-.info-item .author-book{
+.info-item .author-book , .return-date{
     font-size: 20px;
     font-style: italic;
     margin-left: 20px;
-    padding-bottom: 2px;
+    padding-bottom: 3px;
     align-self: flex-end;
 }
 
@@ -166,24 +166,32 @@ body {
     margin-left: auto;
 }
 
-.loan-status-late{
+/*************************************/
+/*           Loan status css         */
+/*************************************/
+
+.outdated{
     color: red;
     margin-left: 20px;
     padding-bottom: 2px;
     align-self: flex-end;
 }
-.loan-status-finish{
+.finish{
     color: darkgrey;
     margin-left: 20px;
     padding-bottom: 2px;
     align-self: flex-end;
 }
-.loan-status-ongoing{
+.ongoing{
     color: limegreen;
     margin-left: 20px;
     padding-bottom: 2px;
     align-self: flex-end;
 }
+
+/*************************************/
+/*             Dashboard             */
+/*************************************/
 
 .dashboard .action-button{
     width: 270px;

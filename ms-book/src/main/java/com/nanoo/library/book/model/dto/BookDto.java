@@ -1,8 +1,5 @@
 package com.nanoo.library.book.model.dto;
 
-import com.nanoo.library.book.model.entities.Cover;
-import com.nanoo.library.book.model.enums.Category;
-import com.nanoo.library.book.model.enums.Condition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

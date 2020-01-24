@@ -1,7 +1,7 @@
 package com.nanoo.library.book.model.entities;
 
-import com.nanoo.library.book.model.enums.Category;
-import com.nanoo.library.book.model.enums.Condition;
+import com.nanoo.library.commonpackage.model.Category;
+import com.nanoo.library.commonpackage.model.Condition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,11 +37,12 @@ public class Book implements Serializable {
     @Column(length = 400)
     private String summary;
     
+    // TODO check mapping for cover maybe like library mapping
     @ManyToOne(cascade = CascadeType.ALL)
     private Cover cover;
     
     @ManyToOne
-    @JoinColumn(name = "id_library")
+    @JoinColumn(name = "id_library", nullable = false)
     private Library library;
     
     @Column(name = "dewey_code", nullable = false)

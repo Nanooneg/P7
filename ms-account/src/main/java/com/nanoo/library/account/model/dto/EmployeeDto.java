@@ -1,8 +1,8 @@
 package com.nanoo.library.account.model.dto;
 
 import com.nanoo.library.account.model.entities.Address;
-import com.nanoo.library.account.model.enums.Gender;
-import com.nanoo.library.account.model.enums.Role;
+import com.nanoo.library.commonpackage.model.Gender;
+import com.nanoo.library.commonpackage.model.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

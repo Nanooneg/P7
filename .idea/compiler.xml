@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -10,7 +11,7 @@
         <module name="api-client-web" />
         <module name="server-gateway" />
         <module name="server-eureka" />
-        <module name="common-security" />
+        <module name="common-package" />
       </profile>
       <profile name="Annotation profile for ms-loan" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -39,7 +40,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-client-web" target="1.8" />
-      <module name="common-security" target="1.5" />
+      <module name="common-package" target="1.5" />
       <module name="maven-archiver" target="1.5" />
       <module name="ms-account" target="1.8" />
       <module name="ms-book" target="1.8" />

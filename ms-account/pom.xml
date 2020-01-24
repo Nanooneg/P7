@@ -49,7 +49,7 @@
     <!-- add common configuration to dependencies -->
     <dependency>
       <groupId>com.nanoo.library</groupId>
-      <artifactId>common-security</artifactId>
+      <artifactId>common-package</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
 
