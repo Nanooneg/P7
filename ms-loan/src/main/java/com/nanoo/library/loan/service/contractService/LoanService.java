@@ -15,4 +15,5 @@ public interface LoanService {
     
     List<LoanWithBookInfoDto> getUserLoanList(int userId, String loanProperty);
     
+    LoanWithBookInfoDto extendLoan(int loanId);
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
@@ -42,11 +43,12 @@ public class AuthenticationController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
     
+            System.out.println(generateExpirationDate());
             authenticationToken = JWT
                     .create()
                     .withClaim("role","ROLE_" + principal.getRole())
                     .withSubject(principal.getUsername())
-                    .withExpiresAt(new Date(System.currentTimeMillis() + CommonSecurityConfig.EXPIRATION))
+                    .withExpiresAt(generateExpirationDate())
                     .sign(HMAC512(CommonSecurityConfig.SECRET.getBytes()));
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -55,6 +57,13 @@ public class AuthenticationController {
         
         return authenticationToken;
         
+    }
+    
+    private Date generateExpirationDate(){
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DAY_OF_WEEK, CommonSecurityConfig.EXPIRATION);
+        return c.getTime();
     }
 
 }

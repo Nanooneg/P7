@@ -14,16 +14,16 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/consult")
-public class LoanController {
+public class LoanConsultController {
     
     private final LoanService loanService;
     
     @Autowired
-    public LoanController(LoanService loanService) {
+    public LoanConsultController(LoanService loanService) {
         this.loanService = loanService;
     }
     
-    @GetMapping("/loans")
+    @GetMapping("/allLoans")
     public List<LoanWithAccountInfoDto> listAllLoans (){
         
         return loanService.getLoanList();

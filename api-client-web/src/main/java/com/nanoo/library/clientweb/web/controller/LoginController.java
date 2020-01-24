@@ -28,15 +28,13 @@ public class LoginController {
     
     private static final String LIBRARY_ATT = "libraries";
     private static final String USER_ATT = "user";
-    private static final String ACCOUNT_ATT = "account";
-    private static final String LOAN_LIST_ATT = "loans";
     
     private static final String USERNAME_FIELD = "username";
     private static final String BAD_CREDENTIALS_MSG = "Mauvais login/mot de passe";
     
     private static final String LOGIN_VIEW = "login";
     private static final String REDIRECT_LOGIN_VIEW = "redirect:/login";
-    private static final String REDIRECT_USER_HOME_VIEW = "redirect:/utilisateur/home";
+    private static final String REDIRECT_USER_HOME_VIEW = "redirect:/utilisateur/home/selection";
     
     private FeignProxy proxy;
     

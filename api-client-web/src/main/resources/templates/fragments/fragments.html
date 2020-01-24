@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse"
                  id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li th:if="${#httpServletRequest.getCookies() != null}" class="nav-item" role="presentation"><a class="nav-link" th:href="@{/utilisateur/home}">Mon espace</a></li>
+                    <li th:if="${#httpServletRequest.getCookies() != null}" class="nav-item" role="presentation"><a class="nav-link" th:href="@{/utilisateur/home/selection}">Mon espace</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/livre/catalogue}">Catalogue</a></li>
                     <!-- Dropdown -->
                     <li class="nav-item dropdown">

@@ -27,6 +27,7 @@ public class UserController {
     private static final String LOAN_LIST_ATT = "loans";
     
     private static final String USER_HOME_VIEW = "userHome";
+    private static final String REDIRECT_USER_HOME_VIEW = "redirect:/utilisateur/home/selection";
     
     private FeignProxy proxy;
     
@@ -52,6 +53,14 @@ public class UserController {
     
         return USER_HOME_VIEW;
         
+    }
+    
+    @GetMapping("/etendre/{loanId}")
+    public String extendLoanExpectedReturnDate(@CookieValue(CommonSecurityConfig.HEADER) String accessToken, @PathVariable int loanId){
+        
+        proxy.extendLoanExpectedReturnDate(accessToken,loanId);
+        
+        return REDIRECT_USER_HOME_VIEW;
     }
     
 }

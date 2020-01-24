@@ -47,7 +47,7 @@
                 </div>
                 <!-- List of book borrow by user -->
                 <div class="loan-list">
-                    <!-- List from back -->
+                    <!-- Loan list -->
                     <div th:each="loan :${loans}" class="catalog-item">
                         <div class="inside-item">
                             <div class="cover-item">
@@ -56,11 +56,15 @@
                             <div class="info-item">
                                 <div class="header-item">
                                     <div class="title-book" th:text="${loan.book.title}"></div>
-                                    <div class="author-book">(<span th:text="${loan.book.condition}"></span>)</div>
+                                    <div class="return-date" th:if="${!loan.status.equalsIgnoreCase('fini')}">
+                                        (Retour : <span th:text="${#dates.format(loan.expectedReturnDate,'dd MMM YYYY')}"></span>)
+                                        <span th:if="${loan.extended}"> **prolongé**</span>
+                                        <a th:href="@{|/utilisateur/etendre/${loan.id}|}"><span th:if="${!loan.extended && !loan.status.equalsIgnoreCase('fini')}"> -> prolonger</span></a>
+                                    </div>
                                     <div th:classappend="${(loan.status.equalsIgnoreCase('fini')? 'finish' : '' ) +
                                                            (loan.status.equalsIgnoreCase('en retard')? 'outdated' : '' ) +
                                                            (loan.status.equalsIgnoreCase('en cours')? 'ongoing' : '' )}"
-                                    >Statut du prêt : <span th:text="${loan.status}"></span></div>
+                                    >Statut : <span th:text="${loan.status}"></span></div>
                                 </div>
                                 <div class="description-item" th:text="${loan.book.summary}"></div>
                             </div>

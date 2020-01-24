@@ -2,6 +2,7 @@ package com.nanoo.library.loan.database;
 
 import com.nanoo.library.loan.model.entities.Client;
 import com.nanoo.library.loan.model.entities.Loan;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,7 +17,8 @@ import java.util.List;
 @Repository
 public interface ClientRepository extends JpaRepository<Client,Integer> {
     
+    // TODO change return type
     @Query(value = "SELECT client.loans FROM Client client WHERE client.id = :clientId")
-    List<Loan> findAllLoanByClientId (@Param("clientId") int clientId);
+    List<Loan> findAllLoanByClientId(@Param("clientId") int clientId);
     
 }

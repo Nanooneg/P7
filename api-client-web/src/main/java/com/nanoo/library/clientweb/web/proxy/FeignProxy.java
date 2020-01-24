@@ -55,5 +55,8 @@ public interface FeignProxy {
     List<LoanBean> getUserLoanList(@RequestHeader("Authorization") String accessToken,
                                    @PathVariable int userId,
                                    @PathVariable String loanProperty);
-
+    
+    @GetMapping("/ms-loan/edit/extend/loan/{loanId}")
+    LoanBean extendLoanExpectedReturnDate(@RequestHeader("Authorization") String accessToken,
+                                          @PathVariable("loanId") int loanId);
 }
