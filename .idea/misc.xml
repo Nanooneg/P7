@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/common-security/pom.xml" />
         <option value="$PROJECT_DIR$/common-package/pom.xml" />
         <option value="$PROJECT_DIR$/server-consistency-manager/pom.xml" />
+        <option value="$PROJECT_DIR$/api-batch/pom.xml" />
       </list>
     </option>
   </component>

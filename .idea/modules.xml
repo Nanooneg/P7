@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/api-batch/api-batch.iml" filepath="$PROJECT_DIR$/api-batch/api-batch.iml" />
       <module fileurl="file://$PROJECT_DIR$/api-client-web/api-client-web.iml" filepath="$PROJECT_DIR$/api-client-web/api-client-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/common-package/common-package.iml" filepath="$PROJECT_DIR$/common-package/common-package.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms-account/ms-account.iml" filepath="$PROJECT_DIR$/ms-account/ms-account.iml" />

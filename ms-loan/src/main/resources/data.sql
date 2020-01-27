@@ -34,3 +34,5 @@ INSERT INTO public.loan(id, expected_return_date, extended, loan_date, status, a
 VALUES (5,'2019-05-03 23:00:00.000',true,'2019-05-03 23:00:00.000','FINISH',1,2);
 INSERT INTO public.loan(id, expected_return_date, extended, loan_date, status, account_id, book_id)
 VALUES (6,'2019-05-03 23:00:00.000',false,'2019-04-03 23:00:00.000','FINISH',1,7);
+INSERT INTO public.loan(id, expected_return_date, extended, loan_date, status, account_id, book_id)
+VALUES (7,'2020-01-26 23:00:00.000',false,'2020-01-12 23:00:00.000','ONGOING',1,1);
