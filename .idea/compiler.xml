@@ -8,9 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="server-authentication" />
-        <module name="api-client-web" />
-        <module name="server-gateway" />
         <module name="server-eureka" />
+        <module name="server-gateway" />
+        <module name="server-consistency-manager" />
+        <module name="api-client-web" />
         <module name="common-package" />
       </profile>
       <profile name="Annotation profile for ms-loan" enabled="true">
@@ -47,6 +48,7 @@
       <module name="ms-common" target="1.8" />
       <module name="ms-loan" target="1.8" />
       <module name="server-authentication" target="1.8" />
+      <module name="server-consistency-manager" target="1.8" />
       <module name="server-eureka" target="1.8" />
       <module name="server-gateway" target="1.8" />
       <module name="server-zuul" target="1.8" />
@@ -60,6 +62,7 @@
       <module name="ms-common" options="-parameters" />
       <module name="ms-loan" options="-parameters" />
       <module name="server-authentication" options="-parameters" />
+      <module name="server-consistency-manager" options="-parameters" />
       <module name="server-eureka" options="-parameters" />
       <module name="server-gateway" options="-parameters" />
       <module name="server-zuul" options="-parameters" />

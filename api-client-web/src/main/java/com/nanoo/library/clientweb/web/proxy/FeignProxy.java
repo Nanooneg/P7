@@ -1,13 +1,15 @@
 package com.nanoo.library.clientweb.web.proxy;
 
-import com.nanoo.library.clientweb.beans.book.BookBean;
-import com.nanoo.library.clientweb.beans.book.BookSearchAttribut;
-import com.nanoo.library.clientweb.beans.library.LibraryWithoutBookBean;
-import com.nanoo.library.clientweb.beans.loan.LoanBean;
-import com.nanoo.library.clientweb.beans.user.AccountBean;
-import com.nanoo.library.clientweb.beans.user.UserBean;
+import com.nanoo.library.clientweb.model.beans.book.BookBean;
+import com.nanoo.library.clientweb.model.beans.book.BookSearchAttribut;
+import com.nanoo.library.clientweb.model.beans.library.LibraryWithoutBookBean;
+import com.nanoo.library.clientweb.model.beans.loan.LoanBean;
+import com.nanoo.library.clientweb.model.beans.user.AccountBean;
+import com.nanoo.library.clientweb.model.beans.user.UserBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -59,4 +61,9 @@ public interface FeignProxy {
     @GetMapping("/ms-loan/edit/extend/loan/{loanId}")
     LoanBean extendLoanExpectedReturnDate(@RequestHeader("Authorization") String accessToken,
                                           @PathVariable("loanId") int loanId);
+    
+    //@PostMapping("/ms-consistency-manager/edit/account")
+    @PostMapping("/ms-account/edit/account")
+    AccountBean editAccount(@RequestHeader("Authorization") String accessToken, @RequestBody AccountBean accountBean);
+    
 }

@@ -13,4 +13,6 @@ public interface ClientService {
     List<ClientDto> getClientList();
     
     ClientDto getLoggedClientInfo();
+    
+    ClientDto updateClient(ClientDto clientDto);
 }

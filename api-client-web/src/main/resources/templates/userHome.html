@@ -30,7 +30,7 @@
                     </div>
                 </div> <!-- TODO put link on buttons and add features-->
                 <div class="text-center">
-                    <a th:href="@{/utilisateur/edit-profil}"><button type="submit" class="btn btn-light action-button">Modifier mon profil</button></a>
+                    <a th:href="@{/edit/profile}"><button type="submit" class="btn btn-light action-button">Modifier mon profil</button></a>
                 </div>
                 <div class="text-center">
                     <a th:if="${#httpServletRequest.getRequestURI().contains('selection')}" th:href="@{/utilisateur/home}"><button type="submit" class="btn btn-light action-button">Afficher tous les emprunts</button></a>

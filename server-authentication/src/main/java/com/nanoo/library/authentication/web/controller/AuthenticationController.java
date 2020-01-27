@@ -30,7 +30,6 @@ public class AuthenticationController {
         this.authenticationManager = authenticationManager;
     }
     
-    // TODO LoginViewModel validation
     @PostMapping("/login")
     public String doLogin (@RequestBody LoginViewModel viewModel){
         

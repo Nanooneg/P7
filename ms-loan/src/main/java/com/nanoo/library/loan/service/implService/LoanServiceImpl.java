@@ -3,13 +3,15 @@ package com.nanoo.library.loan.service.implService;
 import com.nanoo.library.commonpackage.model.Status;
 import com.nanoo.library.loan.database.ClientRepository;
 import com.nanoo.library.loan.database.LoanRepository;
+import com.nanoo.library.loan.model.dto.ClientDto;
 import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
 import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
+import com.nanoo.library.loan.model.entities.Client;
 import com.nanoo.library.loan.model.entities.Loan;
+import com.nanoo.library.loan.model.mapper.ClientMapper;
 import com.nanoo.library.loan.model.mapper.LoanMapper;
 import com.nanoo.library.loan.service.contractService.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -26,12 +28,14 @@ public class LoanServiceImpl implements LoanService {
     private final LoanRepository loanRepository;
     private final ClientRepository clientRepository;
     private final LoanMapper loanMapper;
+    private final ClientMapper clientMapper;
     
     @Autowired
-    public LoanServiceImpl(LoanRepository loanRepository, ClientRepository clientRepository, LoanMapper loanMapper) {
+    public LoanServiceImpl(LoanRepository loanRepository, ClientRepository clientRepository, LoanMapper loanMapper, ClientMapper clientMapper) {
         this.loanRepository = loanRepository;
         this.clientRepository = clientRepository;
         this.loanMapper = loanMapper;
+        this.clientMapper = clientMapper;
     }
     
     @Override
@@ -96,5 +100,15 @@ public class LoanServiceImpl implements LoanService {
         c.setTime(oldDate);
         c.add(Calendar.DAY_OF_WEEK,LOAN_DAYS_DURATION);
         return c.getTime();
+    }
+    
+    @Override
+    public void editAccountInfo(ClientDto clientDto) {
+    
+        Optional<Client> oldClient = clientRepository.findById(clientDto.getId());
+        
+        if (oldClient.isPresent())
+            clientRepository.save(clientMapper.fromDtoToClient(clientDto));
+        
     }
 }

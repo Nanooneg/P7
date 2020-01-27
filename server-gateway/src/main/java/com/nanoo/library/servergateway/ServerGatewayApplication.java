@@ -1,5 +1,6 @@
 package com.nanoo.library.servergateway;
 
+import com.nanoo.library.servergateway.filters.RedirectEditUriFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.ReactiveDiscoveryClient;
@@ -18,38 +19,32 @@ public class ServerGatewayApplication {
 		SpringApplication.run(ServerGatewayApplication.class, args);
 	}
 	
-	/*@Bean
+	@Bean
 	RouteLocator gatewayRoutes (RouteLocatorBuilder routeLocatorBuilder){
         System.out.println("Gateway Routes configuration bean");
         return routeLocatorBuilder.routes()
-                .route(r->r
-                        .path("/server-authentication/**")
+                /*.route(r->r
+						.path("/server-authentication/**")
                         .uri("http://localhost:9100")
                         .id("server-authentication"))
-                
                 .route(r->r
                         .path("/ms-account/**")
                         .uri("http://localhost:9001")
                         .id("ms-account"))
-                
                 .route(r->r
                         .path("/ms-book/**")
                         .uri("lb://ms-book")
                         .id("ms-book"))
-                
                 .route(r->r
                         .path("/ms-loan/**")
                         .uri("http://localhost:9003")
                         .id("ms-loan"))
-                
+				.route(r->r
+						.path("/ms-consistency-manager/**")
+						.uri("http://localhost:9101")
+						.id("server-consistency-manager"))*/
                 .build();
         
-    }*/
-	
-	/*@Bean
-	DiscoveryClientRouteDefinitionLocator dynamicsRoutes (ReactiveDiscoveryClient reactiveDiscoveryClient,
-														  DiscoveryLocatorProperties discoveryLocatorProperties){
-		return new DiscoveryClientRouteDefinitionLocator(reactiveDiscoveryClient,discoveryLocatorProperties);
-	}*/
+    }
 	
 }

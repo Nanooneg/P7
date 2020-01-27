@@ -1,7 +1,7 @@
 package com.nanoo.library.clientweb.web.controller;
 
-import com.nanoo.library.clientweb.beans.book.BookSearchAttribut;
-import com.nanoo.library.clientweb.beans.library.LibraryWithoutBookBean;
+import com.nanoo.library.clientweb.model.beans.book.BookSearchAttribut;
+import com.nanoo.library.clientweb.model.beans.library.LibraryWithoutBookBean;
 import com.nanoo.library.clientweb.web.proxy.FeignProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

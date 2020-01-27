@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/server-authentication/pom.xml" />
         <option value="$PROJECT_DIR$/common-security/pom.xml" />
         <option value="$PROJECT_DIR$/common-package/pom.xml" />
+        <option value="$PROJECT_DIR$/server-consistency-manager/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,6 +1,6 @@
 package com.nanoo.library.clientweb.web.controller;
 
-import com.nanoo.library.clientweb.beans.user.UserBean;
+import com.nanoo.library.clientweb.model.beans.user.UserBean;
 import com.nanoo.library.clientweb.web.proxy.FeignProxy;
 import com.nanoo.library.commonpackage.security.JwtTokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -33,5 +33,4 @@ public class ClientDto implements Serializable {
     private Date dateOfCreation;
     private Date dateOfUpdate;
     
-    
 }

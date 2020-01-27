@@ -1,0 +1,51 @@
+<!--
+-
+- @create 24/01/2020 - 11:06
+- @author nanoo
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head th:insert="fragments/fragments.html :: headerfiles">
+    <title>Profile</title>
+</head>
+<body>
+
+<div th:insert="fragments/fragments.html :: nav"></div>
+
+<div class="account-clean">
+    <form method="post" th:action="@{/update/profile}" th:object="${account}">
+        <h2 class="sr-only">Login Form</h2>
+        <div hidden ><input th:field="*{id}" readonly type="number" name="id"></div>
+        <div class="illustration"><i class="fas fa-user-alt"></i></div>
+        <div class="form-group">
+            <input class="form-control readonly" th:field="*{firstName}" readonly type="text" name="firstName" placeholder="Prénom">
+            <span class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+        </div>
+        <div class="form-group">
+            <input class="form-control readonly" th:field="*{lastName}" readonly type="text" name="lastName" placeholder="Nom">
+            <span class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+        </div>
+        <div class="form-group">
+            <input class="form-control" th:field="*{email}" type="text" name="email" placeholder="Email">
+            <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <div class="form-group">
+            <input class="form-control" th:field="*{password}" type="password" name="password" placeholder="**Changer mon mot de passe**">
+            <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        </div>
+        <div class="form-group">
+            <input class="form-control" th:field="*{phoneNumber}" type="text" name="email" placeholder="Email">
+            <span class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">Enregistrer</button>
+        </div>
+    </form>
+</div>
+
+<div th:insert="fragments/fragments.html :: footer" class="footer"></div>
+
+<div th:insert="fragments/fragments.html :: script"></div>
+
+</body>
+</html>

@@ -1,12 +1,11 @@
 package com.nanoo.library.loan.web.controller;
 
+import com.nanoo.library.loan.model.dto.ClientDto;
 import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
 import com.nanoo.library.loan.service.contractService.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author nanoo
@@ -28,6 +27,14 @@ public class LoanEditController {
         
         return loanService.extendLoan (loanId);
         
+    }
+    
+    @PostMapping("/account")
+    public HttpStatus editAccountInfo (@RequestBody ClientDto clientDto){
+        
+        loanService.editAccountInfo(clientDto);
+        
+        return HttpStatus.OK; // TODO
     }
     
 }

@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/ms-book/ms-book.iml" filepath="$PROJECT_DIR$/ms-book/ms-book.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms-loan/ms-loan.iml" filepath="$PROJECT_DIR$/ms-loan/ms-loan.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-authentication/server-authentication.iml" filepath="$PROJECT_DIR$/server-authentication/server-authentication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-consistency-manager/server-consistency-manager.iml" filepath="$PROJECT_DIR$/server-consistency-manager/server-consistency-manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-eureka/server-eureka.iml" filepath="$PROJECT_DIR$/server-eureka/server-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-gateway/server-gateway.iml" filepath="$PROJECT_DIR$/server-gateway/server-gateway.iml" />
     </modules>

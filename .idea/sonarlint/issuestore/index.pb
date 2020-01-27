@@ -29,8 +29,6 @@ Oms-book/src/main/java/com/nanoo/library/book/web/controller/BookController.java
 qserver-authentication/src/main/java/com/nanoo/library/authentication/web/controller/AuthenticationController.java,5/0/50af501d95e11b548c0fc18c72372ca936c430db
 ç
 ]ms-account/src/main/java/com/nanoo/library/account/security/JwtTokenAuthenticationFilter.java,a/8/a8b56a6af4852bc9deacd9af2a586b8678fc0589
-á
-Wms-account/src/main/java/com/nanoo/library/account/web/controller/ClientController.java,1/5/151eb140c7e6688efbb6d18146e0b2a203bbdac4
 
 Oms-account/src/main/java/com/nanoo/library/account/security/SecurityConfig.java,e/9/e92a6e0ce8297b8fc71af6bdfc97278fa3431c25
 ë
@@ -55,16 +53,12 @@ Ims-loan/src/main/java/com/nanoo/library/loan/database/LoanRepository.java,0/7/
 [api-client-web/src/main/java/com/nanoo/library/clientweb/web/controller/HomeController.java,5/9/5904d313d370f4b6979d700cf1ca7719be71fb05
 å
 \api-client-web/src/main/java/com/nanoo/library/clientweb/web/controller/LoginController.java,b/f/bf993032d86f3c6db1219bfcc78557cbee89cfa8
-Å
-Qapi-client-web/src/main/java/com/nanoo/library/clientweb/beans/user/UserBean.java,c/6/c62e434cda3e863725514295f1b415f9d629fd15
 z
 Jms-account/src/main/java/com/nanoo/library/account/AccountApplication.java,c/0/c0d523bd3faa9c891299823964127456243fc505
 q
 Ams-loan/src/main/java/com/nanoo/library/loan/LoanApplication.java,4/4/4487fa0c56c2627a1916a561c8a25fc37406e832
 è
 _common-package/src/main/java/com/nanoo/library/commonpackage/security/CommonSecurityConfig.java,a/3/a32e990f77548aa88e1e062ffcd904f13a401b5b
-Å
-Qapi-client-web/src/main/java/com/nanoo/library/clientweb/beans/loan/LoanBean.java,1/8/18410bd3ec1f44e1d80b9021d0b8a54f6478697b
 y
 Ims-loan/src/main/java/com/nanoo/library/loan/security/SecurityConfig.java,4/e/4e18c8cfd0d6e3129a46db945e63a17fdac9f9e1
 É
