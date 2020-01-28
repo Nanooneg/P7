@@ -6,7 +6,10 @@ package com.nanoo.library.commonpackage.model;
  */
 public enum Role {
     
-    ADMIN("Administrateur"), EMPLOYEE("Employé"), CLIENT("Client");
+    ADMIN("Administrateur"),
+    EMPLOYEE("Employé"),
+    CLIENT("Client"),
+    TECHNICAL("Technical");
     
     private String abbreviation ;
     

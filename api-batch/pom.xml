@@ -10,7 +10,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<!-- ============================================================= -->
@@ -19,13 +19,12 @@
 
 	<!-- Maven information -->
 	<groupId>com.nanoo.library</groupId>
-	<artifactId>api-client-web</artifactId>
+	<artifactId>api-batch</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
 	<!-- General information -->
-	<name>api-client-web</name>
-	<description>API Client-web - project 7 of DA JAVA course from OC</description>
+	<name>api-batch</name>
+	<description>API batch - project 7 of DA JAVA course from OC</description>
 
 	<!-- ============================================================= -->
 	<!--                           Properties                          -->
@@ -51,14 +50,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
@@ -68,9 +59,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -82,13 +77,6 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>4.3.1</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -100,18 +88,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-        <!--<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>5.2.1.RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>RELEASE</version>
-			<scope>test</scope>
-		</dependency>-->
 	</dependencies>
 
 	<dependencyManagement>
@@ -153,5 +129,4 @@
 			<url>https://repo.spring.io/milestone</url>
 		</repository>
 	</repositories>
-
 </project>

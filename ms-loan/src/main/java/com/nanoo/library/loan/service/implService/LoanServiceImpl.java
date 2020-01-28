@@ -111,4 +111,22 @@ public class LoanServiceImpl implements LoanService {
             clientRepository.save(clientMapper.fromDtoToClient(clientDto));
         
     }
+    
+    @Override
+    public List<String> editLoanStatus() {
+        
+        List<Loan> outDatedLoans = loanRepository.findAllByStatusAndReturnDate(Status.ONGOING);
+        List<String> customersEmail = new ArrayList<>();
+    
+        for (Loan loan : outDatedLoans){
+            
+            customersEmail.add(loan.getClient().getEmail());
+            loan.setStatus(Status.OUTDATED);
+            
+        }
+        
+        loanRepository.saveAll(outDatedLoans);
+        
+        return customersEmail;
+    }
 }

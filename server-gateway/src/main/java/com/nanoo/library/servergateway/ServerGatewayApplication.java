@@ -1,11 +1,7 @@
 package com.nanoo.library.servergateway;
 
-import com.nanoo.library.servergateway.filters.RedirectEditUriFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.ReactiveDiscoveryClient;
-import org.springframework.cloud.gateway.discovery.DiscoveryClientRouteDefinitionLocator;
-import org.springframework.cloud.gateway.discovery.DiscoveryLocatorProperties;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -19,10 +15,17 @@ public class ServerGatewayApplication {
 		SpringApplication.run(ServerGatewayApplication.class, args);
 	}
 	
+	public static final String CONSISTENCY_URI = "lb://CONSISTENCY-MANAGER";
+	
 	@Bean
 	RouteLocator gatewayRoutes (RouteLocatorBuilder routeLocatorBuilder){
         System.out.println("Gateway Routes configuration bean");
         return routeLocatorBuilder.routes()
+				/*.route("consistency-manager" , r->r
+						.path("/ms-account/edit/account")
+						.filters(f->f
+							.setPath("/edit/account"))
+						.uri(CONSISTENCY_URI))*/
                 /*.route(r->r
 						.path("/server-authentication/**")
                         .uri("http://localhost:9100")

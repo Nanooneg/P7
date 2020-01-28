@@ -11,6 +11,7 @@
         <module name="server-eureka" />
         <module name="server-gateway" />
         <module name="server-consistency-manager" />
+        <module name="api-batch" />
         <module name="api-client-web" />
         <module name="common-package" />
       </profile>
@@ -40,6 +41,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="api-batch" target="1.8" />
       <module name="api-client-web" target="1.8" />
       <module name="common-package" target="1.5" />
       <module name="maven-archiver" target="1.5" />
@@ -56,6 +58,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-batch" options="-parameters" />
       <module name="api-client-web" options="-parameters" />
       <module name="ms-account" options="-parameters" />
       <module name="ms-book" options="-parameters" />
