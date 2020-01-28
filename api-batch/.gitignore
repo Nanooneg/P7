@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Username/Password mail config ###
+application.yml

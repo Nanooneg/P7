@@ -8,8 +8,6 @@ import com.nanoo.library.clientweb.model.beans.user.AccountBean;
 import com.nanoo.library.clientweb.model.beans.user.UserBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -62,8 +60,7 @@ public interface FeignProxy {
     LoanBean extendLoanExpectedReturnDate(@RequestHeader("Authorization") String accessToken,
                                           @PathVariable("loanId") int loanId);
     
-    //@PostMapping("/ms-consistency-manager/edit/account")
-    @PostMapping("/ms-account/edit/account")
+    @PostMapping("/ms-consistency-manager/edit/account")
     AccountBean editAccount(@RequestHeader("Authorization") String accessToken, @RequestBody AccountBean accountBean);
     
 }

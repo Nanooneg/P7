@@ -18,7 +18,7 @@ VALUES (9,'WORN','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vesti
 /* Clients */
 
 INSERT INTO public.client (id,email,first_name,last_name,client_number)
-VALUES (1,'admin@mail.fr','Arnaud','Laval',13365);
+VALUES (1,'arnaudlaval33@gmail.com','Arnaud','Laval',13365);
 
 /* Loan */
 
