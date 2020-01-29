@@ -55,7 +55,7 @@ public class AccountController {
                                        @CookieValue(value = CommonSecurityConfig.HEADER,required = false) String accessToken){
         
         if (accessToken == null) return REDIRECT_LOGIN_VIEW;
-        
+        System.out.println("***** "+accountBean+" *****");
         AccountBean editedAccount = proxy.editAccount(accessToken,accountBean);
         
         if (editedAccount == null) {

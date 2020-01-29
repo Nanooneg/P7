@@ -1,5 +1,6 @@
 package com.nanoo.library.authentication.security;
 
+import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,7 +24,6 @@ import javax.servlet.http.HttpServletResponse;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     private final UserPrincipalDetailsService userPrincipalDetailsService;
-    private AuthEntryPointJwt unauthorizedHandler;
     
     @Autowired
     public SecurityConfig(UserPrincipalDetailsService userPrincipalDetailsService) {
@@ -40,17 +41,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 // make sure we use stateless session; session won't be used to store user's state.
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                // handle an authorized attempts
-                .exceptionHandling()
-                .authenticationEntryPoint(unauthorizedHandler)
-                .accessDeniedPage("/login")
-                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                
+        http
                 // authorization requests config
                 .authorizeRequests()
-                // allow all who are accessing "auth" service
-                .anyRequest().permitAll().and().httpBasic();
+                .antMatchers("/login").permitAll()
+                .antMatchers("/edit/**").authenticated()
+                // any other requests must be authenticated
+                .anyRequest().authenticated()
+                .and().httpBasic();
+    
+        http
+                // Add a filter to check validity of token if present in request header
+                .addFilterBefore(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
     
     @Bean
@@ -58,7 +62,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-    
     
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

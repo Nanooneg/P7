@@ -5,6 +5,7 @@ import com.nanoo.library.commonpackage.model.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  * @author nanoo
  * @create 20/01/2020 - 11:34
  */
-@Getter @Setter
+@Getter @Setter @ToString
 @NoArgsConstructor
 public class AccountBean {
     
