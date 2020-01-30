@@ -218,24 +218,65 @@ body {
 /*************************************/
 
 .jumbotron-container{
-    padding-left: 100px;
-    padding-right: 100px;
+    height: 75vh;
 }
 
 .jumbotron{
-    margin: 50px auto 50px auto;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.jumbotron::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background: url(/image/bordeaux-resized.jpg) center;
     background-size: cover;
-    border: none !important;
-    height: 600px;
+    filter: brightness(40%);
 }
 
 .inside-jumbotron{
-    padding: 375px 300px 0 300px !important;
-    height: 100%;
+    position: relative;
 }
 
-.welcome-text{
-    background: rgba(255,255,255,0.2);
-    height: 100%;
+.home-text-frame{
+    padding: 20px;
+    position: relative;
+    height: 300px;
+    border-left: 10px solid white;
+    width: 70%;
+    left: 50px;
+    top: 300px;
+}
+
+.home-text-frame div{
+    height: 100px;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.home-text-frame h2{
+    font-size: 72px;
+    font-weight: bold;
+}
+
+.home-text-frame .btn{
+    background-color: transparent;
+    border: 1px solid white;
+    width: 30%;
+    font-size: 25px;
+}
+
+.home-btn a{
+    width: 30%;
+}
+
+.home-text-frame .btn:hover, .home-text-frame .btn:focus {
+    text-decoration: none;
+    outline: none !important;
+    background-color: white;
+    color: black;
 }

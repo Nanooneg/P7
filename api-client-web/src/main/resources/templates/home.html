@@ -9,11 +9,32 @@
     <title>Home</title>
 </head>
 <body>
-<!-- TODO -->
+
 <div th:insert="fragments/fragments.html :: nav"></div>
 
-<div class="container">
-    <p>TEST</p>
+<div class="jumbotron-container">
+    <div class="jumbotron">
+        <div class="inside-jumbotron">
+            <div class="home-text-frame">
+                <div>
+                    <h2>Bibliothèques de Bordeaux</h2>
+                </div>
+                <div>
+                    <p>
+                       Bienvenue sur le site officiel des bibliothèques de Bordeaux.
+                       Vous trouverez dans notre catalogue tous les livres qu'il est possible
+                       d'emprunter dans une de nos bibliothèque et la possibilité de gérer vos
+                       emprunts depuis votre espace personnel.
+                    </p>
+                </div>
+                <div>
+                    <a class="home-btn" th:href="@{/livre/catalogue}">
+                        <button class="btn btn-primary btn-block" type="submit">Voir le catalogue</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div th:insert="fragments/fragments.html :: footer" class="footer"></div>

@@ -28,7 +28,8 @@
 <!-- Fragment #2 : Navbar contains nav links -->
 <div th:fragment="nav">
     <!-- Start: Navigation with Search -->
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search"
+         th:with ="loggeg=${#httpServletRequest.getCookies() == null ? false : true}">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/home}">Bibliothèques de Bordeaux</a>
             <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
@@ -37,7 +38,7 @@
             <div class="collapse navbar-collapse"
                  id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li th:if="${#httpServletRequest.getCookies() != null}" class="nav-item" role="presentation"><a class="nav-link" th:href="@{/utilisateur/home/selection}">Mon espace</a></li>
+                    <li th:if="${loggeg}" class="nav-item" role="presentation"><a class="nav-link" th:href="@{/utilisateur/home/selection}">Mon espace</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" th:href="@{/livre/catalogue}">Catalogue</a></li>
                     <!-- Dropdown -->
                     <li class="nav-item dropdown">
@@ -61,8 +62,8 @@
                 </form>
             </div>
             <div class="login-button">
-                <a th:if="${#httpServletRequest.getCookies() == null}" class="btn btn-light action-button" role="button" th:href="@{/login}">Se connecter</a>
-                <a th:unless="${#httpServletRequest.getCookies() == null}" class="btn btn-light action-button" role="button" th:href="@{/logout}">Déconnexion</a>
+                <a th:if="${loggeg}" class="btn btn-light action-button" role="button" th:href="@{/logout}">Déconnexion</a>
+                <a th:unless="${loggeg}" class="btn btn-light action-button" role="button" th:href="@{/login}">Se connecter</a>
             </div>
         </div>
     </nav>
@@ -92,7 +93,7 @@
             </ul>
             <!-- End: Links -->
             <!-- Start: Copyright -->
-            <p class="copyright">Bibliothèque de Bordeaux © 2019</p>
+            <p class="copyright">Bibliothèque de Bordeaux © 2020</p>
             <!-- End: Copyright -->
         </footer>
     </div>
