@@ -1,5 +1,6 @@
 package com.nanoo.library.serverconsistencymanager.service.implService;
 
+import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
 import com.nanoo.library.serverconsistencymanager.model.beans.user.ClientBean;
 import com.nanoo.library.serverconsistencymanager.model.beans.user.UserBean;
 import com.nanoo.library.serverconsistencymanager.service.contractService.AccountEditService;
@@ -24,13 +25,51 @@ public class AccountEditServiceImpl implements AccountEditService {
     }
     
     @Override
-    public void editAccount(@RequestHeader("Authorization") String accessToken, @RequestBody ClientBean clientBean){
+    public ClientBean editAccount(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken, @RequestBody ClientBean clientBean){
         
-        // TODO handle Exception
-        proxy.editAccount(accessToken,clientBean);
-        proxy.editCredentials(accessToken,new UserBean(clientBean.getEmail(),clientBean.getPassword()));
-        proxy.editLoanAccount(accessToken,clientBean);
+        ClientBean backupAccountInfo = proxy.getAccountInfo(accessToken);
+        
+        ClientBean msAccountClientModified;
+        ClientBean msLoanClientModified;
+        UserBean msAuthenticationUserModified;
+        
+        msAccountClientModified = proxy.editAccount(accessToken,clientBean);
+        
+        if (msAccountClientModified == null) {
+            doRollBack(accessToken,backupAccountInfo);
+            return null;
+        }
+        
+        UserBean newUserInfo = new UserBean();
+        newUserInfo.setUsername(clientBean.getEmail());
+        newUserInfo.setPassword(clientBean.getPassword());
+        newUserInfo.setId(clientBean.getId());
+        msAuthenticationUserModified = proxy.editCredentials(accessToken,newUserInfo);
     
+        if (!msAuthenticationUserModified.getUsername().equals(clientBean.getEmail())){
+            doRollBack(accessToken,backupAccountInfo);
+            return null;
+        }
+        
+        msLoanClientModified = proxy.editLoanAccount(accessToken,clientBean);
+    
+        if (msLoanClientModified == null) {
+            doRollBack(accessToken,backupAccountInfo);
+            return null;
+        }
+        
+        return msAccountClientModified;
+    }
+    
+    private void doRollBack(String accessToken, ClientBean backup){
+        UserBean backUpUserInfo = new UserBean();
+        backUpUserInfo.setUsername(backup.getEmail());
+        backUpUserInfo.setPassword(backup.getPassword());
+        backUpUserInfo.setId(backup.getId());
+        
+        proxy.editAccount(accessToken,backup);
+        proxy.editCredentials(accessToken,backUpUserInfo);
+        proxy.editLoanAccount(accessToken,backup);
     }
 
 }

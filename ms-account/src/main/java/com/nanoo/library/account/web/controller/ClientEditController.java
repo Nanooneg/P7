@@ -3,11 +3,7 @@ package com.nanoo.library.account.web.controller;
 import com.nanoo.library.account.model.dto.ClientDto;
 import com.nanoo.library.account.service.contractService.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author nanoo
@@ -24,7 +20,7 @@ public class ClientEditController {
         this.clientService = clientService;
     }
     
-    @PostMapping("/account")
+    @PutMapping("/account")
     public ClientDto editClientProfile (@RequestBody ClientDto clientDto){
         
         return clientService.updateClient(clientDto);

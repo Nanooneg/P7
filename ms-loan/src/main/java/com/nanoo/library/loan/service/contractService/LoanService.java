@@ -19,7 +19,7 @@ public interface LoanService {
     
     LoanWithBookInfoDto extendLoan(int loanId);
     
-    void editAccountInfo(ClientDto clientDto);
+    ClientDto editAccountInfo(ClientDto clientDto);
     
     List<String> editLoanStatus();
 }

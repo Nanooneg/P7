@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().httpBasic();
         
         http
-                // Add a filter to check validity of token if present in request header (in a cookie)
+                // Add a filter to check validity of token if present in request header (in a cookie) // TODO remove in all ms cookie on this line
                 .addFilterBefore(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     
     }

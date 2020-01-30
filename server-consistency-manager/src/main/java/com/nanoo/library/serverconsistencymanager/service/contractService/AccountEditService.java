@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface AccountEditService {
     
     
-    void editAccount (@RequestHeader("Authorization") String accessToken, @RequestBody ClientBean clientBean);
+    ClientBean editAccount (@RequestHeader("Authorization") String accessToken, @RequestBody ClientBean clientBean);
 }

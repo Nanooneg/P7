@@ -3,12 +3,13 @@ package com.nanoo.library.authentication.web.controller;
 import com.nanoo.library.authentication.database.UserRepository;
 import com.nanoo.library.authentication.model.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 /**
  * @author nanoo
@@ -26,21 +27,23 @@ public class CredentialEditController {
         this.passwordEncoder = passwordEncoder;
     }
     
-    @PostMapping("/edit/credential")
-    public HttpStatus editCredentials (@RequestHeader String accessToken, @RequestBody User user){
+    @PutMapping("/edit/credential")
+    public User editCredentials (@RequestBody User user){
     
-        if (accessToken != null){ // TODO secure enough ?
     
-            User existingUser = userRepository.findById(user.getId());
+        Optional<User> oldUser = userRepository.findById(user.getId());
+        
+        if (oldUser.isPresent()) {
+            User existingUser = oldUser.get();
             existingUser.setUsername(user.getUsername());
             if (user.getPassword() != null)
                 existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(existingUser);
-    
-            return HttpStatus.OK; // TODO
         }
-        
-        return HttpStatus.UNAUTHORIZED;
+
+        Optional<User> newUserAccount = userRepository.findById(user.getId());
+
+        return newUserAccount.orElse(null);
     }
     
 }

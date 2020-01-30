@@ -103,13 +103,19 @@ public class LoanServiceImpl implements LoanService {
     }
     
     @Override
-    public void editAccountInfo(ClientDto clientDto) {
+    public ClientDto editAccountInfo(ClientDto clientDto) {
     
         Optional<Client> oldClient = clientRepository.findById(clientDto.getId());
         
-        if (oldClient.isPresent())
+        if (oldClient.isPresent()) {
             clientRepository.save(clientMapper.fromDtoToClient(clientDto));
+            Optional<Client> newClientAccount = clientRepository.findById(oldClient.get().getId());
+    
+            if (newClientAccount.isPresent()) return clientMapper.fromClientToDto(newClientAccount.get());
+            
+        }
         
+        return null;
     }
     
     @Override

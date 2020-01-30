@@ -39,12 +39,11 @@ public class LoanEditController {
         
     }
     
-    @PostMapping("/account")
-    public HttpStatus editAccountInfo (@RequestBody ClientDto clientDto){
+    @PutMapping("/account")
+    public ClientDto editAccountInfo (@RequestBody ClientDto clientDto){
         
-        loanService.editAccountInfo(clientDto);
+        return loanService.editAccountInfo(clientDto);
         
-        return HttpStatus.OK; // TODO
     }
     
 }

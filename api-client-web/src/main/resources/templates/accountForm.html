@@ -16,6 +16,7 @@
     <form method="post" th:action="@{/update/profile}" th:object="${account}">
         <h2 class="sr-only">Login Form</h2>
         <div hidden ><input th:field="*{id}" readonly type="number" name="id"></div>
+        <div hidden ><input th:field="*{clientNumber}" readonly type="number" name="clientNumber"></div>
         <div class="illustration"><i class="fas fa-user-alt"></i></div>
         <div class="form-group">
             <input class="form-control readonly" th:field="*{firstName}" readonly type="text" name="firstName" placeholder="Prénom">
