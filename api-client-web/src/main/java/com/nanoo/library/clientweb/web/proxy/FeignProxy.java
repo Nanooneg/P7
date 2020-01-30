@@ -64,4 +64,6 @@ public interface FeignProxy {
     @PutMapping("/ms-consistency-manager/edit/account")
     AccountBean editAccount(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken, @RequestBody AccountBean accountBean);
     
+    @PostMapping("/ms-authentication/refresh")
+    String doUpdateToken(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken, @RequestBody UserBean userUpdated);
 }

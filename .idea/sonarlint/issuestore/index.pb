@@ -143,3 +143,9 @@ tserver-consistency-manager/src/main/java/com/nanoo/library/serverconsistencyman
 rserver-consistency-manager/src/main/java/com/nanoo/library/serverconsistencymanager/model/beans/user/UserBean.java,f/2/f20796f2b692aa1efb42070697c465e12a5a14a7
 Ÿ
 oserver-authentication/src/main/java/com/nanoo/library/authentication/security/JwtTokenAuthenticationFilter.java,f/b/fb28bb298938421597cfdc9a64418fe91390e596
+‰
+Yapi-client-web/src/main/java/com/nanoo/library/clientweb/model/beans/user/ClientBean.java,a/8/a89de75198fed96f2358668400bb9de7ba9ee9c9
+{
+Kms-account/src/main/java/com/nanoo/library/account/model/dto/ClientDto.java,c/5/c5527710012dc2e961054e2af228f5910dbe64d0
+u
+Ems-loan/src/main/java/com/nanoo/library/loan/model/dto/ClientDto.java,d/c/dcb63de600d9f286a4a9e0df36b951ff3710f4b3

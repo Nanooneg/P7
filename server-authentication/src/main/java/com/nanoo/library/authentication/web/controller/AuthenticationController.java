@@ -1,13 +1,16 @@
 package com.nanoo.library.authentication.web.controller;
 
 import com.auth0.jwt.JWT;
+import com.nanoo.library.authentication.database.UserRepository;
 import com.nanoo.library.authentication.model.LoginViewModel;
 import com.nanoo.library.authentication.security.UserPrincipal;
 import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +27,9 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 @RestController
 public class AuthenticationController {
     
-    private final AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
     
+    @Autowired
     public AuthenticationController(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
@@ -54,6 +58,24 @@ public class AuthenticationController {
             return null;
         }
         
+        return authenticationToken;
+        
+    }
+    
+    @PostMapping("/refresh")
+    public String doRefreshToken (@RequestBody LoginViewModel viewModel){
+        
+        String authenticationToken;
+        String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
+    
+
+        authenticationToken = JWT
+                .create()
+                .withClaim("role","ROLE_" + role)
+                .withSubject(viewModel.getUsername())
+                .withExpiresAt(generateExpirationDate())
+                .sign(HMAC512(CommonSecurityConfig.SECRET.getBytes()));
+
         return authenticationToken;
         
     }

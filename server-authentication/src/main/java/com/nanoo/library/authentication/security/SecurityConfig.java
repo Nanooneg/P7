@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/edit/**").authenticated()
+                .antMatchers("/refresh").authenticated()
                 // any other requests must be authenticated
                 .anyRequest().authenticated()
                 .and().httpBasic();
