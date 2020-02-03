@@ -12,7 +12,6 @@ public class CommonSecurityConfig {
     
     /* Config */
     public static final String HEADER = "Authorization";
-    public static final String PREFIX = "Bearer "; // TODO remove ?
     public static final int EXPIRATION = 7; // in days
     public static final String SECRET = "JwtSecretKey";
     

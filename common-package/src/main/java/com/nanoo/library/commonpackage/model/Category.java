@@ -6,9 +6,7 @@ package com.nanoo.library.commonpackage.model;
  */
 public enum Category {
     
-    NOVEL("roman"),
-    HISTORICAL("historique"),
-    COMIC("Bande dessinée");
+    NOVEL("roman"), HISTORICAL("historique"), COMIC("Bande dessinée");
     
     private String name ;
     
