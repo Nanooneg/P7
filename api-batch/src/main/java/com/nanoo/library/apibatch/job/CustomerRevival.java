@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author nanoo
@@ -35,24 +36,33 @@ public class CustomerRevival {
         this.loanStatusUpdate = loanStatusUpdate;
     }
     
+    /**
+     * Scheduled task run every minutes for the demo
+     *
+     * This method collect a list of mail and send a format message to each address
+     */
     @Scheduled(cron="* * * * * ?")
     public void runScheduledTask(){
         
         List<String> customersEmail = loanStatusUpdate.updateStatus();
         
         for (String mail : customersEmail){
-            
             sendSimpleMessage(mail, getExpectedReturnDate());
-            
         }
         
     }
     
+    /**
+     * This method build and send an email with a template
+     *
+     * @param to mail address of recipient
+     * @param arg argument to insert in email body : expected return date
+     */
     private void sendSimpleMessage(String to, String arg) {
         
         SimpleMailMessage message = new SimpleMailMessage(templateSimpleMessage);
         
-        String text = String.format(message.getText(),arg); // TODO
+        String text = String.format(Objects.requireNonNull(message.getText()),arg);
 
         message.setTo(to);
         message.setSubject(CustomerRevival.MAIL_SUBJECT);
@@ -62,7 +72,12 @@ public class CustomerRevival {
         
     }
     
-    
+    /**
+     * This method calculate the expected return date
+     * (the day before current date)
+     *
+     * @return a date
+     */
     private String getExpectedReturnDate (){
         String pattern = "dd MMM yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);

@@ -2,9 +2,9 @@ package com.nanoo.library.apibatch.job;
 
 import com.nanoo.library.apibatch.authentication.CredentialBatch;
 import com.nanoo.library.apibatch.web.FeignProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +14,9 @@ import java.util.List;
  * @create 27/01/2020 - 22:46
  */
 @Service
-@EnableScheduling
-@EnableAsync
 public class LoanStatusUpdate {
+    
+    private Logger logger = LoggerFactory.getLogger(LoanStatusUpdate.class);
     
     private FeignProxy proxy;
     
@@ -25,16 +25,21 @@ public class LoanStatusUpdate {
         this.proxy = proxy;
     }
     
-    public List<String> updateStatus(){
+    /**
+     * This method get an accessToken with his own credentials and ask ms-loan to update loan status
+     *
+     * @return a list of mail attached to loan with new 'outdated' status
+     */
+    List<String> updateStatus(){
         List<String> customersEmail;
     
-        System.out.println("*** LoanStatusUpdate task begin ***");
+        logger.info("*** LoanStatusUpdate task begin ***");
         
         String accessToken = proxy.doLogin(new CredentialBatch());
         customersEmail = proxy.doLoanStatusUpdate(accessToken);
     
-        System.out.println("*** " + customersEmail.size() + " loan(s) updated ***");
-        
+        logger.info("*** {} loan(s) updated ***",customersEmail.size());
+    
         return customersEmail;
         
     }

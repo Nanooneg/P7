@@ -6,13 +6,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import java.util.Properties;
 
 @SpringBootApplication
 @EnableFeignClients("com.nanoo.library.apibatch")
@@ -23,31 +16,10 @@ public class BatchApplication {
 		SpringApplication.run(BatchApplication.class, args);
 	}
 	
-	@Bean
-	public JavaMailSender getJavaMailSender() {
-		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-		mailSender.setHost("smtp.gmail.com");
-		mailSender.setPort(587);
-		
-		Properties props = mailSender.getJavaMailProperties();
-		props.put("mail.transport.protocol", "smtp");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.debug", "true");
-		
-		Authenticator authenticator = new Authenticator() {
-			@Override
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("bibliotheque.de.bordeaux@gmail.com", "Motdepass33");
-			}
-		};
-		
-		Session session = Session.getDefaultInstance(props, authenticator);
-		mailSender.setSession(session);
-		
-		return mailSender;
-	}
 	
+	/**
+	 * Mail template
+	 */
 	@Bean
 	public SimpleMailMessage templateSimpleMessage() {
 		SimpleMailMessage message = new SimpleMailMessage();

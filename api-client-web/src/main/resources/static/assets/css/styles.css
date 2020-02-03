@@ -275,7 +275,7 @@ body {
 }
 
 .home-text-frame .btn:hover, .home-text-frame .btn:focus {
-    text-decoration: none;
+    text-decoration: none !important;
     outline: none !important;
     background-color: white;
     color: black;

@@ -29,4 +29,5 @@ public interface FeignProxy {
     
     @GetMapping("/ms-loan/edit/loanStatus")
     List<String> doLoanStatusUpdate(@RequestHeader("Authorization") String accessToken);
+    
 }

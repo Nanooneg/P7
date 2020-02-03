@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -17,19 +21,26 @@ import java.util.Date;
 @NoArgsConstructor
 public class AccountBean {
     
+    @Pattern(regexp = "(0|\\\\+33|0033)[1-9][0-9]{8}",
+             message = "Le numéro que vous avez renseigné n'est pas valide")
+    private String phoneNumber;
+    @NotNull(message = "Ce champ est requis")
+    @Pattern(regexp = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)",
+             message = "L'adresse e-mail que vous avez renseignée n'est pas valide")
+    private String email;
+    @Size(min = 6,max = 20,message = "Votre mot de passe doit contenir entre 6 et 20 caractères")
+    private String password;
+    
     private Integer id;
     private String lastName;
     private String firstName;
     private Date birthDate;
     private Gender gender;
-    private String phoneNumber;
-    private String email;
     private AddressBean address;
     private Role role;
     private Long clientNumber;
     private Date dateOfCreation;
     private Date dateOfUpdate;
     
-    private String password;
     
 }

@@ -6,16 +6,13 @@ import com.nanoo.library.clientweb.web.proxy.FeignProxy;
 import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
 import com.nanoo.library.commonpackage.security.JwtTokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +25,7 @@ import javax.validation.Valid;
 @Controller
 public class AccountController {
     
-    private static final String ACCOUNT_ATT = "account";
+    private static final String ACCOUNT_ATT = "accountBean";
     
     private static final String ACCOUNT_FORM_VIEW = "accountForm";
     private static final String REDIRECT_LOGIN_VIEW = "redirect:/login";
@@ -46,36 +43,40 @@ public class AccountController {
     
         if (accessToken == null) return REDIRECT_LOGIN_VIEW;
     
-        AccountBean accountInfo = proxy.getAccountInfo(accessToken);
+        AccountBean accountBean = proxy.getAccountInfo(accessToken);
         
-        model.addAttribute(ACCOUNT_ATT,accountInfo);
+        model.addAttribute(ACCOUNT_ATT,accountBean);
         
         return ACCOUNT_FORM_VIEW;
     }
     
     @PostMapping("/update/profile")
-    public String updateClientProfile (@Valid @ModelAttribute("account") AccountBean accountBean, Model model,
-                                       BindingResult bindingResult, HttpServletResponse response,
+    public String updateClientProfile (@Valid AccountBean accountBean, Model model, BindingResult bindingResult, HttpServletResponse response,
                                        @CookieValue(value = CommonSecurityConfig.HEADER,required = false) String accessToken){
         
         if (accessToken == null) return REDIRECT_LOGIN_VIEW;
         
+        if (bindingResult.hasErrors()){
+            model.addAttribute(ACCOUNT_ATT,accountBean);
+            return ACCOUNT_FORM_VIEW;
+        }
+        
         AccountBean editedAccount = proxy.editAccount(accessToken,accountBean);
     
-        // Refresh cookie after mail/username update
-        UserBean userUpdated = new UserBean();
-        userUpdated.setUsername(editedAccount.getEmail());
-        String jwtToken = proxy.doUpdateToken(accessToken,userUpdated);
-        JwtTokenUtils.clear(response);
-        Cookie cookie = JwtTokenUtils.generateCookie(jwtToken);
-        response.addCookie(cookie);
-        
-        if (editedAccount == null) {
+        if (editedAccount != null) {
+            // Refresh cookie after mail/username update
+            UserBean userUpdated = new UserBean();
+            userUpdated.setUsername(editedAccount.getEmail());
+            String jwtToken = proxy.doUpdateToken(accessToken,userUpdated);
+            JwtTokenUtils.clear(response);
+            Cookie cookie = JwtTokenUtils.generateCookie(jwtToken);
+            response.addCookie(cookie);
+            
+            return REDIRECT_USER_HOME_VIEW;
+        } else {
             model.addAttribute(ACCOUNT_ATT,accountBean);
             model.addAttribute("errorMessage","ERREUR! Les modifications n'ont pas été enregistrées!");
             return ACCOUNT_FORM_VIEW;
-        }else {
-            return REDIRECT_USER_HOME_VIEW;
         }
     }
     

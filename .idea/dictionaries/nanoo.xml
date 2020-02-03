@@ -3,9 +3,11 @@
     <words>
       <w>abimé</w>
       <w>administrateur</w>
+      <w>apibatch</w>
       <w>arnaud</w>
       <w>auteurs</w>
       <w>autheur</w>
+      <w>automatique</w>
       <w>avant</w>
       <w>bibliothèque</w>
       <w>bibliotèques</w>
@@ -16,13 +18,19 @@
       <w>cours</w>
       <w>couverture</w>
       <w>dtos</w>
+      <w>durée</w>
       <w>employé</w>
+      <w>emprunt</w>
       <w>emprunts</w>
       <w>empruntés</w>
+      <w>enregistrées</w>
+      <w>envoi</w>
       <w>erreur</w>
       <w>etendre</w>
       <w>exemplaire</w>
+      <w>fait</w>
       <w>fini</w>
+      <w>gmail</w>
       <w>hifh</w>
       <w>hoxton</w>
       <w>identifiant</w>
@@ -35,22 +43,31 @@
       <w>mapstruct</w>
       <w>mclientui</w>
       <w>microservice</w>
+      <w>motdepass</w>
       <w>mqvze</w>
       <w>mxnl</w>
       <w>naissance</w>
       <w>nanoo</w>
       <w>navbar</w>
+      <w>numéro</w>
       <w>oublié</w>
       <w>pbek</w>
+      <w>pensez</w>
+      <w>possibilité</w>
       <w>postgre</w>
       <w>profil</w>
       <w>prolonger</w>
       <w>prolongé</w>
       <w>propos</w>
       <w>prénom</w>
+      <w>pénalité</w>
+      <w>ramener</w>
       <w>retourner</w>
+      <w>répondre</w>
       <w>résumé</w>
       <w>serverconsistencymanager</w>
+      <w>smtp</w>
+      <w>starttls</w>
       <w>swiper</w>
       <w>thec</w>
       <w>trouver</w>
@@ -59,6 +76,8 @@
       <w>vpzp</w>
       <w>xxxxxxxxxx</w>
       <w>yotl</w>
+      <w>était</w>
+      <w>éviter</w>
     </words>
   </dictionary>
 </component>
