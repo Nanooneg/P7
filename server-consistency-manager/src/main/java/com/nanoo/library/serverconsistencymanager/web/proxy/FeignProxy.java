@@ -4,8 +4,10 @@ import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
 import com.nanoo.library.serverconsistencymanager.model.beans.user.ClientBean;
 import com.nanoo.library.serverconsistencymanager.model.beans.user.UserBean;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 /**
  * @author nanoo

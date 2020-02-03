@@ -1,12 +1,8 @@
 
-î
-dserver-authentication/src/main/java/com/nanoo/library/authentication/security/AuthEntryPointJwt.java,9/f/9f7c938d9719219b5d4d82456c466b90f5634158
 ê
 `server-authentication/src/main/java/com/nanoo/library/authentication/security/UserPrincipal.java,a/d/ad5123e42b1c351a3f83fd374dc8c26631ef40b1
 ì
 cserver-authentication/src/main/java/com/nanoo/library/authentication/AuthenticationApplication.java,c/a/caf7f64ab083b698a1765314634afee96f6be119
-Ç
-Rms-account/src/main/java/com/nanoo/library/account/security/AuthEntryPointJwt.java,8/c/8c12e0040767a4a8ee38341eaeb35f74c8a94d39
 E
 server-eureka/pom.xml,9/1/9127f0d5738a15c38408f65e5f87ccc48865278a
 ?
@@ -143,8 +139,6 @@ tserver-consistency-manager/src/main/java/com/nanoo/library/serverconsistencyman
 rserver-consistency-manager/src/main/java/com/nanoo/library/serverconsistencymanager/model/beans/user/UserBean.java,f/2/f20796f2b692aa1efb42070697c465e12a5a14a7
 ü
 oserver-authentication/src/main/java/com/nanoo/library/authentication/security/JwtTokenAuthenticationFilter.java,f/b/fb28bb298938421597cfdc9a64418fe91390e596
-â
-Yapi-client-web/src/main/java/com/nanoo/library/clientweb/model/beans/user/ClientBean.java,a/8/a89de75198fed96f2358668400bb9de7ba9ee9c9
 {
 Kms-account/src/main/java/com/nanoo/library/account/model/dto/ClientDto.java,c/5/c5527710012dc2e961054e2af228f5910dbe64d0
 u

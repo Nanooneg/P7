@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class AddressBean implements Serializable {
+class AddressBean implements Serializable {
     
     private static final long serialVersionUID = 1L;
     

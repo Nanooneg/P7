@@ -24,6 +24,14 @@ public class AccountEditServiceImpl implements AccountEditService {
         this.proxy = proxy;
     }
     
+    /**
+     * This method receive a client with attribut(s) to update and do update in all ms
+     * If an error happen, rollback with client backup value
+     *
+     * @param accessToken token
+     * @param clientBean client to save in different ms
+     * @return client updated if success or null
+     */
     @Override
     public ClientBean editAccount(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken, @RequestBody ClientBean clientBean){
         
@@ -61,6 +69,12 @@ public class AccountEditServiceImpl implements AccountEditService {
         return msAccountClientModified;
     }
     
+    /**
+     * Manual rollback. get original db state with backup client value
+     *
+     * @param accessToken token
+     * @param backup client backup
+     */
     private void doRollBack(String accessToken, ClientBean backup){
         UserBean backUpUserInfo = new UserBean();
         backUpUserInfo.setUsername(backup.getEmail());
