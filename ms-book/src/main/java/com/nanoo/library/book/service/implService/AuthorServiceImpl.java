@@ -2,7 +2,6 @@ package com.nanoo.library.book.service.implService;
 
 import com.nanoo.library.book.database.AuthorRepository;
 import com.nanoo.library.book.model.dto.AuthorDto;
-import com.nanoo.library.book.model.dto.BookDto;
 import com.nanoo.library.book.model.entities.Author;
 import com.nanoo.library.book.model.entities.Book;
 import com.nanoo.library.book.model.mapper.AuthorMapper;
@@ -24,14 +23,12 @@ public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository authorRepository;
     
     private final AuthorMapper authorMapper;
-    private final BookMapper bookMapper;
     
     
     @Autowired
-    public AuthorServiceImpl(AuthorRepository authorRepository, AuthorMapper authorMapper, BookMapper bookMapper) {
+    public AuthorServiceImpl(AuthorRepository authorRepository, AuthorMapper authorMapper) {
         this.authorRepository = authorRepository;
         this.authorMapper = authorMapper;
-        this.bookMapper = bookMapper;
     }
     
     @Override

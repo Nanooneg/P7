@@ -2,7 +2,6 @@ package com.nanoo.library.book.web.controller;
 
 import com.nanoo.library.book.model.dto.BookDto;
 import com.nanoo.library.book.model.dto.LibraryWithoutBooksDto;
-import com.nanoo.library.book.model.entities.Book;
 import com.nanoo.library.book.service.contractService.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

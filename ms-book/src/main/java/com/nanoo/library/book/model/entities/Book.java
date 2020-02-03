@@ -37,7 +37,6 @@ public class Book implements Serializable {
     @Column(length = 400)
     private String summary;
     
-    // TODO check mapping for cover maybe like library mapping
     @ManyToOne(cascade = CascadeType.ALL)
     private Cover cover;
     

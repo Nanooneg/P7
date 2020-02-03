@@ -19,8 +19,6 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book,Integer> {
     
-    Page<Book> findAll(Pageable page);
-    
     Page<Book> findAllByLibrary(Library library, Pageable pageable);
     
     @Query(value = "SELECT distinct b FROM Book b " +

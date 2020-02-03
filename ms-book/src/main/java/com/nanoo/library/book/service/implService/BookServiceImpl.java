@@ -1,10 +1,8 @@
 package com.nanoo.library.book.service.implService;
 
-import com.nanoo.library.book.database.AuthorRepository;
 import com.nanoo.library.book.database.BookRepository;
 import com.nanoo.library.book.model.dto.BookDto;
 import com.nanoo.library.book.model.dto.BookInfoLoanDto;
-import com.nanoo.library.book.model.dto.BookWithoutAuthorsAndLibraryDto;
 import com.nanoo.library.book.model.entities.Book;
 import com.nanoo.library.book.model.entities.Library;
 import com.nanoo.library.book.model.mapper.BookMapper;
@@ -17,7 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
