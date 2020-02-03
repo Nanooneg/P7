@@ -58,6 +58,7 @@ public class BookController {
         BookSearchAttribut searchAttribut = new BookSearchAttribut();
         searchAttribut.setLibraryId(Integer.parseInt(library));
         
+        assert actualLibrary != null;
         model.addAttribute(SLIDER_ATT,proxy.getLastRegisteredBookOfLibrary(actualLibrary.getId().toString()));
         model.addAttribute(LIST_ATT,proxy.listAllBookOfLibrary(actualLibrary.getId().toString()));
     

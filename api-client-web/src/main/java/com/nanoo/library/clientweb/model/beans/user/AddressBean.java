@@ -1,6 +1,6 @@
 package com.nanoo.library.clientweb.model.beans.user;
 
-import com.nanoo.library.clientweb.model.enums.Cities;
+import com.nanoo.library.commonpackage.model.Cities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

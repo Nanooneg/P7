@@ -1,7 +1,6 @@
 package com.nanoo.library.clientweb.model.beans.loan;
 
 import com.nanoo.library.clientweb.model.beans.book.BookLoanBean;
-import com.nanoo.library.clientweb.model.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

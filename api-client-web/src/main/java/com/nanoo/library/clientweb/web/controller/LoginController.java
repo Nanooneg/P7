@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 /**
  * @author nanoo
@@ -62,18 +60,12 @@ public class LoginController {
     }
     
     @PostMapping("/login")
-    public String loginUser(@Valid @ModelAttribute ("user") UserBean user, Model model,
+    public String loginUser(@ModelAttribute ("user") UserBean user, Model model,
                             HttpServletResponse response, BindingResult bindingResult){
         
         model.addAttribute(LIBRARY_ATT,proxy.listAllLibrary());
         
-        // form validation
-        if (bindingResult.hasErrors()){
-            model.addAttribute(USER_ATT,user);
-            return LOGIN_VIEW;
-        }
-        
-        // Authenticate user and get back token
+        // Authenticate user and receive token
         String jwtToken = proxy.doLogin(user);
         if (jwtToken == null) {
             

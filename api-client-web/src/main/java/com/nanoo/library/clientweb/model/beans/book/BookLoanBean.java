@@ -1,6 +1,5 @@
 package com.nanoo.library.clientweb.model.beans.book;
 
-import com.nanoo.library.clientweb.model.enums.Condition;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

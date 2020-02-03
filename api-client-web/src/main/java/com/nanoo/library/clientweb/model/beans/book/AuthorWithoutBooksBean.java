@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class AuthorWithoutBooksBean{
+class AuthorWithoutBooksBean{
     
     private Integer id;
     private String lastName;

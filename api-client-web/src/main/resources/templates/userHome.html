@@ -28,7 +28,7 @@
                         <p>Date de naissance : <span th:text="${#dates.format(account.birthDate,'dd MMM YYYY')}"></span></p>
                         <p>Inscris depuis : <span th:text="${#dates.format(account.dateOfCreation,'dd MMM YYYY')}"></span></p>
                     </div>
-                </div> <!-- TODO put link on buttons and add features-->
+                </div>
                 <div class="text-center">
                     <a th:href="@{/edit/profile}"><button type="submit" class="btn btn-light action-button">Modifier mon profil</button></a>
                 </div>

@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class CoverBean {
+class CoverBean {
     
     private Integer id;
     private String title;
