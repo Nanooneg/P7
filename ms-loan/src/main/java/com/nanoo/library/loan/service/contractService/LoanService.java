@@ -3,7 +3,6 @@ package com.nanoo.library.loan.service.contractService;
 import com.nanoo.library.loan.model.dto.ClientDto;
 import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
 import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
-import com.nanoo.library.loan.model.entities.Loan;
 
 import java.util.List;
 

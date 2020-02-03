@@ -2,7 +2,6 @@ package com.nanoo.library.loan.database;
 
 import com.nanoo.library.loan.model.entities.Client;
 import com.nanoo.library.loan.model.entities.Loan;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

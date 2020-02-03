@@ -2,10 +2,8 @@ package com.nanoo.library.loan.web.controller;
 
 import com.nanoo.library.loan.model.dto.ClientDto;
 import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
-import com.nanoo.library.loan.model.entities.Loan;
 import com.nanoo.library.loan.service.contractService.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

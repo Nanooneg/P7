@@ -79,7 +79,7 @@ public class LoanServiceImpl implements LoanService {
         
         if (loanWithBookInfo.isPresent()){
             Loan existingLoanWithBookInfo = loanWithBookInfo.get();
-            if (existingLoanWithBookInfo.isExtended()){
+            if (existingLoanWithBookInfo.isExtended() || !isExtensible(existingLoanWithBookInfo.getExpectedReturnDate())) {
                 return null;
             }else {
                 existingLoanWithBookInfo.setExtended(true);
@@ -87,7 +87,7 @@ public class LoanServiceImpl implements LoanService {
                         extendExpectedReturnDate(existingLoanWithBookInfo.getExpectedReturnDate()));
                 if (existingLoanWithBookInfo.getStatus().equals(Status.OUTDATED)) {
                     existingLoanWithBookInfo.setStatus(Status.ONGOING);
-                } // TODO compare date to handle "not extensible" loan
+                }
                 return loanMapper.fromLoanToDtoWithBookInfo(loanRepository.save(existingLoanWithBookInfo));
             }
         }
@@ -100,6 +100,12 @@ public class LoanServiceImpl implements LoanService {
         c.setTime(oldDate);
         c.add(Calendar.DAY_OF_WEEK,LOAN_DAYS_DURATION);
         return c.getTime();
+    }
+    
+    private boolean isExtensible (Date actualExpectedReturnDate){
+        
+        return extendExpectedReturnDate(actualExpectedReturnDate).after(new Date()) ;
+        
     }
     
     @Override
