@@ -6,6 +6,8 @@ import com.nanoo.library.account.model.dto.ClientDto;
 import com.nanoo.library.account.model.entities.Client;
 import com.nanoo.library.account.model.mapper.ClientMapper;
 import com.nanoo.library.commonpackage.model.Role;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,8 @@ import java.util.Optional;
  */
 @Service
 public class ClientServiceImpl implements ClientService {
+    
+    private Logger logger = LoggerFactory.getLogger(ClientServiceImpl.class);
     
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
@@ -53,7 +57,7 @@ public class ClientServiceImpl implements ClientService {
     }
     
     @Override
-    public ClientDto updateClient(ClientDto clientDto) { //TODO rename update to add save/update
+    public ClientDto saveClient(ClientDto clientDto) {
         
         Client client = clientMapper.fromDtoToClient(clientDto);
         
@@ -77,9 +81,9 @@ public class ClientServiceImpl implements ClientService {
         client.setDateOfUpdate(new Date());
         
         try {
-            return clientMapper.fromClientToDto(clientRepository.save(client)); //TODO maybe return Http Status
+            return clientMapper.fromClientToDto(clientRepository.save(client));
         }catch (Exception e){
-            System.out.println(e.getMessage()); //TODO add logger
+            logger.error(e.getMessage());
             return null;
         }
     }

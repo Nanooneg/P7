@@ -14,5 +14,5 @@ public interface ClientService {
     
     ClientDto getLoggedClientInfo();
     
-    ClientDto updateClient(ClientDto clientDto);
+    ClientDto saveClient(ClientDto clientDto);
 }

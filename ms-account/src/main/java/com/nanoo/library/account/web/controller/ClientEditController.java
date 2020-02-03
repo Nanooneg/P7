@@ -23,7 +23,7 @@ public class ClientEditController {
     @PutMapping("/account")
     public ClientDto editClientProfile (@RequestBody ClientDto clientDto){
         
-        return clientService.updateClient(clientDto);
+        return clientService.saveClient(clientDto);
         
     }
     
