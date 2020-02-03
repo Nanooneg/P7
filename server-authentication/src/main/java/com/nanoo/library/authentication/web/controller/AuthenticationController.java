@@ -1,7 +1,6 @@
 package com.nanoo.library.authentication.web.controller;
 
 import com.auth0.jwt.JWT;
-import com.nanoo.library.authentication.database.UserRepository;
 import com.nanoo.library.authentication.model.LoginViewModel;
 import com.nanoo.library.authentication.security.UserPrincipal;
 import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
@@ -10,7 +9,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -80,6 +78,11 @@ public class AuthenticationController {
         
     }
     
+    /**
+     * This method generate an expiration date with the current date
+     *
+     * @return a date
+     */
     private Date generateExpirationDate(){
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());

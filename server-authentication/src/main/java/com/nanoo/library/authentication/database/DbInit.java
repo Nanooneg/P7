@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class DbInit implements CommandLineRunner {
     
-    public static final String PASSWORD = "456456";
+    private static final String PASSWORD = "456456";
     
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -29,6 +29,7 @@ public class DbInit implements CommandLineRunner {
     
     /**
      * Callback used to run the bean.
+     * This method create users and save them in DB at the ms launch.
      *
      * @param args incoming main method arguments
      */
