@@ -66,6 +66,10 @@ body {
     overflow-x: visible;
 }
 
+.finish-item{
+    filter: brightness(40%);
+}
+
 .cover-item{
     height: 230px;
     width: 180px;
@@ -174,19 +178,28 @@ body {
     color: red;
     margin-left: 20px;
     padding-bottom: 2px;
-    align-self: flex-end;
 }
 .finish{
     color: darkgrey;
     margin-left: 20px;
     padding-bottom: 2px;
-    align-self: flex-end;
 }
 .ongoing{
     color: limegreen;
     margin-left: 20px;
     padding-bottom: 2px;
+}
+
+.loan-button-status{
+    display: flex;
     align-self: flex-end;
+}
+
+.extend-button{
+    padding-right: 20px;
+}
+.extend-button-disable{
+    color: #dcdcdc;
 }
 
 /*************************************/

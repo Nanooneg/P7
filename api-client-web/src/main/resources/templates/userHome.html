@@ -49,7 +49,7 @@
                 <div class="loan-list">
                     <!-- Loan list -->
                     <div th:each="loan :${loans}" class="catalog-item">
-                        <div class="inside-item">
+                        <div th:classappend="${(loan.status.equalsIgnoreCase('fini')? 'inside-item finish-item' : 'inside-item' )}">
                             <div class="cover-item">
                                 <img th:src="${loan.book.cover}" alt="couverture du livre" src="">
                             </div>
@@ -58,13 +58,21 @@
                                     <div class="title-book" th:text="${loan.book.title}"></div>
                                     <div class="return-date" th:if="${!loan.status.equalsIgnoreCase('fini')}">
                                         (Retour : <span th:text="${#dates.format(loan.expectedReturnDate,'dd MMM YYYY')}"></span>)
-                                        <span th:if="${loan.extended}"> **prolongé**</span>
-                                        <a th:href="@{|/utilisateur/etendre/${loan.id}|}"><span th:if="${!loan.extended && !loan.status.equalsIgnoreCase('fini')}"> -> prolonger</span></a>
                                     </div>
-                                    <div th:classappend="${(loan.status.equalsIgnoreCase('fini')? 'finish' : '' ) +
+                                    <div class="loan-button-status">
+                                        <div th:if="${!loan.status.equalsIgnoreCase('fini')}" class="extend-button">
+                                            <span th:if="${loan.extended}" class="extend-button-disable">
+                                                <i class="fas fa-sync-alt"></i>
+                                            </span>
+                                            <span th:unless="${loan.extended}">
+                                                <a th:href="@{|/utilisateur/etendre/${loan.id}|}"><i class="fas fa-sync-alt"></i></a>
+                                            </span>
+                                        </div>
+                                        <div th:classappend="${(loan.status.equalsIgnoreCase('fini')? 'finish' : '' ) +
                                                            (loan.status.equalsIgnoreCase('en retard')? 'outdated' : '' ) +
                                                            (loan.status.equalsIgnoreCase('en cours')? 'ongoing' : '' )}"
-                                    >Statut : <span th:text="${loan.status}"></span></div>
+                                        >Statut : <span th:text="${loan.status}"></span></div>
+                                    </div>
                                 </div>
                                 <div class="description-item" th:text="${loan.book.summary}"></div>
                             </div>
