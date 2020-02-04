@@ -1,6 +1,7 @@
 package com.nanoo.library.serverconsistencymanager.service.implService;
 
 import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
+import com.nanoo.library.serverconsistencymanager.model.beans.authentication.CredentialConsistencyManager;
 import com.nanoo.library.serverconsistencymanager.model.beans.user.ClientBean;
 import com.nanoo.library.serverconsistencymanager.model.beans.user.UserBean;
 import com.nanoo.library.serverconsistencymanager.service.contractService.AccountEditService;
@@ -26,25 +27,27 @@ public class AccountEditServiceImpl implements AccountEditService {
     
     /**
      * This method receive a client with attribut(s) to update and do update in all ms
-     * If an error happen, rollback with client backup value
+     * If an error happen, do rollback with client backup value
      *
-     * @param accessToken token
+     * @param userAccessToken token
      * @param clientBean client to save in different ms
      * @return client updated if success or null
      */
     @Override
-    public ClientBean editAccount(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken, @RequestBody ClientBean clientBean){
+    public ClientBean editAccount(@RequestHeader(CommonSecurityConfig.HEADER) String userAccessToken,
+                                  @RequestBody ClientBean clientBean){
         
-        ClientBean backupAccountInfo = proxy.getAccountInfo(accessToken);
+        ClientBean backupAccountInfo = proxy.getAccountInfo(userAccessToken);
+        String technicalAccessToken = proxy.doLogin(userAccessToken, new CredentialConsistencyManager());
         
         ClientBean msAccountClientModified;
         ClientBean msLoanClientModified;
         UserBean msAuthenticationUserModified;
         
-        msAccountClientModified = proxy.editAccount(accessToken,clientBean);
+        msAccountClientModified = proxy.editAccount(technicalAccessToken,clientBean);
         
         if (msAccountClientModified == null) {
-            doRollBack(accessToken,backupAccountInfo);
+            doRollBack(technicalAccessToken,backupAccountInfo);
             return null;
         }
         
@@ -52,17 +55,17 @@ public class AccountEditServiceImpl implements AccountEditService {
         newUserInfo.setUsername(clientBean.getEmail());
         newUserInfo.setPassword(clientBean.getPassword());
         newUserInfo.setId(clientBean.getId());
-        msAuthenticationUserModified = proxy.editCredentials(accessToken,newUserInfo);
+        msAuthenticationUserModified = proxy.editCredentials(technicalAccessToken,newUserInfo);
     
         if (!msAuthenticationUserModified.getUsername().equals(clientBean.getEmail())){
-            doRollBack(accessToken,backupAccountInfo);
+            doRollBack(technicalAccessToken,backupAccountInfo);
             return null;
         }
         
-        msLoanClientModified = proxy.editLoanAccount(accessToken,clientBean);
+        msLoanClientModified = proxy.editLoanAccount(technicalAccessToken,clientBean);
     
         if (msLoanClientModified == null) {
-            doRollBack(accessToken,backupAccountInfo);
+            doRollBack(technicalAccessToken,backupAccountInfo);
             return null;
         }
         

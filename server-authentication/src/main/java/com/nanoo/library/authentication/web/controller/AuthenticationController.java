@@ -35,29 +35,15 @@ public class AuthenticationController {
     @PostMapping("/login")
     public String doLogin (@RequestBody LoginViewModel viewModel){
         
-        String authenticationToken;
+        return generateToken(viewModel);
         
-        try{
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(viewModel.getUsername(), viewModel.getPassword()));
+    }
     
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
+    @PostMapping("/manager/login")
+    public String doConsistencyManagerLogin (@RequestBody LoginViewModel viewModel){
     
-            System.out.println(generateExpirationDate());
-            authenticationToken = JWT
-                    .create()
-                    .withClaim("role","ROLE_" + principal.getRole())
-                    .withSubject(principal.getUsername())
-                    .withExpiresAt(generateExpirationDate())
-                    .sign(HMAC512(CommonSecurityConfig.SECRET.getBytes()));
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            return null;
-        }
-        
-        return authenticationToken;
-        
+        return generateToken(viewModel);
+    
     }
     
     @PostMapping("/refresh")
@@ -76,6 +62,38 @@ public class AuthenticationController {
 
         return authenticationToken;
         
+    }
+    
+    /**
+     * This method generate a token after authenticate user
+     *
+     * @param viewModel user
+     * @return token as a string
+     */
+    private String generateToken(LoginViewModel viewModel){
+    
+        String authenticationToken;
+    
+        try{
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(viewModel.getUsername(), viewModel.getPassword()));
+        
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
+        
+            System.out.println(generateExpirationDate());
+            authenticationToken = JWT
+                    .create()
+                    .withClaim("role","ROLE_" + principal.getRole())
+                    .withSubject(principal.getUsername())
+                    .withExpiresAt(generateExpirationDate())
+                    .sign(HMAC512(CommonSecurityConfig.SECRET.getBytes()));
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        
+        return authenticationToken;
     }
     
     /**

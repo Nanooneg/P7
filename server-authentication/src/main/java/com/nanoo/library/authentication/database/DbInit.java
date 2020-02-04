@@ -60,15 +60,23 @@ public class DbInit implements CommandLineRunner {
         employee.setRoles("EMPLOYEE");
         employee.setPermissions("");
     
-        User technical = new User();
-        technical.setId(4);
-        technical.setUsername("technical");
-        technical.setPassword(passwordEncoder.encode(PASSWORD));
-        technical.setActive(true);
-        technical.setRoles("TECHNICAL");
-        technical.setPermissions("");
+        User technicalBatch = new User();
+        technicalBatch.setId(4);
+        technicalBatch.setUsername("technical-batch");
+        technicalBatch.setPassword(passwordEncoder.encode(PASSWORD));
+        technicalBatch.setActive(true);
+        technicalBatch.setRoles("TECHNICAL");
+        technicalBatch.setPermissions("");
     
-        List<User> users = Arrays.asList(admin,client,employee,technical);
+        User technicalConsistencyManager = new User();
+        technicalConsistencyManager.setId(5);
+        technicalConsistencyManager.setUsername("technical-consistency-manager");
+        technicalConsistencyManager.setPassword(passwordEncoder.encode(PASSWORD));
+        technicalConsistencyManager.setActive(true);
+        technicalConsistencyManager.setRoles("TECHNICAL");
+        technicalConsistencyManager.setPermissions("");
+    
+        List<User> users = Arrays.asList(admin,client,employee,technicalBatch,technicalConsistencyManager);
         
         userRepository.saveAll(users);
         

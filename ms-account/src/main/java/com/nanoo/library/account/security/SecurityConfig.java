@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/consult/**").authenticated()
                 .antMatchers("/create/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
-                .antMatchers("/edit/**").authenticated()
+                .antMatchers("/edit/**").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
                 .antMatchers("/delete/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
                 // any other requests must be authenticated
                 .anyRequest().authenticated()

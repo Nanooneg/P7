@@ -60,7 +60,7 @@ public interface FeignProxy {
     LoanBean extendLoanExpectedReturnDate(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken,
                                           @PathVariable("loanId") int loanId);
     
-    @PutMapping("/ms-consistency-manager/edit/account")
+    @PostMapping("/ms-consistency-manager/edit/account")
     AccountBean editAccount(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken, @RequestBody AccountBean accountBean);
     
     @PostMapping("/ms-authentication/refresh")

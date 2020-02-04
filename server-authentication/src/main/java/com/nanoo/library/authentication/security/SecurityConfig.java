@@ -1,5 +1,6 @@
 package com.nanoo.library.authentication.security;
 
+import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -43,7 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // authorization requests config
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/edit/**").authenticated()
+                .antMatchers("/manager/**").authenticated()
+                .antMatchers("/edit/**").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
                 .antMatchers("/refresh").authenticated()
                 // any other requests must be authenticated
                 .anyRequest().authenticated()

@@ -1,4 +1,4 @@
-package com.nanoo.library.apibatch.authentication;
+package com.nanoo.library.serverconsistencymanager.model.beans.authentication;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +12,9 @@ import lombok.ToString;
 @Getter @Setter
 @NoArgsConstructor
 @ToString
-public class CredentialBatch {
+public class CredentialConsistencyManager {
     
-    private String username = "technical-batch";
+    private String username = "technical-consistency-manager";
     private String password = "456456";
     
 }

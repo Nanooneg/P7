@@ -1,13 +1,11 @@
 package com.nanoo.library.serverconsistencymanager.web.proxy;
 
 import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
+import com.nanoo.library.serverconsistencymanager.model.beans.authentication.CredentialConsistencyManager;
 import com.nanoo.library.serverconsistencymanager.model.beans.user.ClientBean;
 import com.nanoo.library.serverconsistencymanager.model.beans.user.UserBean;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author nanoo
@@ -15,6 +13,14 @@ import org.springframework.web.bind.annotation.RequestHeader;
  */
 @FeignClient(name = "server-gateway", url = "localhost:8763")
 public interface FeignProxy {
+    
+    /* ================================ */
+    /* === No Authentication needed === */
+    /* ================================ */
+    
+    @PostMapping("/ms-authentication/manager/login")
+    String doLogin (@RequestHeader(CommonSecurityConfig.HEADER) String accessToken,
+                    @RequestBody CredentialConsistencyManager credentialBatch);
     
     /* =============================== */
     /* ==== Authentication needed ==== */

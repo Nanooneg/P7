@@ -1,5 +1,6 @@
 package com.nanoo.library.serverconsistencymanager.web.controller;
 
+import com.nanoo.library.commonpackage.security.CommonSecurityConfig;
 import com.nanoo.library.serverconsistencymanager.model.beans.user.ClientBean;
 import com.nanoo.library.serverconsistencymanager.service.contractService.AccountEditService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class EditController {
         this.accountEditService = accountEditService;
     }
     
-    @PutMapping("/account")
-    public ClientBean edit (@RequestHeader("Authorization") String accessToken, @RequestBody ClientBean clientBean){
+    @PostMapping("/account")
+    public ClientBean edit (@RequestHeader(CommonSecurityConfig.HEADER) String accessToken, @RequestBody ClientBean clientBean){
         
         return accountEditService.editAccount(accessToken,clientBean);
         
