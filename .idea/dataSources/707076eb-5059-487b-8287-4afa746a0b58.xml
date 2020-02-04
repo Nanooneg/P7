@@ -155,6 +155,7 @@
     </sequence>
     <table id="28" parent="19" name="user_authentication">
       <ObjectId>124296</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>nanoo</Owner>
       <StateNumber>47649</StateNumber>
     </table>

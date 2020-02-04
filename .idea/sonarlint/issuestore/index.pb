@@ -63,8 +63,6 @@ Sms-loan/src/main/java/com/nanoo/library/loan/web/controller/LoanEditController.
 Vms-loan/src/main/java/com/nanoo/library/loan/web/controller/LoanConsultController.java,e/3/e3d8fff50f87ac1944f2b5ad6d04649bc579df67
 Ö
 Ums-book/src/main/java/com/nanoo/library/book/service/contractService/BookService.java,c/2/c22a001d9ef293c37473ad9395024be6e040704a
-è
-_server-gateway/src/main/java/com/nanoo/library/servergateway/filters/RedirectEditUriFilter.java,5/3/5346823dd1705be320fd20b8a6c9f5752df4bf9d
 °
 qserver-authentication/src/main/java/com/nanoo/library/authentication/web/controller/CredentialEditController.java,d/2/d260b6278b59a7d8eeda9f5d92b5526794a88865
 ç

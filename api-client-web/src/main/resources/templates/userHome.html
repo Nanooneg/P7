@@ -18,15 +18,15 @@
             <div class="info-user-buttons-container">
                 <div class="dashboard-card card-user">
                     <div class="picture-profil">
-                        <img th:src="@{/image/profil-picture.jpeg}" alt="photo de profil" src="">
+                        <img th:src="@{/image/profil-picture-2.jpg}" alt="photo de profil" src="">
                     </div>
                     <div class="info-user">
                         <p>Nom : <span th:text="${account.lastName}"></span></p>
                         <p>Prénom : <span th:text="${account.firstName}"></span></p>
-                        <p>Profession : **add to info**</p>
+                        <p>N° Adhérent : <span th:text="${account.clientNumber}"></span></p>
                         <p>Adresse : <span th:text="${account.address}"></span></p>
                         <p>Date de naissance : <span th:text="${#dates.format(account.birthDate,'dd MMM YYYY')}"></span></p>
-                        <p>Inscris depuis : <span th:text="${#dates.format(account.dateOfCreation,'dd MMM YYYY')}"></span></p>
+                        <p>Inscris depuis le : <span th:text="${#dates.format(account.dateOfCreation,'dd MMM YYYY')}"></span></p>
                     </div>
                 </div>
                 <div class="text-center">

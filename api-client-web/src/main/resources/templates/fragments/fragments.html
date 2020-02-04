@@ -43,7 +43,7 @@
                     <!-- Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Bibliothèques </a>
+                           aria-haspopup="true" aria-expanded="false" th:text="${actualLibrary != null ? actualLibrary.name : 'Bibliothèques'}"></a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                             <!--TODO insert library in cookie to be accessible from each html page ??-->
                             <a class="dropdown-item" th:each="library : ${libraries}" th:href="@{|/livre/${library.id}/catalogue|}" th:text="${library.name}"></a>

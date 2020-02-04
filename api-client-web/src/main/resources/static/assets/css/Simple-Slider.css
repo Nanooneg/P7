@@ -1,6 +1,7 @@
 /*        Slider       */
 .simple-slider{
   background-color: rgba(255,255,255,0.8);
+  min-height: 580px;
 }
 
 .inside-slider{
@@ -110,4 +111,11 @@
 .search-frame .row{
   width: 80%;
   justify-content: center;
+}
+
+.no-result{
+  padding-top: 300px;
+  font-size: 30px;
+  font-style: italic;
+  color: #9b9b9b;
 }

@@ -35,7 +35,7 @@ public class CredentialEditController {
         if (oldUser.isPresent()) {
             User existingUser = oldUser.get();
             existingUser.setUsername(user.getUsername());
-            if (!user.getPassword().equalsIgnoreCase("mot de passe"))
+            if (!user.getPassword().equalsIgnoreCase(""))
                 existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(existingUser);
         }

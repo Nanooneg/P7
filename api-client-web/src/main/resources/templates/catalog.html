@@ -43,9 +43,12 @@
     </div>
     <!-- Slider -->
     <div id="slider" class="simple-slider">
+        <!-- No result -->
+        <div class="no-result text-center" th:if="${sliderBooks.isEmpty()}">
+            <p>Pas de résultat</p>
+        </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-
                 <!-- Condition for data to display in slider (in books searched page, display the same in slider and list below) handle in controller -->
                 <div th:each="book : ${sliderBooks}" class="swiper-slide">
                     <div class="row inside-slider">

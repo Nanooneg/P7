@@ -2,9 +2,12 @@
   <dictionary name="nanoo">
     <words>
       <w>abimé</w>
+      <w>adhérent</w>
       <w>administrateur</w>
       <w>apibatch</w>
       <w>arnaud</w>
+      <w>artificiels</w>
+      <w>assommoir</w>
       <w>auteurs</w>
       <w>autheur</w>
       <w>automatique</w>
@@ -13,6 +16,7 @@
       <w>bibliothèque</w>
       <w>bibliotèques</w>
       <w>bienvenue</w>
+      <w>capucins</w>
       <w>clientweb</w>
       <w>connecter</w>
       <w>contacter</w>
@@ -20,6 +24,7 @@
       <w>cours</w>
       <w>couverture</w>
       <w>dessinée</w>
+      <w>diocésienne</w>
       <w>dtos</w>
       <w>durée</w>
       <w>employes</w>
@@ -35,31 +40,44 @@
       <w>fait</w>
       <w>femme</w>
       <w>fini</w>
+      <w>fleurs</w>
       <w>gmail</w>
       <w>gérer</w>
       <w>hifh</w>
       <w>historique</w>
       <w>homme</w>
+      <w>hommme</w>
       <w>hoxton</w>
       <w>identifiant</w>
       <w>inscris</w>
       <w>instagram</w>
+      <w>jaccuse</w>
       <w>jdbx</w>
+      <w>lassommoir</w>
+      <w>lesfleursdumal</w>
+      <w>lesmiserables</w>
+      <w>lesparadisartificiels</w>
+      <w>lhommmequirit</w>
       <w>librairie</w>
       <w>livre</w>
       <w>livres</w>
+      <w>loeuvre</w>
       <w>mapstruct</w>
       <w>mclientui</w>
       <w>microservice</w>
+      <w>misérables</w>
       <w>motdepass</w>
       <w>mqvze</w>
       <w>mxnl</w>
+      <w>mériadeck</w>
       <w>mérignac</w>
       <w>naissance</w>
       <w>nanoo</w>
       <w>navbar</w>
+      <w>notredamedeparis</w>
       <w>numéro</w>
       <w>oublié</w>
+      <w>paradis</w>
       <w>pbek</w>
       <w>pensez</w>
       <w>pessac</w>
@@ -74,6 +92,7 @@
       <w>ramener</w>
       <w>retourner</w>
       <w>répondre</w>
+      <w>résultat</w>
       <w>résumé</w>
       <w>serverconsistencymanager</w>
       <w>smtp</w>

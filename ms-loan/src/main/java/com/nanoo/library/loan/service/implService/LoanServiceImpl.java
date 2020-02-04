@@ -23,7 +23,7 @@ import java.util.*;
 @Service
 public class LoanServiceImpl implements LoanService {
     
-    private static final int LOAN_DAYS_DURATION = 14;
+    private static final int LOAN_DAYS_DURATION = 28;
     
     private final LoanRepository loanRepository;
     private final ClientRepository clientRepository;

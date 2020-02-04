@@ -27,7 +27,6 @@ public class AccountBean {
     @Pattern(regexp = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)",
              message = "L'adresse e-mail que vous avez renseignée n'est pas valide")
     private String email;
-    @Size(min = 6,max = 20,message = "Votre mot de passe doit contenir entre 6 et 20 caractères")
     private String password;
     
     private Integer id;
