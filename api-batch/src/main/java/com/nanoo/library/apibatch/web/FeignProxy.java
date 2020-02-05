@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author nanoo
@@ -28,6 +30,9 @@ public interface FeignProxy {
     /* =============================== */
     
     @GetMapping("/ms-loan/edit/loanStatus")
-    List<String> doLoanStatusUpdate(@RequestHeader("Authorization") String accessToken);
+    int doLoanStatusUpdate(@RequestHeader("Authorization") String accessToken);
+    
+    @GetMapping("/ms-loan/get/emails")
+    Map<String,Date> getOutdatedLoanEmails(@RequestHeader("Authorization") String accessToken);
     
 }

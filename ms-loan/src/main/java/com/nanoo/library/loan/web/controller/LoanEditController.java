@@ -6,8 +6,6 @@ import com.nanoo.library.loan.service.contractService.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /**
  * @author nanoo
  * @create 23/01/2020 - 16:00
@@ -31,7 +29,7 @@ public class LoanEditController {
     }
     
     @GetMapping("/loanStatus")
-    public List<String> updateStatus(){
+    public int updateStatus(){
         
         return loanService.editLoanStatus();
         

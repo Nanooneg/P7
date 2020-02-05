@@ -38,18 +38,18 @@ public class DbInit implements CommandLineRunner {
         
         User admin = new User();
         admin.setId(1);
-        admin.setUsername("admin@mail.fr");
+        admin.setUsername("arnaudlaval33@gmail.com");
         admin.setPassword(passwordEncoder.encode(PASSWORD));
         admin.setActive(true);
-        admin.setRoles("ADMIN");
+        admin.setRoles("CLIENT");
         admin.setPermissions("");
     
         User client = new User();
         client.setId(2);
-        client.setUsername("client@mail.fr");
+        client.setUsername("admin@mail.fr");
         client.setPassword(passwordEncoder.encode(PASSWORD));
         client.setActive(true);
-        client.setRoles("CLIENT");
+        client.setRoles("ADMIN");
         client.setPermissions("");
     
         User employee = new User();

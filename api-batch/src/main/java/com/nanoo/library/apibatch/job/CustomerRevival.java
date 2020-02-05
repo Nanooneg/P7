@@ -1,18 +1,15 @@
 package com.nanoo.library.apibatch.job;
 
+import com.nanoo.library.apibatch.web.FeignProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author nanoo
@@ -25,29 +22,28 @@ public class CustomerRevival {
     
     private JavaMailSender emailSender;
     private SimpleMailMessage templateSimpleMessage;
-    private LoanStatusUpdate loanStatusUpdate;
+    private FeignProxy proxy;
     
     private static final String MAIL_SUBJECT = "Vous êtes en retard pour le retour de votre livre";
     
     @Autowired
-    public CustomerRevival(JavaMailSender emailSender, SimpleMailMessage templateSimpleMessage, LoanStatusUpdate loanStatusUpdate) {
+    public CustomerRevival(JavaMailSender emailSender, SimpleMailMessage templateSimpleMessage, FeignProxy proxy) {
         this.emailSender = emailSender;
         this.templateSimpleMessage = templateSimpleMessage;
-        this.loanStatusUpdate = loanStatusUpdate;
+        this.proxy = proxy;
     }
     
     /**
-     * Scheduled task run every minutes for the demo
+     * This method call ms-loan to get an email list back and send a message to each one
      *
-     * This method collect a list of mail and send a format message to each address
+     * @param accessToken security token
      */
-    @Scheduled(cron="* * * * * ?")
-    public void runScheduledTask(){
+    public void reviveCustomer (String accessToken){
+    
+        Map<String,Date> customersEmailAndExpectedReturnDate = proxy.getOutdatedLoanEmails(accessToken);
         
-        List<String> customersEmail = loanStatusUpdate.updateStatus();
-        
-        for (String mail : customersEmail){
-            sendSimpleMessage(mail, getExpectedReturnDate());
+        for (Map.Entry<String,Date> entry: customersEmailAndExpectedReturnDate.entrySet()){
+            sendSimpleMessage(entry.getKey(),getExpectedReturnDateFormatted(entry.getValue()));
         }
         
     }
@@ -73,20 +69,16 @@ public class CustomerRevival {
     }
     
     /**
-     * This method calculate the expected return date
-     * (the day before current date)
+     * This method format the expected return date
      *
-     * @return a date
+     * @param date a date
+     * @return a formatted date
      */
-    private String getExpectedReturnDate (){
+    private String getExpectedReturnDateFormatted (Date date){
         String pattern = "dd MMM yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-    
-        Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
-        c.add(Calendar.DAY_OF_WEEK,-1);
         
-        return simpleDateFormat.format(c.getTime());
+        return simpleDateFormat.format(date);
         
     }
 }

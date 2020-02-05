@@ -125,20 +125,33 @@ public class LoanServiceImpl implements LoanService {
     }
     
     @Override
-    public List<String> editLoanStatus() {
+    public int editLoanStatus() {
         
-        List<Loan> outDatedLoans = loanRepository.findAllByStatusAndReturnDate(Status.ONGOING);
-        List<String> customersEmail = new ArrayList<>();
+        List<Loan> newOutDatedLoans = loanRepository.findAllByStatusAndReturnDate(Status.ONGOING);
     
-        for (Loan loan : outDatedLoans){
+        for (Loan loan : newOutDatedLoans){
             
-            customersEmail.add(loan.getClient().getEmail());
             loan.setStatus(Status.OUTDATED);
             
         }
         
-        loanRepository.saveAll(outDatedLoans);
+        loanRepository.saveAll(newOutDatedLoans);
         
-        return customersEmail;
+        return newOutDatedLoans.size();
+    }
+    
+    @Override
+    public Map<String,Date> getOutdatedLoansEmailAccount(){
+        
+        List<Loan> outDatedLoans = loanRepository.findAllByStatusAndReturnDate(Status.OUTDATED);
+        Map<String,Date> emailsAndExpectedReturnDate = new HashMap<>();
+        
+        for (Loan loan : outDatedLoans){
+    
+            emailsAndExpectedReturnDate.put(loan.getClient().getEmail(),loan.getExpectedReturnDate());
+            
+        }
+        
+        return emailsAndExpectedReturnDate;
     }
 }

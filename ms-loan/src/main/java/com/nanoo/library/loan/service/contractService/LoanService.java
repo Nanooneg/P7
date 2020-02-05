@@ -4,7 +4,9 @@ import com.nanoo.library.loan.model.dto.ClientDto;
 import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
 import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author nanoo
@@ -20,5 +22,7 @@ public interface LoanService {
     
     ClientDto editAccountInfo(ClientDto clientDto);
     
-    List<String> editLoanStatus();
+    int editLoanStatus();
+    
+    Map<String,Date> getOutdatedLoansEmailAccount();
 }

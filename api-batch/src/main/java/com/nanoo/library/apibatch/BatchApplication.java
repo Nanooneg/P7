@@ -25,9 +25,9 @@ public class BatchApplication {
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setText("Bonjour," +
 				"\n\nLa date de retour pour votre livre était le : %s" +
-				"\nVous avez la possibilité, si vous ne l'avez pas encore fait, de prolonger la durée de votre emprunt de 2 semaines." +
+				"\nVous avez la possibilité, si vous ne l'avez pas encore fait, de prolonger la durée de votre emprunt de 4 semaines." +
 				"\nSinon, pensez à ramener le livre à votre bibliothèque au plus vite pour éviter une pénalité" +
-				"\n\nBibliothèque de Bordeaux - Ceci est un envoi automatique, merci de ne pas y répondre.");
+				"\n\n\t\t\t\tBibliothèque de Bordeaux - Ceci est un envoi automatique, merci de ne pas y répondre.");
 		return message;
 	}
 	

@@ -7,8 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @author nanoo
  * @create 27/01/2020 - 22:46
@@ -26,22 +24,18 @@ public class LoanStatusUpdate {
     }
     
     /**
-     * This method get an accessToken with his own credentials and ask ms-loan to update loan status
+     *  This method ask ms-loan to update loan status
      *
-     * @return a list of mail attached to loan with new 'outdated' status
+     * @param accessToken security token
      */
-    List<String> updateStatus(){
-        List<String> customersEmail;
+    public void updateStatus(String accessToken){
     
         logger.info("*** LoanStatusUpdate task begin ***");
         
-        String accessToken = proxy.doLogin(new CredentialBatch());
-        customersEmail = proxy.doLoanStatusUpdate(accessToken);
+        int updatedAccountNbr = proxy.doLoanStatusUpdate(accessToken);
     
-        logger.info("*** {} loan(s) updated ***",customersEmail.size());
-    
-        return customersEmail;
+        logger.info("*** {} loan(s) updated ***",updatedAccountNbr);
         
     }
-
+ 
 }
