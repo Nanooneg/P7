@@ -55,7 +55,7 @@ public class LoanServiceImpl implements LoanService {
     public List<LoanWithBookInfoDto> getUserLoanList(int userId,String loanProperty){
         List<LoanWithBookInfoDto> loanWithBookInfoDtos =  new ArrayList<>();
         
-        List<Loan> loans = clientRepository.findAllLoanByClientId(userId);
+        List<Loan> loans = loanRepository.findAllLoanByClientId(userId);
         loans.sort(Comparator.comparing(Loan::getLoanDate,Comparator.reverseOrder()));
     
         if (loanProperty.equalsIgnoreCase("all")){

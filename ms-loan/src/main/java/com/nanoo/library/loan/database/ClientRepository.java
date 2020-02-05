@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author nanoo
@@ -15,9 +16,4 @@ import java.util.List;
  */
 @Repository
 public interface ClientRepository extends JpaRepository<Client,Integer> {
-    
-    // TODO change return type
-    @Query(value = "SELECT client.loans FROM Client client WHERE client.id = :clientId")
-    List<Loan> findAllLoanByClientId(@Param("clientId") int clientId);
-    
 }

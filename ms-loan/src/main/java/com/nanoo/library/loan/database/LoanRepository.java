@@ -20,4 +20,8 @@ public interface LoanRepository extends JpaRepository<Loan,Integer> {
                    "WHERE l.status = :status " +
                    "AND l.expectedReturnDate < CURRENT_DATE ")
     List<Loan> findAllByStatusAndReturnDate(@Param("status") Status ongoing);
+    
+    @Query(value = "SELECT l FROM Loan l " +
+                   "WHERE l.client.id = :userId")
+    List<Loan> findAllLoanByClientId(@Param("userId") int userId);
 }
