@@ -31,27 +31,15 @@ public class AuthorServiceImpl implements AuthorService {
         this.authorMapper = authorMapper;
     }
     
-    /*@Override
-    public List<AuthorDto> getAuthorList() {
-        List<AuthorDto> authorDtos = new ArrayList<>();
-        
-        List<Author> authors = authorRepository.findAll();
-        
-        for (Author author : authors){
-            authorDtos.add(authorMapper.fromAuthorToDto(author));
-        }
-        
-        return authorDtos;
-    }
     
     @Override
-    public List<Book> getAuthorBookFromSearchCriteria(boolean available, String searchAttribut, int libraryId){
-        *//*List<Book> authorBooks = new ArrayList<>();
+    public List<Book> getAuthorBookFromSearchCriteria(String searchAttribut){
+        List<Book> authorBooks = new ArrayList<>();
         String pSearchAttribut = "%" + searchAttribut + "%";
         
         List<Author> authors = authorRepository.findBySearchAttribut(pSearchAttribut);
         for (Author author : authors){
-            if (available){
+            /*if (available){
                 if (libraryId == 0){
                     authorBooks.addAll(author.getAvailableBooks());
                 }else {
@@ -60,18 +48,18 @@ public class AuthorServiceImpl implements AuthorService {
                             authorBooks.add(book);
                     }
                 }
-            }else {
-                if (libraryId == 0){
+            }else {*/
+                /*if (libraryId == 0){*/
                     authorBooks.addAll(author.getBooks());
-                }else {
+                /*}else {
                     for (Book book : author.getBooks()){
                         if (book.getLibrary().getId() == libraryId)
                             authorBooks.add(book);
                     }
-                }
-            }
-        }*//*
+                }*/
+            /*}*/
+        }
         
-        return null;
-    }*/
+        return authorBooks;
+    }
 }

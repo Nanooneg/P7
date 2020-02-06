@@ -34,21 +34,21 @@ public class BookController {
         
     }
     
-    @GetMapping("/book-last")
+    /*@GetMapping("/book-last")
     public List<BookDto> getLastRegisteredBook(){
         
         return bookService.getLastRegisteredBook();
         
     }
     
-    /*@GetMapping("/{library}/book-last")
+    @GetMapping("/{library}/book-last")
     public List<BookDto> getLastRegisteredBookOfLibrary(@PathVariable("library") String libraryId){
     
         Library library = libraryService.findById(Integer.parseInt(libraryId));
         
         return bookService.getLastRegisteredBookOfLibrary(library);
         
-    }
+    }*/
     
     @GetMapping("/search-result")
     @ResponseBody
@@ -56,12 +56,13 @@ public class BookController {
                                          @RequestParam(value = "searchValue",required = false) String searchValue,
                                          @RequestParam(value = "searchCriteria",required = false) String searchCriteria,
                                          @RequestParam(value = "libraryId",required = false) String libraryId){
-        
-        return bookService.getSearchResult(available,searchValue,searchCriteria,libraryId);
-        
+        if (Integer.parseInt(libraryId) == 0)
+            return bookService.getSearchResult(available,searchValue,searchCriteria);
+        else
+            return null; // TODO
     }
     
-    @GetMapping("/book/{bookId}")
+    /*@GetMapping("/book/{bookId}")
     public BookInfoLoanDto getBookInfo(@PathVariable int bookId){
         return bookService.getBookInfo(bookId);
     }*/

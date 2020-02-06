@@ -20,9 +20,11 @@ public class BookDto implements Serializable {
     private Integer id;
     private String title;
     private AuthorDto author;
-    private Set<CopyBookDto> copies; //TODO can i get only available copies ?
+    private Set<CopyBookDto> copies; //TODO remove unused attribut ( use BookInfoDto with copies )
     private String summary;
     private CoverOnlyPathDto cover;
     private String category;
+    
+    private int availableCopies;
     
 }

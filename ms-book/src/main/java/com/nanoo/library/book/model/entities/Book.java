@@ -14,7 +14,7 @@ import java.util.*;
  * @author nanoo
  * @create 22/11/2019 - 23:04
  */
-@Entity(name = "book")
+@Entity
 @Getter @Setter
 @NoArgsConstructor
 public class Book implements Serializable {

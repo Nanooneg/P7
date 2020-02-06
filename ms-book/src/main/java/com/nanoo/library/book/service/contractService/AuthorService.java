@@ -11,7 +11,6 @@ import java.util.List;
  */
 public interface AuthorService {
     
-    /*List<AuthorDto> getAuthorList();
+    List<Book> getAuthorBookFromSearchCriteria(String searchAttribut);
     
-    List<Book> getAuthorBookFromSearchCriteria(boolean available, String searchAttribut, int libraryId);*/
 }

@@ -68,7 +68,10 @@
                                         <span th:text="${book.author.lastName}"></span>
                                     </div>
                                     <div><b>Genre :</b> <span th:text= "${book.category}" ></span></div>
-                                    <div><b>Exemplaire :</b> <span th:text="${book.copies.size()}"></span></div>
+                                    <div><b>Disponibilités :</b>
+                                        <span th:text="${book.availableCopies}"></span>
+                                        / <span th:text="${book.copies.size()}"></span>
+                                    </div>
                                     <div><b>Résumé :</b> <span th:text= "${book.summary}" ></span></div>
                                 </div>
                             </div>

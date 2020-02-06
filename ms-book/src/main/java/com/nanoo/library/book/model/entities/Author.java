@@ -14,7 +14,7 @@ import java.util.Set;
  * @author nanoo
  * @create 22/11/2019 - 23:06
  */
-@Entity(name = "author")
+@Entity
 @Getter @Setter
 @NoArgsConstructor
 public class Author implements Serializable {

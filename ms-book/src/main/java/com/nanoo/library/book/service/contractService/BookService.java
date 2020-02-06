@@ -14,11 +14,11 @@ public interface BookService {
     
     List<BookDto> getBookList();
     
-    List<BookDto> getLastRegisteredBook();
+    /*List<BookDto> getLastRegisteredBook();
     
-    /*List<BookDto> getLastRegisteredBookOfLibrary(Library library);
+    List<BookDto> getLastRegisteredBookOfLibrary(Library library);*/
     
-    List<BookDto> getSearchResult(boolean available, String title, String author, String libraryId);
+    List<BookDto> getSearchResult(boolean available, String title, String author);
     
-    BookInfoLoanDto getBookInfo(int bookId);*/
+    //BookInfoLoanDto getBookInfo(int bookId);
 }

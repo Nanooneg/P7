@@ -22,8 +22,8 @@ public class BookController {
     private static final String LIST_ATT = "books";
     private static final String SEARCH_ATT = "searchAttribut";
     private static final String LIBRARY_ATT = "libraries";
-    
     private static final String ACTUAL_LIBRARY_ATT = "actualLibrary";
+    private static final String AVAILABILITY_ATT = "availability";
     
     private static final String CATALOG_VIEW = "catalog";
     
@@ -79,15 +79,13 @@ public class BookController {
                 .filter(libraryToFind -> searchAttribut.getLibraryId()  == libraryToFind.getId())
                 .findAny()
                 .orElse(null);
-    
-        System.out.println(searchAttribut);
         
         model.addAttribute(SLIDER_ATT,proxy.listSearchResult(searchAttribut));
         model.addAttribute(LIST_ATT,proxy.listSearchResult(searchAttribut));
     
         model.addAttribute(LIBRARY_ATT,libraries);
         model.addAttribute(SEARCH_ATT,searchAttribut);
-    
+        
         if (actualLibrary != null) {
             model.addAttribute(ACTUAL_LIBRARY_ATT, actualLibrary);
         }

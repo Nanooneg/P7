@@ -21,5 +21,6 @@ public class BookBean {
     private String summary;
     private CoverBean cover;
     private String category;
+    private int availableCopies;
     
 }
