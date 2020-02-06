@@ -70,7 +70,7 @@ public class BookServiceImpl implements BookService {
         return bookDtos;
     }
     
-    @Override
+    /*@Override
     public List<BookDto> getLastRegisteredBookOfLibrary(Library library) {
         List<BookDto> bookDtos = new ArrayList<>();
     
@@ -117,7 +117,7 @@ public class BookServiceImpl implements BookService {
             bookDtos.add(bookMapper.fromBookToDto(book));
         }
         
-        return bookDtos;
+        return null;
     
     }
     
@@ -130,5 +130,5 @@ public class BookServiceImpl implements BookService {
             bookDto = bookMapper.fromBookToForLoanDto(book.get());
         }
         return bookDto;
-    }
+    }*/
 }

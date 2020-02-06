@@ -31,7 +31,7 @@ public class AuthorServiceImpl implements AuthorService {
         this.authorMapper = authorMapper;
     }
     
-    @Override
+    /*@Override
     public List<AuthorDto> getAuthorList() {
         List<AuthorDto> authorDtos = new ArrayList<>();
         
@@ -46,7 +46,7 @@ public class AuthorServiceImpl implements AuthorService {
     
     @Override
     public List<Book> getAuthorBookFromSearchCriteria(boolean available, String searchAttribut, int libraryId){
-        List<Book> authorBooks = new ArrayList<>();
+        *//*List<Book> authorBooks = new ArrayList<>();
         String pSearchAttribut = "%" + searchAttribut + "%";
         
         List<Author> authors = authorRepository.findBySearchAttribut(pSearchAttribut);
@@ -70,8 +70,8 @@ public class AuthorServiceImpl implements AuthorService {
                     }
                 }
             }
-        }
+        }*//*
         
-        return authorBooks;
-    }
+        return null;
+    }*/
 }

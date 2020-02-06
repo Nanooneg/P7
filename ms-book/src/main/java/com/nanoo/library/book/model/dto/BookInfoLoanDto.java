@@ -1,10 +1,13 @@
 package com.nanoo.library.book.model.dto;
 
+import com.nanoo.library.book.model.entities.Author;
+import com.nanoo.library.book.model.entities.CopyBook;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * @author nanoo
@@ -18,7 +21,7 @@ public class BookInfoLoanDto implements Serializable {
     
     private Integer id;
     private String title;
-    private LibraryInfoLoanDto library;
-    private String condition;
+    private AuthorDto author;
+    private CoverOnlyPathDto cover;
     
 }

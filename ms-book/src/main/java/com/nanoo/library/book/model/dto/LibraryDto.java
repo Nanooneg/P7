@@ -22,6 +22,5 @@ public class LibraryDto implements Serializable {
     private String name;
     private Address address;
     private String phoneNumber;
-    private Set<BookWithoutAuthorsAndLibraryDto> books;
     
 }

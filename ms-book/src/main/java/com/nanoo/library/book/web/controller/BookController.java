@@ -41,7 +41,7 @@ public class BookController {
         
     }
     
-    @GetMapping("/{library}/book-last")
+    /*@GetMapping("/{library}/book-last")
     public List<BookDto> getLastRegisteredBookOfLibrary(@PathVariable("library") String libraryId){
     
         Library library = libraryService.findById(Integer.parseInt(libraryId));
@@ -64,6 +64,6 @@ public class BookController {
     @GetMapping("/book/{bookId}")
     public BookInfoLoanDto getBookInfo(@PathVariable int bookId){
         return bookService.getBookInfo(bookId);
-    }
+    }*/
   
 }

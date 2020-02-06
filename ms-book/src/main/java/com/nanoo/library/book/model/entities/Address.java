@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author nanoo
  * @create 22/11/2019 - 23:08
  */
-@Entity
+@Entity(name = "address")
 @Getter @Setter
 @NoArgsConstructor
 public class Address implements Serializable {
@@ -21,19 +21,20 @@ public class Address implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_address")
     private Integer id;
     
-    @Column(nullable = false)
+    @Column(name = "number", nullable = false)
     private int number;
     
-    @Column(length = 50, nullable = false)
+    @Column(name = "street", length = 50, nullable = false)
     private String street;
     
     @Column(name = "postal_code", length = 5, nullable = false)
     private int postalCode;
     
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "city", nullable = false)
     private Cities city;
     
 }

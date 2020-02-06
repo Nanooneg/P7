@@ -16,16 +16,13 @@ import java.util.Set;
 public class BookDto implements Serializable {
     
     private static final long serialVersionUID = 1L;
-
+    
     private Integer id;
     private String title;
-    private Set<AuthorWithoutBooksDto> authors;
+    private AuthorDto author;
+    private Set<CopyBookDto> copies; //TODO can i get only available copies ?
     private String summary;
     private CoverOnlyPathDto cover;
-    private LibraryWithoutBooksDto library;
-    private String deweyCode;
     private String category;
-    private String condition;
-    private boolean available;
     
 }

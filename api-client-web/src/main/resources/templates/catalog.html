@@ -63,18 +63,13 @@
                                     <div th:text="${book.title}" class="title-book"></div>
                                 </div>
                                 <div class="text-description">
-                                    <div>Autheur(s) : <span th:each="author : ${book.getAuthors()}">
-                                        <span th:text="${author.firstName}"></span>
-                                        <span th:text="${author.lastName}"></span>
-                                    </span></div>
-                                    <div>Bibliothèque : <span th:text="${book.library.name}"></span></div>
-                                    <div>Genre : <span th:text= "${book.category}" ></span></div>
-                                    <div>Résumé : <span th:text= "${book.summary}" ></span></div>
-                                    <div>Etat général : <span th:text= "${book.condition}" ></span></div>
-                                    <div>Disponible :
-                                        <span th:if="${book.available == true}">Oui</span>
-                                        <span th:unless="${book.available == true}">Non</span>
+                                    <div><b>Autheur :</b>
+                                        <span th:text="${book.author.firstName}"></span>
+                                        <span th:text="${book.author.lastName}"></span>
                                     </div>
+                                    <div><b>Genre :</b> <span th:text= "${book.category}" ></span></div>
+                                    <div><b>Exemplaire :</b> <span th:text="${book.copies.size()}"></span></div>
+                                    <div><b>Résumé :</b> <span th:text= "${book.summary}" ></span></div>
                                 </div>
                             </div>
                         </div>
@@ -98,8 +93,8 @@
                     <div class="info-item">
                         <div class="header-item">
                             <div th:text="${book.title}" class="title-book"></div>
-                            <div th:each="author : ${book.getAuthors()}" class="author-book">
-                                ( <span th:text="${author.firstName}"></span> <span th:text="${author.lastName}"></span> )
+                            <div class="author-book">
+                                ( <span th:text="${book.author.firstName}"></span> <span th:text="${book.author.lastName}"></span> )
                             </div>
                         </div>
                         <div th:text="${book.summary}" class="description-item"></div>

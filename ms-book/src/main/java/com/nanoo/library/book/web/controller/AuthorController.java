@@ -22,10 +22,10 @@ public class AuthorController {
         this.authorService = authorService;
     }
     
-    @GetMapping("/auteurs")
+    /*@GetMapping("/auteurs")
     public List<AuthorDto> listAllAuthor(){
         
         return authorService.getAuthorList();
         
-    }
+    }*/
 }

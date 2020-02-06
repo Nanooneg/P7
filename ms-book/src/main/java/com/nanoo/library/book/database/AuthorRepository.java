@@ -15,9 +15,9 @@ import java.util.List;
 @Repository
 public interface AuthorRepository extends JpaRepository<Author,Integer> {
     
-    @Query(value = "SELECT distinct a FROM Author a " +
+   /* @Query(value = "SELECT distinct a FROM Author a " +
             "WHERE (:author = '' OR LOWER(a.firstName) LIKE LOWER(:author))" +
             "OR (:author = '' OR LOWER(a.lastName) LIKE LOWER(:author))")
-    List<Author> findBySearchAttribut(@Param("author") String author);
+    List<Author> findBySearchAttribut(@Param("author") String author);*/
     
 }

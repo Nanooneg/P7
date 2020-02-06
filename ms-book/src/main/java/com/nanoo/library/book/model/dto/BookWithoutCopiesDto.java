@@ -5,22 +5,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @author nanoo
- * @create 23/11/2019 - 14:41
+ * @create 06/02/2020 - 15:50
  */
 @Getter @Setter
 @NoArgsConstructor
-public class AuthorWithoutBooksDto implements Serializable {
+public class BookWithoutCopiesDto implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     private Integer id;
-    private String lastName;
-    private String firstName;
-    private Date birthDate;
-    private Date deathDate;
+    private String title;
+    private AuthorDto author;
+    private String summary;
+    private CoverOnlyPathDto cover;
+    private String category;
     
 }

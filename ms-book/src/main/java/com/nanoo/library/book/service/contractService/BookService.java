@@ -2,7 +2,6 @@ package com.nanoo.library.book.service.contractService;
 
 import com.nanoo.library.book.model.dto.BookDto;
 import com.nanoo.library.book.model.dto.BookInfoLoanDto;
-import com.nanoo.library.book.model.dto.BookWithoutAuthorsAndLibraryDto;
 import com.nanoo.library.book.model.entities.Library;
 
 import java.util.List;
@@ -17,9 +16,9 @@ public interface BookService {
     
     List<BookDto> getLastRegisteredBook();
     
-    List<BookDto> getLastRegisteredBookOfLibrary(Library library);
+    /*List<BookDto> getLastRegisteredBookOfLibrary(Library library);
     
     List<BookDto> getSearchResult(boolean available, String title, String author, String libraryId);
     
-    BookInfoLoanDto getBookInfo(int bookId);
+    BookInfoLoanDto getBookInfo(int bookId);*/
 }
