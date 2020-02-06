@@ -35,7 +35,7 @@ public class LibraryController {
     }
     
     @GetMapping("/{library}/book-catalog")
-    public Set<BookDto> listAllBooksOfLibrary(@PathVariable String library){
+    public List<BookDto> listAllBooksOfLibrary(@PathVariable String library){
         
         return libraryService.getBookList(Integer.parseInt(library));
         

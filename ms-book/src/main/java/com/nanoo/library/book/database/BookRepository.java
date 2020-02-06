@@ -1,9 +1,6 @@
 package com.nanoo.library.book.database;
 
 import com.nanoo.library.book.model.entities.Book;
-import com.nanoo.library.book.model.entities.Library;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,6 +20,6 @@ public interface BookRepository extends JpaRepository<Book,Integer> {
     
     @Query(value = "SELECT distinct b FROM Book b " +
             "WHERE (:title = '' OR LOWER(b.title) LIKE LOWER(:title))")
-    List<Book> findBySearchAttributAndByLibrary(@Param("title") String title, Sort sort);
+    List<Book> findBySearchAttribut(@Param("title") String title, Sort sort);
 
 }

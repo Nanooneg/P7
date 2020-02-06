@@ -1,11 +1,8 @@
 package com.nanoo.library.book.service.implService;
 
 import com.nanoo.library.book.database.AuthorRepository;
-import com.nanoo.library.book.model.dto.AuthorDto;
 import com.nanoo.library.book.model.entities.Author;
 import com.nanoo.library.book.model.entities.Book;
-import com.nanoo.library.book.model.mapper.AuthorMapper;
-import com.nanoo.library.book.model.mapper.BookMapper;
 import com.nanoo.library.book.service.contractService.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,13 +19,9 @@ public class AuthorServiceImpl implements AuthorService {
     
     private final AuthorRepository authorRepository;
     
-    private final AuthorMapper authorMapper;
-    
-    
     @Autowired
-    public AuthorServiceImpl(AuthorRepository authorRepository, AuthorMapper authorMapper) {
+    public AuthorServiceImpl(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
-        this.authorMapper = authorMapper;
     }
     
     
@@ -39,25 +32,7 @@ public class AuthorServiceImpl implements AuthorService {
         
         List<Author> authors = authorRepository.findBySearchAttribut(pSearchAttribut);
         for (Author author : authors){
-            /*if (available){
-                if (libraryId == 0){
-                    authorBooks.addAll(author.getAvailableBooks());
-                }else {
-                    for (Book book : author.getAvailableBooks()){
-                        if (book.getLibrary().getId() == libraryId)
-                            authorBooks.add(book);
-                    }
-                }
-            }else {*/
-                /*if (libraryId == 0){*/
-                    authorBooks.addAll(author.getBooks());
-                /*}else {
-                    for (Book book : author.getBooks()){
-                        if (book.getLibrary().getId() == libraryId)
-                            authorBooks.add(book);
-                    }
-                }*/
-            /*}*/
+            authorBooks.addAll(author.getBooks());
         }
         
         return authorBooks;

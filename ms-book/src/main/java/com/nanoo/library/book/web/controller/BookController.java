@@ -56,10 +56,11 @@ public class BookController {
                                          @RequestParam(value = "searchValue",required = false) String searchValue,
                                          @RequestParam(value = "searchCriteria",required = false) String searchCriteria,
                                          @RequestParam(value = "libraryId",required = false) String libraryId){
+        
         if (Integer.parseInt(libraryId) == 0)
             return bookService.getSearchResult(available,searchValue,searchCriteria);
         else
-            return null; // TODO
+            return libraryService.getSearchResultByLibrary(available,searchValue,searchCriteria,Integer.parseInt(libraryId));
     }
     
     /*@GetMapping("/book/{bookId}")

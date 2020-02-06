@@ -12,7 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -24,7 +23,6 @@ public class BookServiceImpl implements BookService {
     
     private static final String TITLE_ATT = "title";
     private static final String AUTHOR_ATT = "author";
-    private static final String REGISTRATION_ATT = "registration";
     
     private final BookRepository bookRepository;
     
@@ -46,10 +44,10 @@ public class BookServiceImpl implements BookService {
         List<Book> books = bookRepository.findAll(Sort.by(TITLE_ATT));
         
         for (Book book : books){
-            bookDtos.add(getBookWitAvailableCopyAccount(bookMapper.fromBookToDto(book)));
+            bookDtos.add(bookMapper.fromBookToDto(book));
         }
         
-        return bookDtos;
+        return getBookWitAvailableCopyAccount(bookDtos);
     }
     
     
@@ -95,7 +93,7 @@ public class BookServiceImpl implements BookService {
         switch (searchCriteria){
             
             case TITLE_ATT :
-                books = bookRepository.findBySearchAttributAndByLibrary(pSearchAttribut, Sort.by(TITLE_ATT));
+                books = bookRepository.findBySearchAttribut(pSearchAttribut, Sort.by(TITLE_ATT));
                 break;
             case AUTHOR_ATT :
                 books = authorService.getAuthorBookFromSearchCriteria(searchAttribut);
@@ -105,13 +103,13 @@ public class BookServiceImpl implements BookService {
         }
         
         for (Book book : books) {
-            bookDtos.add(getBookWitAvailableCopyAccount(bookMapper.fromBookToDto(book)));
+            bookDtos.add(bookMapper.fromBookToDto(book));
         }
         
         if (available)
-            return getAvailableBookOfList(bookDtos);
+            return getAvailableBookOfList(getBookWitAvailableCopyAccount(bookDtos));
         else
-            return bookDtos;
+            return getBookWitAvailableCopyAccount(bookDtos);
         
     }
     
@@ -126,20 +124,23 @@ public class BookServiceImpl implements BookService {
         return bookDto;
     }*/
     
-    private BookDto getBookWitAvailableCopyAccount(BookDto book) {
+    static List<BookDto> getBookWitAvailableCopyAccount(List<BookDto> bookDtos) {
         
-        List<CopyBookDto> availableCopies = new ArrayList<>();
-        
-        for (CopyBookDto copyBook : book.getCopies()){
-            if (copyBook.isAvailable())
-                availableCopies.add(copyBook);
+        for (BookDto book : bookDtos){
+            List<CopyBookDto> availableCopies = new ArrayList<>();
+    
+            for (CopyBookDto copyBook : book.getCopies()){
+                if (copyBook.isAvailable())
+                    availableCopies.add(copyBook);
+            }
+    
+            book.setAvailableCopies(availableCopies.size());
         }
         
-        book.setAvailableCopies(availableCopies.size());
-        return book;
+        return bookDtos;
     }
     
-    private List<BookDto> getAvailableBookOfList(List<BookDto> bookDtoList) {
+    static List<BookDto> getAvailableBookOfList(List<BookDto> bookDtoList) {
         List<BookDto> unAvailableBookDto = new ArrayList<>();
         
         for (BookDto bookDto : bookDtoList){

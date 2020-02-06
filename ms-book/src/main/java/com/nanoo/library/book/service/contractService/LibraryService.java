@@ -15,7 +15,9 @@ public interface LibraryService {
     
     List<LibraryDto> getLibraryList();
     
-    Set<BookDto> getBookList(int library);
+    List<BookDto> getBookList(int library);
+    
+    List<BookDto> getSearchResultByLibrary(boolean available, String searchAttribut, String searchCriteria, int libraryId);
     
     Library findById(int libraryId);
 }

@@ -1,5 +1,6 @@
 package com.nanoo.library.book.service.implService;
 
+import com.nanoo.library.book.database.CopyBookRepository;
 import com.nanoo.library.book.database.LibraryRepository;
 import com.nanoo.library.book.model.dto.BookDto;
 import com.nanoo.library.book.model.dto.CopyBookDto;
@@ -22,14 +23,19 @@ import java.util.*;
 @Service
 public class LibraryServiceImpl implements LibraryService {
     
+    private static final String TITLE_ATT = "title";
+    private static final String AUTHOR_ATT = "author";
+    
     private final LibraryRepository libraryRepository;
+    private final CopyBookRepository copyBookRepository;
     private final LibraryMapper libraryMapper;
     private final BookMapper bookMapper;
     private final CopyBookMapper copyBookMapper;
     
     @Autowired
-    public LibraryServiceImpl(LibraryRepository libraryRepository, LibraryMapper libraryMapper, BookMapper bookMapper, CopyBookMapper copyBookMapper) {
+    public LibraryServiceImpl(LibraryRepository libraryRepository, CopyBookRepository copyBookRepository, LibraryMapper libraryMapper, BookMapper bookMapper, CopyBookMapper copyBookMapper) {
         this.libraryRepository = libraryRepository;
+        this.copyBookRepository = copyBookRepository;
         this.libraryMapper = libraryMapper;
         this.bookMapper = bookMapper;
         this.copyBookMapper = copyBookMapper;
@@ -48,7 +54,7 @@ public class LibraryServiceImpl implements LibraryService {
     }
     
     @Override
-    public Set<BookDto> getBookList(int libraryId) {
+    public List<BookDto> getBookList(int libraryId) {
         Map<Integer,BookDto> bookDtos = new HashMap<>();
         List<CopyBook> copies = new ArrayList<>();
         
@@ -62,22 +68,55 @@ public class LibraryServiceImpl implements LibraryService {
                 copies.add(copy);
             }
         }
+    
+        List<BookDto> distinctBookDtos = new ArrayList<>(bookDtos.values());
         
-            Set<BookDto> distinctBookDtos = new HashSet<>(bookDtos.values());
+        for (BookDto bookDto : distinctBookDtos) {
+            Set<CopyBookDto> bookCopies = new HashSet<>();
             
-            for (BookDto bookDto : distinctBookDtos) {
-                Set<CopyBookDto> bookCopies = new HashSet<>();
-                
-                bookDto.setCopies(null);
-                for (CopyBook copyBook : copies){
-                    if (copyBook.getBook().getId().equals(bookDto.getId()))
-                        bookCopies.add(copyBookMapper.fromCopyBookToDto(copyBook));
-                }
-                bookDto.setCopies(bookCopies);
+            bookDto.setCopies(null);
+            for (CopyBook copyBook : copies){
+                if (copyBook.getBook().getId().equals(bookDto.getId()))
+                    bookCopies.add(copyBookMapper.fromCopyBookToDto(copyBook));
             }
-            
+            bookDto.setCopies(bookCopies);
+        }
         
-        return distinctBookDtos;
+        return BookServiceImpl.getBookWitAvailableCopyAccount(distinctBookDtos);
+    }
+    
+    @Override
+    public List<BookDto> getSearchResultByLibrary(boolean available, String searchAttribut,
+                                                  String searchCriteria, int libraryId){
+    
+        // case user look for all available books
+        if (available && searchAttribut.equalsIgnoreCase(""))
+            return BookServiceImpl.getAvailableBookOfList(getBookList(libraryId));
+        
+        String pSearchAttribut = "%" + searchAttribut + "%";
+        List<CopyBook> copyBooks;
+        Map<Integer,BookDto> bookDtoMap = new HashMap<>();
+    
+        switch (searchCriteria){
+    
+            case TITLE_ATT :
+                copyBooks= copyBookRepository.findByTitleSearchAttribut(pSearchAttribut,available,libraryId);
+                break;
+            case AUTHOR_ATT :
+                copyBooks= copyBookRepository.findByAuthorSearchAttribut(pSearchAttribut,available,libraryId);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + searchCriteria);
+        }
+    
+        for (CopyBook copy : copyBooks) {
+            bookDtoMap.put(copy.getBook().getId(),bookMapper.fromBookToDto(copy.getBook()));
+        }
+    
+        Set<BookDto> distinctBookDtos = new HashSet<>(bookDtoMap.values());
+        List<BookDto> bookDtos = new ArrayList<>(distinctBookDtos);
+        
+        return BookServiceImpl.getBookWitAvailableCopyAccount(bookDtos);
     }
     
     @Override
