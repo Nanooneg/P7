@@ -1,7 +1,7 @@
 package com.nanoo.library.loan.web.controller;
 
 import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
-import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
+import com.nanoo.library.loan.model.dto.LoanWithCopyBookInfoDto;
 import com.nanoo.library.loan.service.contractService.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +32,7 @@ public class LoanConsultController {
     }
     
     @GetMapping("/consult/loans/{userId}/{loanProperty}")
-    public List<LoanWithBookInfoDto> listUserLoans(@PathVariable int userId, @PathVariable String loanProperty){
+    public List<LoanWithCopyBookInfoDto> listUserLoans(@PathVariable int userId, @PathVariable String loanProperty){
         
         return loanService.getUserLoanList(userId,loanProperty);
         

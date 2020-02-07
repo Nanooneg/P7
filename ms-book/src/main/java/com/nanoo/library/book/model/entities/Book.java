@@ -30,7 +30,7 @@ public class Book implements Serializable {
     private String title;
     
     @ManyToOne
-    @JoinColumn(name = "id_author")
+    @JoinColumn(name = "id_author", nullable = false)
     private Author author;
     
     @OneToMany(mappedBy = "book")

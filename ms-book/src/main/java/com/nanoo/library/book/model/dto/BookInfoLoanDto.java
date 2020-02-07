@@ -21,7 +21,6 @@ public class BookInfoLoanDto implements Serializable {
     
     private Integer id;
     private String title;
-    private AuthorDto author;
     private CoverOnlyPathDto cover;
     
 }

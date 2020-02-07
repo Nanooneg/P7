@@ -1,7 +1,7 @@
 package com.nanoo.library.loan.model.mapper;
 
 import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
-import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
+import com.nanoo.library.loan.model.dto.LoanWithCopyBookInfoDto;
 import com.nanoo.library.loan.model.entities.Loan;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -19,11 +19,11 @@ public interface LoanMapper {
     LoanMapper MAPPER = Mappers.getMapper(LoanMapper.class);
     
     Loan fromDtoWithAccountInfoToLoan (LoanWithAccountInfoDto loanWithAccountInfoDto);
-    Loan fromDtoWithBookInfoToLoan (LoanWithBookInfoDto loanWithBookInfoDto);
+    Loan fromDtoWithBookInfoToLoan (LoanWithCopyBookInfoDto loanWithBookInfoDto);
     
     @InheritInverseConfiguration
     LoanWithAccountInfoDto fromLoanToDtoWithAccountInfo (Loan loan);
     @Mapping(source = "status.entitled", target = "status")
-    LoanWithBookInfoDto fromLoanToDtoWithBookInfo(Loan loan);
+    LoanWithCopyBookInfoDto fromLoanToDtoWithBookInfo(Loan loan);
 
 }

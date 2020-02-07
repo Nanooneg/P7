@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -47,9 +48,9 @@ public class UserController {
         model.addAttribute(LIBRARY_ATT,proxy.listAllLibrary());
         
         AccountBean accountInfo = proxy.getAccountInfo(accessToken);
-        List<LoanBean> userLoans;
-        
-        userLoans = proxy.getUserLoanList(accessToken,accountInfo.getId(),loanProperty);
+        List<LoanBean> userLoans = proxy.getUserLoanList(accessToken,accountInfo.getId(),loanProperty);
+    
+        System.out.println(Arrays.toString(userLoans.toArray()));
         
         model.addAttribute(ACCOUNT_ATT,accountInfo);
         model.addAttribute(LOAN_LIST_ATT,userLoans);

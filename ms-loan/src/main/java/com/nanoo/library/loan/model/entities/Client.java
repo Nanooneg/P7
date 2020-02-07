@@ -19,7 +19,8 @@ public class Client implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @Column(name = "id_client")
     private Integer id;
     
     @Column(name = "last_name", nullable = false)
@@ -28,7 +29,7 @@ public class Client implements Serializable {
     @Column(name = "first_name", nullable = false)
     private String firstName;
     
-    @Column(nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
     
     @Column(name = "client_number", nullable = false)

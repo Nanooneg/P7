@@ -52,10 +52,10 @@ INSERT INTO public.book(id_book, category, registration, summary, title, id_auth
 
 /* CopyBooks */
 
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (1,false,'NEW',1,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (1,true,'NEW',1,1);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (2,false,'GOOD',1,1);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (3,true,'GOOD',1,2);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (4,false,'NEW',1,3);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (4,true,'NEW',1,3);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (5,true,'GOOD',1,3);
 
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (6,true,'NEW',2,1);
@@ -64,42 +64,42 @@ INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_lib
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (9,true,'GOOD',2,3);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (10,true,'GOOD',2,3);
 
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (11,false,'GOOD',3,1);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (12,false,'GOOD',3,2);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (13,false,'WORN',3,2);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (11,true,'GOOD',3,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (12,true,'GOOD',3,2);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (13,true,'WORN',3,2);
 
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (14,false,'WORN',4,1);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (15,false,'GOOD',4,1);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (16,false,'NEW',4,3);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (17,false,'NEW',4,3);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (18,false,'GOOD',4,3);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (14,true,'WORN',4,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (15,true,'GOOD',4,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (16,true,'NEW',4,3);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (17,true,'NEW',4,3);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (18,true,'GOOD',4,3);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (19,true,'GOOD',4,3);
 
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (20,false,'WORN',5,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (20,true,'WORN',5,1);
 
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (21,false,'WORN',6,1);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (22,false,'GOOD',6,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (21,true,'WORN',6,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (22,true,'GOOD',6,1);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (23,true,'NEW',6,2);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (24,false,'NEW',6,3);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (24,true,'NEW',6,3);
 
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (25,true,'WORN',7,1);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (26,true,'GOOD',7,1);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (27,false,'NEW',7,2);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (28,false,'NEW',7,2);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (29,false,'GOOD',7,3);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (26,false,'GOOD',7,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (27,true,'NEW',7,2);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (28,true,'NEW',7,2);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (29,true,'GOOD',7,3);
 
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (30,true,'WORN',8,2);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (31,true,'GOOD',8,2);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (32,true,'NEW',8,3);
 
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (33,false,'WORN',9,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (33,true,'WORN',9,1);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (34,true,'GOOD',9,1);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (35,false,'NEW',9,2);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (35,true,'NEW',9,2);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (36,true,'NEW',9,2);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (37,false,'GOOD',9,3);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (37,true,'GOOD',9,3);
 INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (38,true,'WORN',9,3);
 
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (39,false,'WORN',10,1);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (40,false,'GOOD',10,2);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (41,false,'NEW',10,3);
-INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (42,false,'GOOD',10,3);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (39,true,'WORN',10,1);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (40,true,'GOOD',10,2);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (41,true,'NEW',10,3);
+INSERT INTO public.copy_book(id_copy_book, available, condition, id_book, id_library) VALUES (42,true,'GOOD',10,3);

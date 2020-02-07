@@ -21,14 +21,15 @@ public class Loan implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @ Column(name = "id_loan")
     private Integer id;
     
-    @OneToOne
-    @JoinColumn(name = "book_id", nullable = false)
-    private Book book;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_copy_book", nullable = false)
+    private CopyBook copyBook;
     
     @ManyToOne
-    @JoinColumn(name = "account_id", nullable = false)
+    @JoinColumn(name = "id_account", nullable = false)
     private Client client;
     
     @Column(name = "loan_date", nullable = false)
@@ -37,10 +38,13 @@ public class Loan implements Serializable {
     @Column(name = "expected_return_date", nullable = false)
     private Date expectedReturnDate;
     
-    @Column(nullable = false)
+    @Column(name = "effective_return_date")
+    private Date effectiveReturnDate;
+    
+    @Column(name = "extended", nullable = false)
     private boolean extended;
     
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "status", nullable = false)
     private Status status;
 }

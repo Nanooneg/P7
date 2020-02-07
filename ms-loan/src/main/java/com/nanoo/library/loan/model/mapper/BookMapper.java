@@ -20,7 +20,6 @@ public interface BookMapper {
     Book fromDtoToBook (BookDto bookDto);
     
     @InheritInverseConfiguration
-    @Mapping(source = "condition.entitled", target = "condition")
     BookDto fromBookToDto (Book book);
     
 }
