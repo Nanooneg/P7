@@ -13,29 +13,36 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+  
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http
+      .csrf().disable()
+      // make sure we use stateless session; session won't be used to store user's state.
+      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                // make sure we use stateless session; session won't be used to store user's state.
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    
-        http
-                // authorization requests config
-                .authorizeRequests()
-                .antMatchers("/consult/**").authenticated()
-                .antMatchers("/create/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
-                .antMatchers("/edit/extend/**").authenticated()
-                .antMatchers("/edit/loan/loanStatus").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
-                .antMatchers("/get/emails").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
-                .antMatchers("/edit/account").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
-                .antMatchers("/delete/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN,CommonSecurityConfig.ROLE_EMPLOYEE)
-                // any other requests must be authenticated
-                .anyRequest().authenticated()
-                .and().httpBasic();
-        http
-                // Add a filter to check validity of token if present in request header
-                .addFilterBefore(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-    }
+    http
+      // authorization requests config
+      .authorizeRequests()
+      .antMatchers("/consult/**").authenticated()
+      .antMatchers("/create/**")
+      .hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
+      .antMatchers("/edit/extend/**").authenticated()
+      .antMatchers("/edit/loan/loanStatus").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
+      .antMatchers("/get/emails").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
+      .antMatchers("/edit/account").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
+      .antMatchers("/create")
+      .hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
+      .antMatchers("/return/**")
+      .hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
+      .antMatchers("/delete/**")
+      .hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
+      // any other requests must be authenticated
+      .anyRequest().authenticated()
+      .and().httpBasic();
+    http
+      // Add a filter to check validity of token if present in request header
+      .addFilterBefore(new JwtTokenAuthenticationFilter(),
+        UsernamePasswordAuthenticationFilter.class);
+  }
 }
