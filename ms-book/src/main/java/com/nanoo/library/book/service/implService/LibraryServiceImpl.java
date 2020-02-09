@@ -25,6 +25,7 @@ public class LibraryServiceImpl implements LibraryService {
     
     private static final String TITLE_ATT = "title";
     private static final String AUTHOR_ATT = "author";
+    private static final String REGISTRATION_ATT = "registration";
     
     private final LibraryRepository libraryRepository;
     private final CopyBookRepository copyBookRepository;

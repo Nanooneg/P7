@@ -4,10 +4,15 @@ import com.nanoo.library.book.database.BookRepository;
 import com.nanoo.library.book.model.dto.BookDto;
 import com.nanoo.library.book.model.dto.CopyBookDto;
 import com.nanoo.library.book.model.entities.Book;
+import com.nanoo.library.book.model.entities.CopyBook;
+import com.nanoo.library.book.model.entities.Library;
 import com.nanoo.library.book.model.mapper.BookMapper;
 import com.nanoo.library.book.service.contractService.AuthorService;
 import com.nanoo.library.book.service.contractService.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +28,7 @@ public class BookServiceImpl implements BookService {
     
     private static final String TITLE_ATT = "title";
     private static final String AUTHOR_ATT = "author";
+    private static final String REGISTRATION_ATT = "registration";
     
     private final BookRepository bookRepository;
     
@@ -51,7 +57,7 @@ public class BookServiceImpl implements BookService {
     }
     
     
-    /*@Override
+    @Override
     public List<BookDto> getLastRegisteredBook() {
         List<BookDto> bookDtos = new ArrayList<>();
 
@@ -62,22 +68,9 @@ public class BookServiceImpl implements BookService {
             bookDtos.add(bookMapper.fromBookToDto(book));
         }
     
-        return bookDtos;
+        return getBookWitAvailableCopyAccount(bookDtos);
     }
     
-    @Override
-    public List<BookDto> getLastRegisteredBookOfLibrary(Library library) {
-        List<BookDto> bookDtos = new ArrayList<>();
-    
-        Pageable topFive = PageRequest.of(0, 5, Sort.by(REGISTRATION_ATT));
-        Page<Book> books = bookRepository.findAllByLibrary(library,topFive);
-    
-        for (Book book : books){
-            bookDtos.add(bookMapper.fromBookToDto(book));
-        }
-    
-        return bookDtos;
-    }*/
     @Override
     public List<BookDto> getSearchResult(boolean available, String searchAttribut, String searchCriteria){
         
@@ -111,6 +104,20 @@ public class BookServiceImpl implements BookService {
         else
             return getBookWitAvailableCopyAccount(bookDtos);
         
+    }
+    
+    @Override
+    public List<BookDto> getLastRegisteredBookOfLibrary(Library library) {
+        List<BookDto> bookDtos = new ArrayList<>();
+        
+        Pageable topFive = PageRequest.of(0, 5, Sort.by(REGISTRATION_ATT));
+        Page<Book> books = bookRepository.findLastRegisteredByLibrary(library,topFive);
+        
+        for (Book book : books){
+            bookDtos.add(bookMapper.fromBookToDto(book));
+        }
+        
+        return getBookWitAvailableCopyAccount(bookDtos);
     }
     
     /*@Override

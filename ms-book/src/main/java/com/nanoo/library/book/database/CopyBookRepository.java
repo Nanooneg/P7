@@ -1,6 +1,9 @@
 package com.nanoo.library.book.database;
 
 import com.nanoo.library.book.model.entities.CopyBook;
+import com.nanoo.library.book.model.entities.Library;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -30,7 +33,7 @@ public interface CopyBookRepository extends JpaRepository<CopyBook,Integer> {
                    "JOIN copy.book book " +
                    "JOIN book.author author " +
                    "WHERE ((:author = '' OR LOWER(author.firstName) LIKE LOWER(:author))" +
-                   "OR (:author = '' OR LOWER(author.lastName) LIKE LOWER(:author)))" +
+                       "OR (:author = '' OR LOWER(author.lastName) LIKE LOWER(:author)))" +
                    "AND (:available = false OR copy.available = :available)" +
                    "AND (:idLibrary = 0 OR library.id = :idLibrary)")
     List<CopyBook> findByAuthorSearchAttribut (@Param("author") String author,

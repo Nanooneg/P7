@@ -23,7 +23,6 @@ public class BookController {
     private static final String SEARCH_ATT = "searchAttribut";
     private static final String LIBRARY_ATT = "libraries";
     private static final String ACTUAL_LIBRARY_ATT = "actualLibrary";
-    private static final String AVAILABILITY_ATT = "availability";
     
     private static final String CATALOG_VIEW = "catalog";
     
@@ -38,8 +37,7 @@ public class BookController {
     @GetMapping("/catalogue")
     public String displayAllBooks(Model model) {
         
-        //model.addAttribute(SLIDER_ATT,proxy.getLastRegisteredBook());
-        model.addAttribute(SLIDER_ATT,proxy.listAllBook());
+        model.addAttribute(SLIDER_ATT,proxy.getLastRegisteredBook());
         model.addAttribute(LIST_ATT,proxy.listAllBook());
         
         model.addAttribute(LIBRARY_ATT,proxy.listAllLibrary());
@@ -60,8 +58,7 @@ public class BookController {
         searchAttribut.setLibraryId(Integer.parseInt(library));
         
         assert actualLibrary != null;
-        //model.addAttribute(SLIDER_ATT,proxy.getLastRegisteredBookOfLibrary(actualLibrary.getId().toString()));
-        model.addAttribute(SLIDER_ATT,proxy.listAllBookOfLibrary(actualLibrary.getId().toString()));
+        model.addAttribute(SLIDER_ATT,proxy.getLastRegisteredBookOfLibrary(actualLibrary.getId().toString()));
         model.addAttribute(LIST_ATT,proxy.listAllBookOfLibrary(actualLibrary.getId().toString()));
     
         model.addAttribute(LIBRARY_ATT,libraries);

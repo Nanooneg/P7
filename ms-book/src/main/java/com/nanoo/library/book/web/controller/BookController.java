@@ -34,21 +34,12 @@ public class BookController {
         
     }
     
-    /*@GetMapping("/book-last")
+    @GetMapping("/book-last")
     public List<BookDto> getLastRegisteredBook(){
         
         return bookService.getLastRegisteredBook();
         
     }
-    
-    @GetMapping("/{library}/book-last")
-    public List<BookDto> getLastRegisteredBookOfLibrary(@PathVariable("library") String libraryId){
-    
-        Library library = libraryService.findById(Integer.parseInt(libraryId));
-        
-        return bookService.getLastRegisteredBookOfLibrary(library);
-        
-    }*/
     
     @GetMapping("/search-result")
     @ResponseBody
