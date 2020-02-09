@@ -19,20 +19,16 @@ public class Book implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @Column(name = "id_book")
     private Integer id;
     
-    @Column(length = 50, nullable = false)
+    @Column(name = "title", length = 50, nullable = false)
     private String title;
     
-    @Column(length = 400)
-    private String summary;
-    
-    @Column(nullable = false)
+    @Column(name = "cover", nullable = false)
     private String cover;
     
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20, nullable = false)
-    private Condition condition;
+
     
 }

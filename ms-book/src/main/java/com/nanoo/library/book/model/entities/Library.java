@@ -11,7 +11,7 @@ import java.util.Set;
  * @author nanoo
  * @create 22/11/2019 - 23:08
  */
-@Entity
+@Entity(name = "library")
 @Getter @Setter
 @NoArgsConstructor
 public class Library implements Serializable {
@@ -20,18 +20,20 @@ public class Library implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_library")
     private Integer id;
     
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
     
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_address")
     private Address address;
     
     @Column(name = "phone_number", length = 10, nullable = false)
     private String phoneNumber;
     
     @OneToMany(mappedBy = "library")
-    private Set<Book> books;
+    private Set<CopyBook> copies;
     
 }

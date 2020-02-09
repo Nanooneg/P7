@@ -21,8 +21,5 @@ public class AuthorDto implements Serializable {
     private Integer id;
     private String lastName;
     private String firstName;
-    private Set<BookWithoutAuthorsAndLibraryDto> books;
-    private Date birthDate;
-    private Date deathDate;
     
 }

@@ -49,18 +49,15 @@
                 <div class="loan-list">
                     <!-- Loan list -->
                     <div th:each="loan :${loans}" class="catalog-item">
-                        <div th:classappend="${(loan.status.equalsIgnoreCase('fini')? 'inside-item finish-item' : 'inside-item' )}">
+                        <div th:classappend="${(loan.status.equalsIgnoreCase('rendu')? 'inside-item finish-item' : 'inside-item' )}">
                             <div class="cover-item">
-                                <img th:src="${loan.book.cover}" alt="couverture du livre" src="">
+                                <img th:src="${loan.copyBook.book.cover}" alt="couverture du livre" src="">
                             </div>
                             <div class="info-item">
                                 <div class="header-item">
-                                    <div class="title-book" th:text="${loan.book.title}"></div>
-                                    <div class="return-date" th:if="${!loan.status.equalsIgnoreCase('fini')}">
-                                        (Retour : <span th:text="${#dates.format(loan.expectedReturnDate,'dd MMM YYYY')}"></span>)
-                                    </div>
+                                    <div class="title-book" th:text="${loan.copyBook.book.title}"></div>
                                     <div class="loan-button-status">
-                                        <div th:if="${!loan.status.equalsIgnoreCase('fini')}" class="extend-button">
+                                        <div th:if="${!loan.status.equalsIgnoreCase('rendu')}" class="extend-button">
                                             <span th:if="${loan.extended}" class="extend-button-disable">
                                                 <i class="fas fa-sync-alt"></i>
                                             </span>
@@ -68,13 +65,28 @@
                                                 <a th:href="@{|/utilisateur/etendre/${loan.id}|}"><i class="fas fa-sync-alt"></i></a>
                                             </span>
                                         </div>
-                                        <div th:classappend="${(loan.status.equalsIgnoreCase('fini')? 'finish' : '' ) +
+                                        <div th:classappend="${(loan.status.equalsIgnoreCase('rendu')? 'finish' : '' ) +
                                                            (loan.status.equalsIgnoreCase('en retard')? 'outdated' : '' ) +
-                                                           (loan.status.equalsIgnoreCase('en cours')? 'ongoing' : '' )}"
-                                        >Statut : <span th:text="${loan.status}"></span></div>
+                                                           (loan.status.equalsIgnoreCase('en cours')? 'ongoing' : '' )}">
+                                            <span th:text="${loan.status}"></span></div>
                                     </div>
                                 </div>
-                                <div class="description-item" th:text="${loan.book.summary}"></div>
+                                <div th:if="${!loan.status.equalsIgnoreCase('rendu')}" class="return-date">
+                                    <div>
+                                        <b>Emprunter le :</b> <span th:text="${#dates.format(loan.loanDate,'dd MMM YYYY')}"></span>
+                                    </div>
+                                    <div>
+                                        <b>A rendre avant le :</b> <span th:text="${#dates.format(loan.expectedReturnDate,'dd MMM YYYY')}"></span>
+                                    </div>
+                                </div>
+                                <div th:unless="${!loan.status.equalsIgnoreCase('rendu')}" class="return-date disabled-text">
+                                    <div>
+                                        Emprunter le : <span th:text="${#dates.format(loan.loanDate,'dd MMM YYYY')}"></span>
+                                    </div>
+                                    <div>
+                                        Rendu le : <span th:text="${#dates.format(loan.effectiveReturnDate,'dd MMM YYYY')}"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

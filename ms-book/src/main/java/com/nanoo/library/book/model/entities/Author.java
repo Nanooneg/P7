@@ -23,6 +23,7 @@ public class Author implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_author")
     private Integer id;
     
     @Column(name = "last_name", nullable = false)
@@ -31,17 +32,11 @@ public class Author implements Serializable {
     @Column(name = "first_name", nullable = false)
     private String firstName;
     
-    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "author")
     private Set<Book> books;
     
-    @Column(name = "birth_date")
-    private Date birthDate;
-    
-    @Column(name = "death_date")
-    private Date deathDate;
-    
-    /* Custom getter to return only available books */
-    public Set<Book> getAvailableBooks() {
+    /* Custom getter to return only available books TODO recast with new mapping*/
+    /*public Set<Book> getAvailableBooks() {
         Set<Book> availableBooks = new HashSet<>();
         
         for (Book book : books){
@@ -51,5 +46,5 @@ public class Author implements Serializable {
         }
         
         return availableBooks;
-    }
+    }*/
 }

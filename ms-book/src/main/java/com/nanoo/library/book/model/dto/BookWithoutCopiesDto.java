@@ -8,21 +8,19 @@ import java.io.Serializable;
 
 /**
  * @author nanoo
- * @create 23/11/2019 - 14:42
+ * @create 06/02/2020 - 15:50
  */
 @Getter @Setter
 @NoArgsConstructor
-public class BookWithoutAuthorsAndLibraryDto implements Serializable {
+public class BookWithoutCopiesDto implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     private Integer id;
     private String title;
+    private AuthorDto author;
     private String summary;
     private CoverOnlyPathDto cover;
-    private String deweyCode;
     private String category;
-    private String condition;
-    private boolean available;
     
 }

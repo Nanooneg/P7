@@ -1,7 +1,9 @@
 package com.nanoo.library.book.web.controller;
 
 import com.nanoo.library.book.model.dto.BookDto;
-import com.nanoo.library.book.model.dto.LibraryWithoutBooksDto;
+import com.nanoo.library.book.model.dto.LibraryDto;
+import com.nanoo.library.book.model.entities.Library;
+import com.nanoo.library.book.service.contractService.BookService;
 import com.nanoo.library.book.service.contractService.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +22,16 @@ import java.util.List;
 public class LibraryController {
     
     private final LibraryService libraryService;
+    private final BookService bookService;
     
     @Autowired
-    public LibraryController(LibraryService libraryService) {
+    public LibraryController(LibraryService libraryService, BookService bookService) {
         this.libraryService = libraryService;
+        this.bookService = bookService;
     }
     
     @GetMapping("/libraries")
-    public List<LibraryWithoutBooksDto> listAllLibrary(){
+    public List<LibraryDto> listAllLibrary(){
         
         return libraryService.getLibraryList();
         
@@ -37,6 +41,15 @@ public class LibraryController {
     public List<BookDto> listAllBooksOfLibrary(@PathVariable String library){
         
         return libraryService.getBookList(Integer.parseInt(library));
+        
+    }
+    
+    @GetMapping("/{library}/book-last")
+    public List<BookDto> getLastRegisteredBookOfLibrary(@PathVariable("library") String libraryId){
+        
+        Library library = libraryService.findById(Integer.parseInt(libraryId));
+        
+        return bookService.getLastRegisteredBookOfLibrary(library);
         
     }
     

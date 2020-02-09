@@ -19,15 +19,13 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book,Integer> {
     
-    Page<Book> findAllByLibrary(Library library, Pageable pageable);
-    
     @Query(value = "SELECT distinct b FROM Book b " +
-            "WHERE (:available = false OR b.available = :available) " +
-            "AND (:title = '' OR LOWER(b.title) LIKE LOWER(:title))" +
-            "AND (:libraryId = 0 OR b.library = :libraryId)")
-    List<Book> findBySearchAttributAndByLibrary(@Param("available") boolean available,
-                                                @Param("title") String title,
-                                                @Param("libraryId") int libraryId,
-                                                Sort sort);
+            "WHERE (:title = '' OR LOWER(b.title) LIKE LOWER(:title))")
+    List<Book> findBySearchAttribut(@Param("title") String title, Sort sort);
+
+    @Query(value = "SELECT distinct b FROM Book b " +
+                   "INNER JOIN b.copies copy " +
+                   "WHERE copy.library = :library")
+    Page<Book> findLastRegisteredByLibrary(@Param("library") Library library, Pageable pageable);
     
 }

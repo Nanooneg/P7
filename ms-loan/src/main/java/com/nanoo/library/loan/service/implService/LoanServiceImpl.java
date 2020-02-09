@@ -5,7 +5,7 @@ import com.nanoo.library.loan.database.ClientRepository;
 import com.nanoo.library.loan.database.LoanRepository;
 import com.nanoo.library.loan.model.dto.ClientDto;
 import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
-import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
+import com.nanoo.library.loan.model.dto.LoanWithCopyBookInfoDto;
 import com.nanoo.library.loan.model.entities.Client;
 import com.nanoo.library.loan.model.entities.Loan;
 import com.nanoo.library.loan.model.mapper.ClientMapper;
@@ -52,8 +52,8 @@ public class LoanServiceImpl implements LoanService {
     }
     
     @Override
-    public List<LoanWithBookInfoDto> getUserLoanList(int userId,String loanProperty){
-        List<LoanWithBookInfoDto> loanWithBookInfoDtos =  new ArrayList<>();
+    public List<LoanWithCopyBookInfoDto> getUserLoanList(int userId, String loanProperty){
+        List<LoanWithCopyBookInfoDto> loanWithBookInfoDtos =  new ArrayList<>();
         
         List<Loan> loans = loanRepository.findAllLoanByClientId(userId);
         loans.sort(Comparator.comparing(Loan::getLoanDate,Comparator.reverseOrder()));
@@ -70,11 +70,13 @@ public class LoanServiceImpl implements LoanService {
             }
         }
     
+        System.out.println(Arrays.toString(loanWithBookInfoDtos.toArray()));
+        
         return loanWithBookInfoDtos;
     }
     
     @Override
-    public LoanWithBookInfoDto extendLoan(int loanId) {
+    public LoanWithCopyBookInfoDto extendLoan(int loanId) {
         Optional<Loan> loanWithBookInfo = loanRepository.findById(loanId);
         
         if (loanWithBookInfo.isPresent()){

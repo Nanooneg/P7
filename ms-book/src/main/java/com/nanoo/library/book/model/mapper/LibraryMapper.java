@@ -2,7 +2,6 @@ package com.nanoo.library.book.model.mapper;
 
 import com.nanoo.library.book.model.dto.LibraryDto;
 import com.nanoo.library.book.model.dto.LibraryInfoLoanDto;
-import com.nanoo.library.book.model.dto.LibraryWithoutBooksDto;
 import com.nanoo.library.book.model.entities.Library;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -22,8 +21,6 @@ public interface LibraryMapper {
     
     @InheritInverseConfiguration
     LibraryDto fromLibraryToDto (Library library);
-    
-    LibraryWithoutBooksDto fromLibraryToDtoWithoutBooks (Library library);
     
     LibraryInfoLoanDto fromLibraryToForLoanDto (Library library);
     

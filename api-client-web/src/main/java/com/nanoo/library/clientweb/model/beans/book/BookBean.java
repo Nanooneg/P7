@@ -1,6 +1,5 @@
 package com.nanoo.library.clientweb.model.beans.book;
 
-import com.nanoo.library.clientweb.model.beans.library.LibraryWithoutBookBean;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,13 +16,11 @@ public class BookBean {
     
     private Integer id;
     private String title;
-    private Set<AuthorWithoutBooksBean> authors;
+    private AuthorWithoutBooksBean author;
+    private Set<CopyBookBean> copies;
     private String summary;
     private CoverBean cover;
-    private LibraryWithoutBookBean library;
-    private String deweyCode;
     private String category;
-    private String condition;
-    private boolean available;
+    private int availableCopies;
     
 }

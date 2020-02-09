@@ -3,6 +3,9 @@ package com.nanoo.library.clientweb.model.beans.book;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * @author nanoo
@@ -10,12 +13,11 @@ import lombok.Setter;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class BookLoanBean {
+@ToString
+class BookLoanBean {
     
     private Integer id;
     private String title;
-    private String summary;
     private String cover;
-    private String condition;
     
 }

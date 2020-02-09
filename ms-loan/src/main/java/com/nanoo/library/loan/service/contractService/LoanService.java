@@ -2,7 +2,7 @@ package com.nanoo.library.loan.service.contractService;
 
 import com.nanoo.library.loan.model.dto.ClientDto;
 import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
-import com.nanoo.library.loan.model.dto.LoanWithBookInfoDto;
+import com.nanoo.library.loan.model.dto.LoanWithCopyBookInfoDto;
 
 import java.util.Date;
 import java.util.List;
@@ -16,9 +16,9 @@ public interface LoanService {
     
     List<LoanWithAccountInfoDto> getLoanList();
     
-    List<LoanWithBookInfoDto> getUserLoanList(int userId, String loanProperty);
+    List<LoanWithCopyBookInfoDto> getUserLoanList(int userId, String loanProperty);
     
-    LoanWithBookInfoDto extendLoan(int loanId);
+    LoanWithCopyBookInfoDto extendLoan(int loanId);
     
     ClientDto editAccountInfo(ClientDto clientDto);
     

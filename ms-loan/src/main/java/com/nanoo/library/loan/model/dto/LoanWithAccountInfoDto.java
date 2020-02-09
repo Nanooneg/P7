@@ -22,6 +22,7 @@ public class LoanWithAccountInfoDto implements Serializable {
     private ClientDto client;
     private Date loanDate;
     private Date expectedReturnDate;
+    private Date effectiveReturnDate;
     private boolean extended;
     private Status status;
     

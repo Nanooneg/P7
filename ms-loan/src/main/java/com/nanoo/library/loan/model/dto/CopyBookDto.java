@@ -3,25 +3,23 @@ package com.nanoo.library.loan.model.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @author nanoo
- * @create 21/01/2020 - 11:26
+ * @create 07/02/2020 - 10:07
  */
 @Getter @Setter
 @NoArgsConstructor
-public class LoanWithBookInfoDto implements Serializable {
+@ToString
+public class CopyBookDto implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     private Integer id;
+    private String condition;
     private BookDto book;
-    private Date loanDate;
-    private Date expectedReturnDate;
-    private boolean extended;
-    private String status;
     
 }

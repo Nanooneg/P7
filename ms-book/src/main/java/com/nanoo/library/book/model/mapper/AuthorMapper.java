@@ -1,7 +1,6 @@
 package com.nanoo.library.book.model.mapper;
 
 import com.nanoo.library.book.model.dto.AuthorDto;
-import com.nanoo.library.book.model.dto.AuthorWithoutBooksDto;
 import com.nanoo.library.book.model.entities.Author;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -21,7 +20,5 @@ public interface AuthorMapper {
     
     @InheritInverseConfiguration
     AuthorDto fromAuthorToDto (Author author);
-    
-    AuthorWithoutBooksDto fromAuthorToDtoWithoutBooks (Author author);
     
 }

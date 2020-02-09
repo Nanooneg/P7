@@ -20,12 +20,13 @@ public class Cover implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_cover")
     private Integer id;
     
-    @Column(nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
     
-    @Column(nullable = false)
+    @Column(name = "path", nullable = false)
     private String path;
     
 }

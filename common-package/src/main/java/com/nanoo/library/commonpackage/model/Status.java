@@ -8,7 +8,7 @@ public enum Status {
     
     ONGOING("en cours"),
     OUTDATED("en retard"),
-    FINISH("fini");
+    FINISH("rendu");
     
     private String entitled ;
     
