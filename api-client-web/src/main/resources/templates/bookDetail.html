@@ -42,6 +42,14 @@
             </div>
           </div>
         </div>
+        <div class="book-detail-button text-center">
+          <a th:if="${actualLibrary != null}" th:href="@{|/livre/catalogue/detail/${book.id}|}">
+            <button type="submit" class="btn btn-light action-button">Trouver partout</button>
+          </a>
+          <a th:href="@{|javascript:history.go(-1)|}">
+            <button type="submit" class="btn btn-light action-button">Revenir au catalogue</button>
+          </a>
+        </div>
       </div>
     </div>
   </div>

@@ -95,14 +95,19 @@ public class BookController {
   }
   
   @GetMapping({"/catalogue/detail/{bookId}","/catalogue/{libraryId}/detail/{bookId}"})
-  public String displayBookDetails(Model model, @PathVariable int bookId, @PathVariable(required = false) int libraryId) {
+  public String displayBookDetails(Model model, @PathVariable int bookId, @PathVariable(required = false) String libraryId) {
+    
+    if (libraryId == null)
+      libraryId = "0";
+    
     List<LibraryWithoutBookBean> libraries = proxy.listAllLibrary();
+    String finalLibraryId = libraryId;
     LibraryWithoutBookBean actualLibrary = libraries.stream()
-      .filter(libraryToFind -> libraryId == libraryToFind.getId())
+      .filter(libraryToFind -> Integer.parseInt(finalLibraryId) == libraryToFind.getId())
       .findAny()
       .orElse(null);
     
-    model.addAttribute(BOOK_ATT, proxy.getBookDetail(bookId,libraryId));
+    model.addAttribute(BOOK_ATT, proxy.getBookDetail(bookId,Integer.parseInt(libraryId)));
     model.addAttribute(LIBRARY_ATT, libraries);
   
     if (actualLibrary != null) {

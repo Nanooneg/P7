@@ -92,7 +92,8 @@
   <!-- Books cards -->
   <div class="catalog">
     <div th:each="book :${books}" class="catalog-item">
-      <a th:href="@{|/livre/catalogue/detail/${book.id}|}" class="link-item">
+      <a th:href="@{'/livre/catalogue'+ ${actualLibrary == null ? '' : '/'+ actualLibrary.id} +'/detail/'+ ${book.id}}"
+         class="link-item">
         <div class="inside-item">
           <div class="cover-item">
             <img th:src="${book.cover.path}" alt="couverture du livre" src="">

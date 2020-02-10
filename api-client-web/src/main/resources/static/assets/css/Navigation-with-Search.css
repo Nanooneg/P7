@@ -81,8 +81,11 @@
   background-color: transparent;
 }
 
-.navigation-clean-search .action-button, .navigation-clean-button .action-button:active,
-.search-frame .action-button{
+.navigation-clean-search .action-button,
+.navigation-clean-button .action-button:active,
+.search-frame .action-button,
+.book-detail-button .action-button,
+.book-detail-button .action-button:active{
   background: #616161 !important;
   width: 150px;
   border-radius: 20px;
@@ -103,7 +106,8 @@
 }
 
 .navigation-clean-search .action-button:hover, .navigation-clean-search .action-button:focus,
-.search-frame .action-button:hover, .search-frame .action-button:focus{
+.search-frame .action-button:hover, .search-frame .action-button:focus,
+.book-detail-button .action-button:hover, .book-detail-button .action-button:focus{
   background: #a2a2a2 !important;
 }
 
