@@ -1,11 +1,10 @@
 package com.nanoo.library.book.model.dto;
 
+import java.io.Serializable;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
-import java.util.Set;
 
 /**
  * @author nanoo
@@ -20,7 +19,7 @@ public class BookDto implements Serializable {
     private Integer id;
     private String title;
     private AuthorDto author;
-    private Set<CopyBookDto> copies; //TODO remove unused attribut ( use BookInfoDto with copies )
+    private List<CopyBookDto> copies;
     private String summary;
     private CoverOnlyPathDto cover;
     private String category;

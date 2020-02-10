@@ -6,106 +6,115 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head th:insert="fragments/fragments.html :: headerfiles">
-    <title>Bibliothèque de Bordeaux</title>
+  <title>Bibliothèque de Bordeaux</title>
 </head>
 <body>
 
 <div th:insert="fragments/fragments.html :: nav"></div>
 
 <div class="container-fluid">
-    <!-- Search form -->
-    <div class="search-frame">
-        <form method="post" th:action="@{/livre/catalogue/search}" th:object="${searchAttribut}">
-            <div class="row align-items-center text-center">
-                <div>
-                    <input type="hidden" th:field="*{libraryId}">
-                </div>
-                <div class="col-md-4">
-                    <label class="mr-sm-2 sr-only" for="search"></label>
-                    <input type="text" th:field="*{searchValue}" class="form-control" id="search" placeholder="Je recherche...">
-                </div>
-                <div class="col-md-2">
-                    <label class="mr-sm-2 sr-only" for="criteria"></label>
-                    <select class="form-control" th:field="*{searchCriteria}" id="criteria">
-                        <option th:value="title">Recherche par titre</option>
-                        <option th:value="author">Recherche par auteur</option>
-                    </select>
-                </div>
-                <div class="custom-checkbox col-md-1">
-                    <input type="checkbox" th:field="*{available}" class="custom-control-input" id="available">
-                    <label class="custom-control-label" for="available">Disponible</label>
-                </div>
-                <div class="col-md-auto">
-                    <button type="submit" class="btn btn-light action-button">Rechercher</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <!-- Slider -->
-    <div id="slider" class="simple-slider">
-        <!-- No result -->
-        <div class="no-result text-center" th:if="${sliderBooks.isEmpty()}">
-            <p>Pas de résultat</p>
+  <!-- Search form -->
+  <div class="search-frame">
+    <form method="post" th:action="@{/livre/catalogue/search}" th:object="${searchAttribut}">
+      <div class="row align-items-center text-center">
+        <div>
+          <input type="hidden" th:field="*{libraryId}">
         </div>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <!-- Condition for data to display in slider (in books searched page, display the same in slider and list below) handle in controller -->
-                <div th:each="book : ${sliderBooks}" class="swiper-slide">
-                    <div class="row inside-slider">
-                        <div class="col-md-5">
-                            <div class="cover-book">
-                                <img th:src="${book.cover.path}" alt="couverture du livre" src="">
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="info-book">
-                                <div class="header-description">
-                                    <div th:text="${book.title}" class="title-book"></div>
-                                </div>
-                                <div class="text-description">
-                                    <div><b>Autheur :</b>
-                                        <span th:text="${book.author.firstName}"></span>
-                                        <span th:text="${book.author.lastName}"></span>
-                                    </div>
-                                    <div><b>Genre :</b> <span th:text= "${book.category}" ></span></div>
-                                    <div><b>Disponibilités :</b>
-                                        <span th:text="${book.availableCopies}"></span>
-                                        / <span th:text="${book.copies.size()}"></span>
-                                    </div>
-                                    <div><b>Résumé :</b> <span th:text= "${book.summary}" ></span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-md-4">
+          <label class="mr-sm-2 sr-only" for="search"></label>
+          <input type="text" th:field="*{searchValue}" class="form-control" id="search"
+                 placeholder="Je recherche...">
+        </div>
+        <div class="col-md-2">
+          <label class="mr-sm-2 sr-only" for="criteria"></label>
+          <select class="form-control" th:field="*{searchCriteria}" id="criteria">
+            <option th:value="title">Recherche par titre</option>
+            <option th:value="author">Recherche par auteur</option>
+          </select>
+        </div>
+        <div class="custom-checkbox col-md-1">
+          <input type="checkbox" th:field="*{available}" class="custom-control-input"
+                 id="available">
+          <label class="custom-control-label" for="available">Disponible</label>
+        </div>
+        <div class="col-md-auto">
+          <button type="submit" class="btn btn-light action-button">Rechercher</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Slider -->
+  <div id="slider" class="simple-slider">
+    <!-- No result -->
+    <div class="no-result text-center" th:if="${sliderBooks.isEmpty()}">
+      <p>Pas de résultat</p>
+    </div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <!-- Condition for data to display in slider (in books searched page, display the same in slider and list below) handle in controller -->
+        <div th:each="book : ${sliderBooks}" class="swiper-slide">
+          <div class="row inside-slider">
+            <div class="col-md-5">
+              <a th:href="@{'/livre/catalogue'+ ${actualLibrary == null ? '' : '/'+ actualLibrary.id} +'/detail/'+ ${book.id}}">
+                <div class="cover-book">
+                  <img th:src="${book.cover.path}" alt="couverture du livre" src="">
                 </div>
+              </a>
+            </div>
+            <div class="col-md-7">
+              <div class="info-book">
+                <div class="header-description">
+                  <div th:text="${book.title}" class="title-book"></div>
+                </div>
+                <div class="text-description">
+                  <div><b>Autheur :</b>
+                    <span th:text="${book.author.firstName}"></span>
+                    <span th:text="${book.author.lastName}"></span>
+                  </div>
+                  <div><b>Genre :</b> <span th:text="${book.category}"></span></div>
+                  <div><b>Disponibilités :</b>
+                    <span th:text="${book.availableCopies}"></span>
+                    / <span th:text="${book.copies.size()}"></span>
+                  </div>
+                  <div><b>Résumé :</b> <span th:text="${book.summary}"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+  <!-- Books cards -->
+  <div class="catalog">
+    <div th:each="book :${books}" class="catalog-item">
+      <a th:href="@{|/livre/catalogue/detail/${book.id}|}" class="link-item">
+        <div class="inside-item">
+          <div class="cover-item">
+            <img th:src="${book.cover.path}" alt="couverture du livre" src="">
+          </div>
+          <div class="info-item">
+            <div class="header-item">
+              <div th:text="${book.title}" class="title-book"></div>
+              <div class="author-book">
+                ( <span th:text="${book.author.firstName}"></span> <span
+                  th:text="${book.author.lastName}"></span> )
+              </div>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="availability">Disponibilités :
+              <span th:text="${book.availableCopies}"></span>
+              / <span th:text="${book.copies.size()}"></span>
+            </div>
+            <div th:text="${book.summary}" class="description-item"></div>
+          </div>
         </div>
+      </a>
     </div>
-    <!-- Books cards -->
-    <div class="catalog">
-        <div th:each="book :${books}" class="catalog-item">
-            <a href="#slider" class="link-item">
-                <div class="inside-item">
-                    <div class="cover-item">
-                        <img th:src="${book.cover.path}" alt="couverture du livre" src="">
-                    </div>
-                    <div class="info-item">
-                        <div class="header-item">
-                            <div th:text="${book.title}" class="title-book"></div>
-                            <div class="author-book">
-                                ( <span th:text="${book.author.firstName}"></span> <span th:text="${book.author.lastName}"></span> )
-                            </div>
-                        </div>
-                        <div th:text="${book.summary}" class="description-item"></div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+  </div>
 </div>
 
 <!-- Footer insert -->

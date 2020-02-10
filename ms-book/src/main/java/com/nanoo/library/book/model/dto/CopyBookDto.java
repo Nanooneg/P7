@@ -1,5 +1,7 @@
 package com.nanoo.library.book.model.dto;
 
+import java.util.Comparator;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +14,7 @@ import java.io.Serializable;
  */
 @Getter @Setter
 @NoArgsConstructor
-public class CopyBookDto implements Serializable {
+public class CopyBookDto implements Serializable, Comparator<CopyBookDto> {
     
     private static final long serialVersionUID = 1L;
     
@@ -21,5 +23,23 @@ public class CopyBookDto implements Serializable {
     private String condition;
     private BookWithoutCopiesDto book;
     private LibraryDto library;
+    
+    
+    @Override
+    public int compare(CopyBookDto o1, CopyBookDto o2) {
+        return o1.library.getId() - o2.library.getId();
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+    
+    @Override
+    public int hashCode() {
+        int hashno = 7;
+        hashno = 13 * hashno + (id == null ? 0 : id.hashCode());
+        return hashno;
+    }
     
 }

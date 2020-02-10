@@ -111,19 +111,6 @@ public class LoanServiceImpl implements LoanService {
     return null;
   }
   
-  private Date extendExpectedReturnDate(Date oldDate) {
-    Calendar c = Calendar.getInstance();
-    c.setTime(oldDate);
-    c.add(Calendar.DAY_OF_WEEK, LOAN_DAYS_DURATION);
-    return c.getTime();
-  }
-  
-  private boolean isExtensible(Date actualExpectedReturnDate) {
-    
-    return extendExpectedReturnDate(actualExpectedReturnDate).after(new Date());
-    
-  }
-  
   @Override
   public ClientDto editAccountInfo(ClientDto clientDto) {
     
@@ -205,5 +192,18 @@ public class LoanServiceImpl implements LoanService {
     }
     
     return null;
+  }
+  
+  private Date extendExpectedReturnDate(Date oldDate) {
+    Calendar c = Calendar.getInstance();
+    c.setTime(oldDate);
+    c.add(Calendar.DAY_OF_WEEK, LOAN_DAYS_DURATION);
+    return c.getTime();
+  }
+  
+  private boolean isExtensible(Date actualExpectedReturnDate) {
+    
+    return extendExpectedReturnDate(actualExpectedReturnDate).after(new Date());
+    
   }
 }

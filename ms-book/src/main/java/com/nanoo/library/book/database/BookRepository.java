@@ -20,7 +20,7 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book,Integer> {
     
     @Query(value = "SELECT distinct b FROM Book b " +
-            "WHERE (:title = '' OR LOWER(b.title) LIKE LOWER(:title))")
+                   "WHERE (:title = '' OR LOWER(b.title) LIKE LOWER(:title))")
     List<Book> findBySearchAttribut(@Param("title") String title, Sort sort);
 
     @Query(value = "SELECT distinct b FROM Book b " +

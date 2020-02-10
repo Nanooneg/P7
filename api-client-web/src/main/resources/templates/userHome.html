@@ -6,94 +6,114 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head th:insert="fragments/fragments.html :: headerfiles">
-    <title>Dashboard</title>
+  <title>Dashboard</title>
 </head>
 <body>
 
 <div th:insert="fragments/fragments.html :: nav"></div>
 
 <div class="container-fluid">
-    <div class="row dashboard">
-        <div class="col-md-4 info-user-container">
-            <div class="info-user-buttons-container">
-                <div class="dashboard-card card-user">
-                    <div class="picture-profil">
-                        <img th:src="@{/image/profil-picture-2.jpg}" alt="photo de profil" src="">
-                    </div>
-                    <div class="info-user">
-                        <p>Nom : <span th:text="${account.lastName}"></span></p>
-                        <p>Prénom : <span th:text="${account.firstName}"></span></p>
-                        <p>N° Adhérent : <span th:text="${account.clientNumber}"></span></p>
-                        <p>Adresse : <span th:text="${account.address}"></span></p>
-                        <p>Date de naissance : <span th:text="${#dates.format(account.birthDate,'dd MMM YYYY')}"></span></p>
-                        <p>Inscris depuis le : <span th:text="${#dates.format(account.dateOfCreation,'dd MMM YYYY')}"></span></p>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <a th:href="@{/edit/profile}"><button type="submit" class="btn btn-light action-button">Modifier mon profil</button></a>
-                </div>
-                <div class="text-center">
-                    <a th:if="${#httpServletRequest.getRequestURI().contains('selection')}" th:href="@{/utilisateur/home}"><button type="submit" class="btn btn-light action-button">Afficher tous les emprunts</button></a>
-                </div>
-                <div class="text-center">
-                    <a th:unless="${#httpServletRequest.getRequestURI().contains('selection')}" th:href="@{/utilisateur/home/selection}"><button type="submit" class="btn btn-light action-button">Afficher les emprunts en cours</button></a>
-                </div>
-            </div>
+  <div class="row dashboard">
+    <div class="col-md-4 info-user-container">
+      <div class="info-user-buttons-container">
+        <div class="dashboard-card card-user">
+          <div class="picture-profil">
+            <img th:src="@{/image/profil-picture-2.jpg}" alt="photo de profil" src="">
+          </div>
+          <div class="info-user">
+            <p>Nom : <span th:text="${account.lastName}"></span></p>
+            <p>Prénom : <span th:text="${account.firstName}"></span></p>
+            <p>N° Adhérent : <span th:text="${account.clientNumber}"></span></p>
+            <p>Adresse : <span th:text="${account.address}"></span></p>
+            <p>Date de naissance : <span
+                th:text="${#dates.format(account.birthDate,'dd MMM YYYY')}"></span></p>
+            <p>Inscris depuis le : <span
+                th:text="${#dates.format(account.dateOfCreation,'dd MMM YYYY')}"></span></p>
+          </div>
         </div>
-        <div class="col-md-8 info-loan-container">
-            <div class="dashboard-card">
-                <div class="loan-title text-center">
-                    <h2>Mes livres empruntés</h2>
-                </div>
-                <!-- List of book borrow by user -->
-                <div class="loan-list">
-                    <!-- Loan list -->
-                    <div th:each="loan :${loans}" class="catalog-item">
-                        <div th:classappend="${(loan.status.equalsIgnoreCase('rendu')? 'inside-item finish-item' : 'inside-item' )}">
-                            <div class="cover-item">
-                                <img th:src="${loan.copyBook.book.cover}" alt="couverture du livre" src="">
-                            </div>
-                            <div class="info-item">
-                                <div class="header-item">
-                                    <div class="title-book" th:text="${loan.copyBook.book.title}"></div>
-                                    <div class="loan-button-status">
-                                        <div th:if="${!loan.status.equalsIgnoreCase('rendu')}" class="extend-button">
-                                            <span th:if="${loan.extended}" class="extend-button-disable">
-                                                <i class="fas fa-sync-alt"></i>
-                                            </span>
-                                            <span th:unless="${loan.extended}">
-                                                <a th:href="@{|/utilisateur/etendre/${loan.id}|}"><i class="fas fa-sync-alt"></i></a>
-                                            </span>
-                                        </div>
-                                        <div th:classappend="${(loan.status.equalsIgnoreCase('rendu')? 'finish' : '' ) +
+        <div class="text-center">
+          <a th:href="@{/edit/profile}">
+            <button type="submit" class="btn btn-light action-button">Modifier mon profil</button>
+          </a>
+        </div>
+        <div class="text-center">
+          <a th:if="${#httpServletRequest.getRequestURI().contains('selection')}"
+             th:href="@{/utilisateur/home}">
+            <button type="submit" class="btn btn-light action-button">Afficher tous les emprunts
+            </button>
+          </a>
+        </div>
+        <div class="text-center">
+          <a th:unless="${#httpServletRequest.getRequestURI().contains('selection')}"
+             th:href="@{/utilisateur/home/selection}">
+            <button type="submit" class="btn btn-light action-button">Afficher les emprunts en
+              cours
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 info-loan-container">
+      <div class="dashboard-card">
+        <div class="loan-title text-center">
+          <h2>Mes livres empruntés</h2>
+        </div>
+        <!-- List of book borrow by user -->
+        <div class="loan-list">
+          <!-- Loan list -->
+          <div th:each="loan :${loans}" class="catalog-item">
+            <div
+                th:classappend="${(loan.status.equalsIgnoreCase('rendu')? 'inside-item finish-item' : 'inside-item' )}">
+              <div class="cover-item">
+                <img th:src="${loan.copyBook.book.cover}" alt="couverture du livre" src="">
+              </div>
+              <div class="info-item">
+                <div class="header-item">
+                  <div class="title-book" th:text="${loan.copyBook.book.title}"></div>
+                  <div class="loan-button-status">
+                    <div th:if="${!loan.status.equalsIgnoreCase('rendu')}" class="extend-button">
+                      <span th:if="${loan.extended}" class="extend-button-disable">
+                        <i class="fas fa-sync-alt"></i>
+                      </span>
+                      <span th:unless="${loan.extended}">
+                        <a th:href="@{|/utilisateur/etendre/${loan.id}|}"><i class="fas fa-sync-alt"></i></a>
+                      </span>
+                    </div>
+                    <div th:classappend="${(loan.status.equalsIgnoreCase('rendu')? 'finish' : '' ) +
                                                            (loan.status.equalsIgnoreCase('en retard')? 'outdated' : '' ) +
                                                            (loan.status.equalsIgnoreCase('en cours')? 'ongoing' : '' )}">
-                                            <span th:text="${loan.status}"></span></div>
-                                    </div>
-                                </div>
-                                <div th:if="${!loan.status.equalsIgnoreCase('rendu')}" class="return-date">
-                                    <div>
-                                        <b>Emprunter le :</b> <span th:text="${#dates.format(loan.loanDate,'dd MMM YYYY')}"></span>
-                                    </div>
-                                    <div>
-                                        <b>A rendre avant le :</b> <span th:text="${#dates.format(loan.expectedReturnDate,'dd MMM YYYY')}"></span>
-                                    </div>
-                                </div>
-                                <div th:unless="${!loan.status.equalsIgnoreCase('rendu')}" class="return-date disabled-text">
-                                    <div>
-                                        Emprunter le : <span th:text="${#dates.format(loan.loanDate,'dd MMM YYYY')}"></span>
-                                    </div>
-                                    <div>
-                                        Rendu le : <span th:text="${#dates.format(loan.effectiveReturnDate,'dd MMM YYYY')}"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      <span th:text="${loan.status}"></span>
                     </div>
+                  </div>
                 </div>
+                <div th:if="${!loan.status.equalsIgnoreCase('rendu')}" class="return-date">
+                  <div>
+                    <b>Emprunter le :</b> <span
+                      th:text="${#dates.format(loan.loanDate,'dd MMM YYYY')}"></span>
+                  </div>
+                  <div>
+                    <b>A rendre avant le :</b> <span
+                      th:text="${#dates.format(loan.expectedReturnDate,'dd MMM YYYY')}"></span>
+                  </div>
+                </div>
+                <div th:unless="${!loan.status.equalsIgnoreCase('rendu')}"
+                     class="return-date disabled-text">
+                  <div>
+                    Emprunté le : <span
+                      th:text="${#dates.format(loan.loanDate,'dd MMM YYYY')}"></span>
+                  </div>
+                  <div>
+                    Rendu le : <span
+                      th:text="${#dates.format(loan.effectiveReturnDate,'dd MMM YYYY')}"></span>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <div th:insert="fragments/fragments.html :: footer" class="footer"></div>

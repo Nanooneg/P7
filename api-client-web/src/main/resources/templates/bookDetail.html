@@ -1,0 +1,58 @@
+<!--
+-
+- @create 10/02/2020 - 12:35
+- @author nanoo
+-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head th:insert="fragments/fragments.html :: headerfiles">
+  <title>Bibliothèque de Bordeaux</title>
+</head>
+<body>
+
+<div th:insert="fragments/fragments.html :: nav"></div>
+
+<div id="book-detail">
+  <div class="swiper-slide">
+    <div class="row inside-slider">
+      <div class="col-md-5">
+        <div class="cover-book">
+          <img th:src="${book.cover.path}" alt="couverture du livre" src="">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="info-book">
+          <div class="header-description">
+            <div th:text="${book.title}" class="title-book"></div>
+          </div>
+          <div class="text-description">
+            <div><b>Autheur :</b>
+              <span th:text="${book.author.firstName}"></span>
+              <span th:text="${book.author.lastName}"></span>
+            </div>
+            <div><b>Genre :</b> <span th:text="${book.category}"></span></div>
+            <div><b>Résumé :</b> <span th:text="${book.summary}"></span></div>
+            <div><b>Disponibilités :</b>
+              <ul th:each="copy : ${book.copies}" th:classappend="${!copy.available} ? 'striped-text' : '' ">
+                <li> -
+                  <span th:text="${copy.library.name}"></span> :
+                  <span th:text="${copy.condition}"></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer insert -->
+<div th:insert="fragments/fragments.html :: footer" class="footer"></div>
+<!-- Scripts insert -->
+<div th:insert="fragments/fragments.html :: script"></div>
+<script th:src="@{/assets/js/Simple-Slider.js}"></script>
+
+</body>
+
+</html>

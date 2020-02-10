@@ -1,10 +1,9 @@
 package com.nanoo.library.clientweb.model.beans.book;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Set;
 
 /**
  * @author nanoo
@@ -17,7 +16,7 @@ public class BookBean {
     private Integer id;
     private String title;
     private AuthorWithoutBooksBean author;
-    private Set<CopyBookBean> copies;
+    private List<CopyBookBean> copies;
     private String summary;
     private CoverBean cover;
     private String category;

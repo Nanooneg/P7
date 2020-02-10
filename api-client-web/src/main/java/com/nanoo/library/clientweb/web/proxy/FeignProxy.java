@@ -44,7 +44,10 @@ public interface FeignProxy {
 
     @GetMapping("/ms-book/consult/libraries")
     List<LibraryWithoutBookBean> listAllLibrary();
-
+    
+    @GetMapping("/ms-book/consult/{libraryId}/book/{bookId}")
+    BookBean getBookDetail(@PathVariable("bookId") int bookId, @PathVariable("libraryId") int libraryId);
+    
     @PostMapping("/ms-authentication/login")
     String doLogin(@RequestBody UserBean userBean);
 
@@ -71,4 +74,5 @@ public interface FeignProxy {
     @PostMapping("/ms-authentication/refresh")
     String doUpdateToken(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken,
         @RequestBody UserBean userUpdated);
+  
 }

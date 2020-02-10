@@ -1,6 +1,7 @@
 package com.nanoo.library.book.model.dto;
 
 import com.nanoo.library.book.model.entities.Address;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.Set;
  * @create 23/11/2019 - 00:47
  */
 @Getter @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 public class LibraryDto implements Serializable {
     

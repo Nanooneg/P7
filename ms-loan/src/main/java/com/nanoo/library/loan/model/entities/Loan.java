@@ -7,12 +7,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +22,7 @@ import lombok.Setter;
  * @create 23/11/2019 - 17:01
  */
 @Entity
+@Table(name = "loan")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,7 +35,7 @@ public class Loan implements Serializable {
   @Column(name = "id_loan")
   private Integer id;
   
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne
   @JoinColumn(name = "id_copy_book", nullable = false)
   private CopyBook copyBook;
   

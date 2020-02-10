@@ -25,18 +25,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       // authorization requests config
       .authorizeRequests()
       .antMatchers("/consult/**").authenticated()
-      .antMatchers("/create/**")
-      .hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
+      .antMatchers("/create/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
       .antMatchers("/edit/extend/**").authenticated()
       .antMatchers("/edit/loan/loanStatus").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
       .antMatchers("/get/emails").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
       .antMatchers("/edit/account").hasRole(CommonSecurityConfig.ROLE_TECHNICAL)
-      .antMatchers("/create")
-      .hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
-      .antMatchers("/return/**")
-      .hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
-      .antMatchers("/delete/**")
-      .hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
+      .antMatchers("/create").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
+      .antMatchers("/return/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
+      .antMatchers("/delete/**").hasAnyRole(CommonSecurityConfig.ROLE_ADMIN, CommonSecurityConfig.ROLE_EMPLOYEE)
       // any other requests must be authenticated
       .anyRequest().authenticated()
       .and().httpBasic();
