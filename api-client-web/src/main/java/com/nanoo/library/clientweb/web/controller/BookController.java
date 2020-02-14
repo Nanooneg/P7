@@ -95,7 +95,7 @@ public class BookController {
   }
   
   @GetMapping({"/catalogue/detail/{bookId}","/catalogue/{libraryId}/detail/{bookId}"})
-  public String displayBookDetails(Model model, @PathVariable int bookId, @PathVariable(required = false) String libraryId) {
+  public String displayBookDetails(Model model, @PathVariable("bookId") int bookId, @PathVariable(name = "libraryId", required = false) String libraryId) {
     
     if (libraryId == null)
       libraryId = "0";

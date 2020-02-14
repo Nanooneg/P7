@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:8-alpine
 MAINTAINER Nanoo (arnaudlaval33@gmail.com)
 ADD target/server-eureka-0.0.1-SNAPSHOT.jar server-eureka-0.0.1-SNAPSHOT.jar
 EXPOSE 8761

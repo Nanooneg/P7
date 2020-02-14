@@ -39,7 +39,7 @@ public class UserController {
     }
     
     @GetMapping({"/home","/home/{loanProperty}"})
-    public String displayUserDashBoard(Model model, @PathVariable(required = false) String loanProperty,
+    public String displayUserDashBoard(Model model, @PathVariable(name = "loanProperty", required = false) String loanProperty,
                                        @CookieValue(value = CommonSecurityConfig.HEADER,required = false) String accessToken){
         
         if (accessToken == null) return REDIRECT_LOGIN_VIEW;
@@ -61,7 +61,7 @@ public class UserController {
     
     @GetMapping("/etendre/{loanId}")
     public String extendLoanExpectedReturnDate(@CookieValue(value = CommonSecurityConfig.HEADER,required = false) String accessToken,
-                                               @PathVariable int loanId){
+                                               @PathVariable("loanId") int loanId){
         
         proxy.extendLoanExpectedReturnDate(accessToken,loanId);
         
