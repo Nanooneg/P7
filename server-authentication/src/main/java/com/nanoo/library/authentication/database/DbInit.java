@@ -1,6 +1,9 @@
 package com.nanoo.library.authentication.database;
 
 import com.nanoo.library.authentication.model.entities.User;
+import java.sql.SQLException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,8 +16,10 @@ import java.util.List;
  * @author nanoo
  * @create 25/11/2019 - 13:17
  */
-@Service
+//@Service
 public class DbInit implements CommandLineRunner {
+    
+    private Logger logger = LoggerFactory.getLogger(DbInit.class);
     
     private static final String PASSWORD = "456456";
     
@@ -78,7 +83,11 @@ public class DbInit implements CommandLineRunner {
     
         List<User> users = Arrays.asList(admin,client,employee,technicalBatch,technicalConsistencyManager);
         
-        userRepository.saveAll(users);
+        try{
+            userRepository.saveAll(users);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
         
     }
     
