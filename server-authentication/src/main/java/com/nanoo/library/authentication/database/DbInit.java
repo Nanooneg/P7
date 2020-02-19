@@ -16,7 +16,7 @@ import java.util.List;
  * @author nanoo
  * @create 25/11/2019 - 13:17
  */
-//@Service
+@Service
 public class DbInit implements CommandLineRunner {
     
     private Logger logger = LoggerFactory.getLogger(DbInit.class);

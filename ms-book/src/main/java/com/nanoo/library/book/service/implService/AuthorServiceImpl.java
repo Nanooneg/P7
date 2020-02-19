@@ -4,10 +4,10 @@ import com.nanoo.library.book.database.AuthorRepository;
 import com.nanoo.library.book.model.entities.Author;
 import com.nanoo.library.book.model.entities.Book;
 import com.nanoo.library.book.service.contractService.AuthorService;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,17 +24,17 @@ public class AuthorServiceImpl implements AuthorService {
         this.authorRepository = authorRepository;
     }
     
-    
     @Override
     public List<Book> getAuthorBookFromSearchCriteria(String searchAttribut){
+    
         List<Book> authorBooks = new ArrayList<>();
         String pSearchAttribut = "%" + searchAttribut + "%";
-        
+    
         List<Author> authors = authorRepository.findBySearchAttribut(pSearchAttribut);
         for (Author author : authors){
             authorBooks.addAll(author.getBooks());
         }
-        
+    
         return authorBooks;
     }
 }

@@ -29,4 +29,7 @@ public interface BookMapper {
     BookInfoLoanDto fromBookToForLoanDto (Book book);
     
     BookWithoutCopiesDto fromBookToBookWithoutCopiesDto (Book book);
+    
+    // TODO mapper for List !!
+    
 }
