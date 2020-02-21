@@ -13,7 +13,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -61,14 +60,9 @@ public class BookServiceImpl implements BookService {
   
   @Override
   public List<BookDto> getLastRegisteredBook() {
-    List<BookDto> bookDtos = new ArrayList<>();
-    
     Pageable topFive = PageRequest.of(0, 5, Sort.by(REGISTRATION_ATT));
-    Page<Book> books = bookRepository.findAll(topFive);
     
-    for (Book book : books) {
-      bookDtos.add(bookMapper.fromBookToDto(book));
-    }
+    List<BookDto> bookDtos = bookMapper.fromBooksToDtos(bookRepository.findAll(topFive).toList());
     
     return getBookWitAvailableCopyBook(bookDtos,DEFAULT_LIBRARY);
   }
@@ -82,7 +76,6 @@ public class BookServiceImpl implements BookService {
       return getAvailableBookOfList(getBookList());
     }
     
-    List<BookDto> bookDtos = new ArrayList<>();
     
     String pSearchAttribut = "%" + searchAttribut + "%";
     List<Book> books;
@@ -99,10 +92,8 @@ public class BookServiceImpl implements BookService {
         throw new IllegalStateException("Unexpected value: " + searchCriteria);
     }
     
-    for (Book book : books) {
-      bookDtos.add(bookMapper.fromBookToDto(book));
-    }
-    
+    List<BookDto> bookDtos = bookMapper.fromBooksToDtos(books);
+  
     if (available) {
       return getAvailableBookOfList(getBookWitAvailableCopyBook(bookDtos,DEFAULT_LIBRARY));
     } else {
@@ -113,14 +104,10 @@ public class BookServiceImpl implements BookService {
   
   @Override
   public List<BookDto> getLastRegisteredBookOfLibrary(Library library) {
-    List<BookDto> bookDtos = new ArrayList<>();
-    
     Pageable topFive = PageRequest.of(0, 5, Sort.by(REGISTRATION_ATT));
-    Page<Book> books = bookRepository.findLastRegisteredByLibrary(library, topFive);
-    
-    for (Book book : books) {
-      bookDtos.add(bookMapper.fromBookToDto(book));
-    }
+  
+    List<BookDto> bookDtos = bookMapper.fromBooksToDtos(
+      bookRepository.findLastRegisteredByLibrary(library, topFive).toList());
     
     return getBookWitAvailableCopyBook(bookDtos,library.getId());
   }

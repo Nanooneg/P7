@@ -6,14 +6,11 @@ import com.nanoo.library.commonpackage.security.JwtTokenUtils;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -41,13 +38,6 @@ public class LoginController {
     this.proxy = proxy;
   }
   
-  // TODO validation doesn't work
-  @InitBinder
-  public void initBinder(WebDataBinder dataBinder) {
-    StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
-    dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
-  }
-  
   @GetMapping("/login")
   public String loginForm(Model model) {
     
@@ -59,7 +49,7 @@ public class LoginController {
   }
   
   @PostMapping("/login")
-  public String loginUser(@ModelAttribute("user") UserBean user, Model model,
+  public String loginUser(@ModelAttribute(USER_ATT) UserBean user, Model model,
     HttpServletResponse response, BindingResult bindingResult) {
     
     model.addAttribute(LIBRARY_ATT, proxy.listAllLibrary());
