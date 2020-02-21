@@ -2,7 +2,6 @@ package com.nanoo.library.loan.model.mapper;
 
 import com.nanoo.library.loan.model.dto.ClientDto;
 import com.nanoo.library.loan.model.entities.Client;
-import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
@@ -18,7 +17,6 @@ public interface ClientMapper {
     
     Client fromDtoToClient (ClientDto clientDto);
     
-    @InheritInverseConfiguration
     ClientDto fromClientToDto (Client client);
     
 }

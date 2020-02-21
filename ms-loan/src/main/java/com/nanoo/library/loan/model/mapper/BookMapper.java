@@ -19,7 +19,6 @@ public interface BookMapper {
     
     Book fromDtoToBook (BookDto bookDto);
     
-    @InheritInverseConfiguration
     BookDto fromBookToDto (Book book);
     
 }

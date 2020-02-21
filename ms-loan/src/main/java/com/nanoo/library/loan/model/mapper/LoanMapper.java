@@ -3,7 +3,7 @@ package com.nanoo.library.loan.model.mapper;
 import com.nanoo.library.loan.model.dto.LoanWithAccountInfoDto;
 import com.nanoo.library.loan.model.dto.LoanWithCopyBookInfoDto;
 import com.nanoo.library.loan.model.entities.Loan;
-import org.mapstruct.InheritInverseConfiguration;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -19,11 +19,14 @@ public interface LoanMapper {
     LoanMapper MAPPER = Mappers.getMapper(LoanMapper.class);
     
     Loan fromDtoWithAccountInfoToLoan (LoanWithAccountInfoDto loanWithAccountInfoDto);
-    Loan fromDtoWithBookInfoToLoan (LoanWithCopyBookInfoDto loanWithBookInfoDto);
     
-    @InheritInverseConfiguration
     LoanWithAccountInfoDto fromLoanToDtoWithAccountInfo (Loan loan);
+    
     @Mapping(source = "status.entitled", target = "status")
-    LoanWithCopyBookInfoDto fromLoanToDtoWithBookInfo(Loan loan);
+    LoanWithCopyBookInfoDto fromLoanToDtoWithCopyBookInfo(Loan loan);
+    
+    List<LoanWithAccountInfoDto> fromLoansToDtosWithAccountInfo (List<Loan> loans);
+    
+    List<LoanWithCopyBookInfoDto> fromLoansToDtosWithCopyBookInfo (List<Loan> loans);
 
 }

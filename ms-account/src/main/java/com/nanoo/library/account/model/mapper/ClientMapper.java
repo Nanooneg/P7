@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
  * @author nanoo
  * @create 22/11/2019 - 11:40
  */
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {AddressMapper.class})
 public interface ClientMapper {
     
     ClientMapper MAPPER = Mappers.getMapper(ClientMapper.class);
