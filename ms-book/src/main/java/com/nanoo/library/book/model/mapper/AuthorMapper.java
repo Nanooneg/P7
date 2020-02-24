@@ -2,10 +2,9 @@ package com.nanoo.library.book.model.mapper;
 
 import com.nanoo.library.book.model.dto.AuthorDto;
 import com.nanoo.library.book.model.entities.Author;
-import org.mapstruct.InheritInverseConfiguration;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
 
 /**
  * @author nanoo
@@ -14,11 +13,12 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface AuthorMapper {
     
-    AuthorMapper MAPPER = Mappers.getMapper(AuthorMapper.class);
-    
     Author fromDtoToAuthor (AuthorDto authorDto);
     
-    @InheritInverseConfiguration
     AuthorDto fromAuthorToDto (Author author);
+    
+    List<Author> fromAuthorsDtosToAuthors (List<AuthorDto> authorDtos);
+    
+    List<AuthorDto> fromAuthorsToAuthorsDtos (List<Author> authors);
     
 }

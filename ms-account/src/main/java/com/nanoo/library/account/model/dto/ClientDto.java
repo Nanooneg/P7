@@ -1,14 +1,12 @@
 package com.nanoo.library.account.model.dto;
 
-import com.nanoo.library.account.model.entities.Address;
 import com.nanoo.library.commonpackage.model.Gender;
 import com.nanoo.library.commonpackage.model.Role;
+import java.io.Serializable;
+import java.util.Date;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @author nanoo
@@ -27,7 +25,7 @@ public class ClientDto implements Serializable {
     private Gender gender;
     private String phoneNumber;
     private String email;
-    private Address address;
+    private AddressDto address;
     private Role role;
     private Long clientNumber;
     private Date dateOfCreation;

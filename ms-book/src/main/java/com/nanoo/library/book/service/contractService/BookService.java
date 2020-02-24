@@ -20,5 +20,4 @@ public interface BookService {
   
   BookDto getBookInfo(int bookId, int libraryId);
   
-  //BookInfoLoanDto getBookInfo(int bookId);
 }

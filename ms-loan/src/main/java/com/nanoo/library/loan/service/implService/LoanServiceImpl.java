@@ -14,7 +14,6 @@ import com.nanoo.library.loan.model.mapper.CopyBookMapper;
 import com.nanoo.library.loan.model.mapper.LoanMapper;
 import com.nanoo.library.loan.service.contractService.LoanService;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
@@ -53,15 +52,9 @@ public class LoanServiceImpl implements LoanService {
   
   @Override
   public List<LoanWithAccountInfoDto> getLoanList() {
-    List<LoanWithAccountInfoDto> loanWithAccountInfoDtos = new ArrayList<>();
+
+    return loanMapper.fromLoansToDtosWithAccountInfo(loanRepository.findAll());
     
-    List<Loan> loans = loanRepository.findAll();
-    
-    for (Loan loan : loans) {
-      loanWithAccountInfoDtos.add(loanMapper.fromLoanToDtoWithAccountInfo(loan));
-    }
-    
-    return loanWithAccountInfoDtos;
   }
   
   @Override
@@ -72,18 +65,14 @@ public class LoanServiceImpl implements LoanService {
     loans.sort(Comparator.comparing(Loan::getLoanDate, Comparator.reverseOrder()));
     
     if (loanProperty.equalsIgnoreCase("all")) {
-      for (Loan loan : loans) {
-        loanWithBookInfoDtos.add(loanMapper.fromLoanToDtoWithBookInfo(loan));
-      }
+        return loanMapper.fromLoansToDtosWithCopyBookInfo(loans);
     } else {
       for (Loan loan : loans) {
         if (loan.getStatus() != Status.FINISH) {
-          loanWithBookInfoDtos.add(loanMapper.fromLoanToDtoWithBookInfo(loan));
+          loanWithBookInfoDtos.add(loanMapper.fromLoanToDtoWithCopyBookInfo(loan));
         }
       }
     }
-    
-    System.out.println(Arrays.toString(loanWithBookInfoDtos.toArray()));
     
     return loanWithBookInfoDtos;
   }
@@ -93,6 +82,7 @@ public class LoanServiceImpl implements LoanService {
     Optional<Loan> loanWithBookInfo = loanRepository.findById(loanId);
     
     if (loanWithBookInfo.isPresent()) {
+      
       Loan existingLoanWithBookInfo = loanWithBookInfo.get();
       if (existingLoanWithBookInfo.isExtended() || !isExtensible(
         existingLoanWithBookInfo.getExpectedReturnDate())) {
@@ -104,8 +94,9 @@ public class LoanServiceImpl implements LoanService {
         if (existingLoanWithBookInfo.getStatus().equals(Status.OUTDATED)) {
           existingLoanWithBookInfo.setStatus(Status.ONGOING);
         }
-        return loanMapper.fromLoanToDtoWithBookInfo(loanRepository.save(existingLoanWithBookInfo));
+        return loanMapper.fromLoanToDtoWithCopyBookInfo(loanRepository.save(existingLoanWithBookInfo));
       }
+      
     }
     
     return null;

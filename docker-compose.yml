@@ -1,0 +1,80 @@
+version: '3.7'
+
+services:
+  eureka:
+    build:
+      context: ./server-eureka
+      dockerfile: Dockerfile
+    container_name: cont-eureka
+    ports:
+      - 8761:8761
+    networks:
+      - network-library
+
+  db-book:
+    build:
+      context: ./ms-book/db
+      dockerfile: Dockerfile-db
+    container_name: cont-db-book
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: db_book
+      POSTGRES_USER: nanoo
+      POSTGRES_PASSWORD: 456258456258
+    networks:
+      - network-library
+
+  ms-book:
+    depends_on:
+      - db-book
+      - eureka
+    build:
+      context: ./ms-book
+      dockerfile: Dockerfile
+    container_name: cont-book
+    ports:
+      - 9002:9002
+    environment:
+      SPRING_DATASOURCE_USERNAME: nanoo
+      SPRING_DATASOURCE_PASSWORD: 456258456258
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db-book:5432/db_book
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka
+      EUREKA_INSTANCE_PREFERIPADDRESS: 'true'
+    networks:
+      - network-library
+
+  client-web:
+    depends_on:
+      - eureka
+    build:
+      context: ./api-client-web
+      dockerfile: Dockerfile
+    container_name: cont-client-web
+    ports:
+      - 8080:8080
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka
+      EUREKA_INSTANCE_PREFERIPADDRESS: 'true'
+    networks:
+      - network-library
+
+  gateway:
+    depends_on:
+      - db-book
+    build:
+      context: ./server-gateway
+      dockerfile: Dockerfile
+    container_name: cont-gateway
+    ports:
+      - 8763:8763
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka
+      EUREKA_INSTANCE_PREFERIPADDRESS: 'true'
+    networks:
+      - network-library
+
+networks:
+  network-library:
+    driver: bridge

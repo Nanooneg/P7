@@ -1,12 +1,9 @@
 package com.nanoo.library.book.model.dto;
 
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
 
 /**
  * @author nanoo

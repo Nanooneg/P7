@@ -12,5 +12,5 @@ import java.util.List;
 public interface AuthorService {
     
     List<Book> getAuthorBookFromSearchCriteria(String searchAttribut);
-    
+
 }

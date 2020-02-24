@@ -54,7 +54,7 @@ body {
     color: inherit;
     text-decoration: none !important;
     cursor: pointer;
-    transition-duration: 0.5s; /* TODO make transition slow */
+    transition-duration: 0.5s;
 
 }
 
@@ -307,4 +307,16 @@ body {
     outline: none !important;
     background-color: white;
     color: black;
+}
+
+/*************************************/
+/*             Validation            */
+/*************************************/
+
+.account-clean input:invalid {
+    border: 2px dashed red !important;
+}
+
+.account-clean input:valid {
+    border: 1px solid #09e960 !important;
 }

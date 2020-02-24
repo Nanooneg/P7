@@ -28,6 +28,6 @@ INSERT INTO public.loan(id_loan, effective_return_date, expected_return_date, ex
 INSERT INTO public.loan(id_loan, effective_return_date, expected_return_date, extended, loan_date, status, id_account, id_copy_book) VALUES (2,'2019-10-20 23:00:00.000','2019-10-29 23:00:00.000',false,'2019-10-15 23:00:00.000','FINISH',1,34);
 INSERT INTO public.loan(id_loan, effective_return_date, expected_return_date, extended, loan_date, status, id_account, id_copy_book) VALUES (3,'2019-11-04 23:00:00.000','2019-11-03 23:00:00.000',false,'2019-10-30 23:00:00.000','FINISH',1,11);
 INSERT INTO public.loan(id_loan, effective_return_date, expected_return_date, extended, loan_date, status, id_account, id_copy_book) VALUES (4,'2019-12-01 23:00:00.000','2019-12-03 23:00:00.000',false,'2019-11-05 23:00:00.000','FINISH',1,6);
-INSERT INTO public.loan(id_loan, effective_return_date, expected_return_date, extended, loan_date, status, id_account, id_copy_book) VALUES (5,null,'2020-01-30 23:00:00.000',false,'2020-01-02 23:00:00.000','OUTDATED',1,26);
-INSERT INTO public.loan(id_loan, effective_return_date, expected_return_date, extended, loan_date, status, id_account, id_copy_book) VALUES (6,null,'2020-02-06 23:00:00.000',false,'2020-01-09 23:00:00.000','ONGOING',1,2);
+INSERT INTO public.loan(id_loan, effective_return_date, expected_return_date, extended, loan_date, status, id_account, id_copy_book) VALUES (5,null,'2020-02-19 23:00:00.000',false,'2020-01-22 23:00:00.000','OUTDATED',1,26);
+INSERT INTO public.loan(id_loan, effective_return_date, expected_return_date, extended, loan_date, status, id_account, id_copy_book) VALUES (6,null,'2020-02-25 23:00:00.000',false,'2020-01-28 23:00:00.000','ONGOING',1,2);
 

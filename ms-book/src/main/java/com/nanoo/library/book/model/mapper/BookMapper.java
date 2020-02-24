@@ -5,8 +5,12 @@ import com.nanoo.library.book.model.dto.BookInfoLoanDto;
 import com.nanoo.library.book.model.dto.BookWithoutCopiesDto;
 import com.nanoo.library.book.model.dto.CoverOnlyPathDto;
 import com.nanoo.library.book.model.entities.Book;
-import org.mapstruct.*;
-import org.mapstruct.factory.Mappers;
+import java.util.List;
+import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 
 /**
  * @author nanoo
@@ -16,10 +20,8 @@ import org.mapstruct.factory.Mappers;
         uses = {AuthorMapper.class, CopyBookMapper.class, CoverOnlyPathDto.class})
 public interface BookMapper {
     
-    BookMapper MAPPER = Mappers.getMapper(BookMapper.class);
-    
     @Mappings({
-            @Mapping(source = "category.name", target = "category")
+      @Mapping(source = "category.name", target = "category")
     })
     BookDto fromBookToDto (Book book);
     
@@ -29,4 +31,15 @@ public interface BookMapper {
     BookInfoLoanDto fromBookToForLoanDto (Book book);
     
     BookWithoutCopiesDto fromBookToBookWithoutCopiesDto (Book book);
+    
+    Book fromBookWithoutCopiesDtoToBook (BookWithoutCopiesDto withoutCopiesDto);
+    
+    List<BookDto> fromBooksToDtos (List<Book> books);
+    
+    List<Book> fromDtosToBooks (List<BookDto> bookDtos);
+    
+    List<BookWithoutCopiesDto> fromBooksToWithoutCopiesDtos (List<Book> books);
+    
+    List<Book> fromWithoutCopiesDtosToBooks (List<BookWithoutCopiesDto> bookWithoutCopiesDtos);
+    
 }

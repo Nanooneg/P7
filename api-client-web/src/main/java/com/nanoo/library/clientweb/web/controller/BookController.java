@@ -1,6 +1,5 @@
 package com.nanoo.library.clientweb.web.controller;
 
-import com.nanoo.library.clientweb.model.beans.book.BookBean;
 import com.nanoo.library.clientweb.model.beans.book.BookSearchAttribut;
 import com.nanoo.library.clientweb.model.beans.library.LibraryWithoutBookBean;
 import com.nanoo.library.clientweb.web.proxy.FeignProxy;
@@ -95,7 +94,7 @@ public class BookController {
   }
   
   @GetMapping({"/catalogue/detail/{bookId}","/catalogue/{libraryId}/detail/{bookId}"})
-  public String displayBookDetails(Model model, @PathVariable int bookId, @PathVariable(required = false) String libraryId) {
+  public String displayBookDetails(Model model, @PathVariable("bookId") int bookId, @PathVariable(name = "libraryId", required = false) String libraryId) {
     
     if (libraryId == null)
       libraryId = "0";

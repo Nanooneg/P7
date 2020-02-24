@@ -23,8 +23,7 @@ import lombok.Setter;
  * @create 21/11/2019 - 15:16
  */
 @MappedSuperclass
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 class Account implements Serializable {
   

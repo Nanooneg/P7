@@ -32,7 +32,7 @@ public class ScheduledTaskLauncher {
     
     
     /**
-     * Scheduled task run every minutes for the demo
+     * Scheduled task run in loop for the demo
      * (cron="0 3 * * * ?") prod context : run task every days at 03:00 am
      *
      * First, get a security token with technical account and call for 2 jobs :

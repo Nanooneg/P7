@@ -20,23 +20,26 @@
         <div class="illustration"><i class="fas fa-user-alt"></i></div>
         <div class="form-group">
             <input class="form-control readonly" th:field="*{firstName}" readonly type="text" name="firstName" placeholder="Prénom">
-            <span class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
         </div>
         <div class="form-group">
             <input class="form-control readonly" th:field="*{lastName}" readonly type="text" name="lastName" placeholder="Nom">
-            <span class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
         </div>
         <div class="form-group">
-            <input class="form-control" th:field="*{email}" type="text" name="email" placeholder="Email">
-            <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            <input class="form-control" th:field="*{email}" type="email" name="email" placeholder="Email"
+                   required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="adresse email valide">
         </div>
         <div class="form-group">
-            <input class="form-control" th:field="*{password}" type="password" name="password" placeholder="*Changer le mot de passe*">
-            <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            <input class="form-control" th:field="*{phoneNumber}" type="text" name="phone" placeholder="téléphone"
+                   required pattern="(0|\\\\+33|0033)[1-9][0-9]{8}" title="numéro de téléphone valide">
         </div>
         <div class="form-group">
-            <input class="form-control" th:field="*{phoneNumber}" type="text" name="email" placeholder="Email">
-            <span class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+            <input class="form-control" th:field="*{password}" type="password" name="password" id="password"
+                   placeholder="*Changer le mot de passe*" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                   title="1 majuscule, 1 minuscule, 1 chiffre et 6 caractères minimum">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="confirm_password" id="confirm_password"
+                   placeholder="*Confirmer le changement*">
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit">Enregistrer</button>
@@ -45,7 +48,21 @@
 </div>
 
 <div th:insert="fragments/fragments.html :: footer" class="footer"></div>
+<script>
+    var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
 
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
 <div th:insert="fragments/fragments.html :: script"></div>
 
 </body>
