@@ -1,6 +1,5 @@
 package com.nanoo.library.apibatch.job;
 
-import com.nanoo.library.apibatch.authentication.CredentialBatch;
 import com.nanoo.library.apibatch.web.FeignProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

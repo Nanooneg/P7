@@ -46,7 +46,8 @@ public interface FeignProxy {
     List<LibraryWithoutBookBean> listAllLibrary();
     
     @GetMapping("/ms-book/consult/{libraryId}/book/{bookId}")
-    BookBean getBookDetail(@PathVariable("bookId") int bookId, @PathVariable("libraryId") int libraryId);
+    BookBean getBookDetail(@PathVariable("bookId") int bookId,
+                           @PathVariable("libraryId") int libraryId);
     
     @PostMapping("/ms-authentication/login")
     String doLogin(@RequestBody UserBean userBean);
@@ -60,7 +61,8 @@ public interface FeignProxy {
 
     @GetMapping("/ms-loan/consult/loans/{userId}/{loanProperty}")
     List<LoanBean> getUserLoanList(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken,
-        @PathVariable("userId") int userId, @PathVariable("loanProperty") String loanProperty);
+                                   @PathVariable("userId") int userId,
+                                   @PathVariable("loanProperty") String loanProperty);
 
     @GetMapping("/ms-loan/edit/extend/loan/{loanId}")
     LoanBean extendLoanExpectedReturnDate(
@@ -69,10 +71,10 @@ public interface FeignProxy {
 
     @PostMapping("/ms-consistency-manager/edit/account")
     AccountBean editAccount(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken,
-        @RequestBody AccountBean accountBean);
+                            @RequestBody AccountBean accountBean);
 
     @PostMapping("/ms-authentication/refresh")
     String doUpdateToken(@RequestHeader(CommonSecurityConfig.HEADER) String accessToken,
-        @RequestBody UserBean userUpdated);
+                         @RequestBody UserBean userUpdated);
   
 }

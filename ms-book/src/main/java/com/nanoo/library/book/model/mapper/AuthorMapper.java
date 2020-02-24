@@ -5,7 +5,6 @@ import com.nanoo.library.book.model.entities.Author;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
 
 /**
  * @author nanoo
@@ -13,8 +12,6 @@ import org.mapstruct.factory.Mappers;
  */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface AuthorMapper {
-    
-    AuthorMapper MAPPER = Mappers.getMapper(AuthorMapper.class);
     
     Author fromDtoToAuthor (AuthorDto authorDto);
     

@@ -1,11 +1,9 @@
 package com.nanoo.library.serverconsistencymanager.model.beans.user;
 
-import com.nanoo.library.commonpackage.model.Cities;
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 /**
  * @author nanoo
@@ -21,6 +19,6 @@ class AddressBean implements Serializable {
     private int number;
     private String street;
     private int postalCode;
-    private Cities city;
+    private String city;
     
 }

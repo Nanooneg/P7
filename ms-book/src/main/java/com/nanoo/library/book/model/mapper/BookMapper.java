@@ -11,7 +11,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
 
 /**
  * @author nanoo
@@ -20,8 +19,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
         uses = {AuthorMapper.class, CopyBookMapper.class, CoverOnlyPathDto.class})
 public interface BookMapper {
-    
-    BookMapper MAPPER = Mappers.getMapper(BookMapper.class);
     
     @Mappings({
       @Mapping(source = "category.name", target = "category")

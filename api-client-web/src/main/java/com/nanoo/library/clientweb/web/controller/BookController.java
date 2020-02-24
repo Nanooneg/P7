@@ -1,6 +1,5 @@
 package com.nanoo.library.clientweb.web.controller;
 
-import com.nanoo.library.clientweb.model.beans.book.BookBean;
 import com.nanoo.library.clientweb.model.beans.book.BookSearchAttribut;
 import com.nanoo.library.clientweb.model.beans.library.LibraryWithoutBookBean;
 import com.nanoo.library.clientweb.web.proxy.FeignProxy;

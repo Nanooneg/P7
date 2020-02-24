@@ -8,7 +8,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
 
 /**
  * @author nanoo
@@ -17,8 +16,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
         uses = {BookMapper.class, LibraryMapper.class, AuthorMapper.class})
 public interface CopyBookMapper {
-    
-    CopyBookMapper MAPPER = Mappers.getMapper(CopyBookMapper.class);
     
     @Mappings({
             @Mapping(source = "condition.entitled", target = "condition")

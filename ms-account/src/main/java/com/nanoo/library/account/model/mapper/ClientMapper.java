@@ -4,7 +4,6 @@ import com.nanoo.library.account.model.dto.ClientDto;
 import com.nanoo.library.account.model.entities.Client;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 /**
  * @author nanoo
@@ -12,8 +11,6 @@ import org.mapstruct.factory.Mappers;
  */
 @Mapper(componentModel = "spring", uses = {AddressMapper.class})
 public interface ClientMapper {
-    
-    ClientMapper MAPPER = Mappers.getMapper(ClientMapper.class);
     
     Client fromDtoToClient (ClientDto clientDto);
     

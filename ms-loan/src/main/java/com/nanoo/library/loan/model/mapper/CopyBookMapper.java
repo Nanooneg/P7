@@ -6,7 +6,6 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
 
 /**
  * @author nanoo
@@ -14,8 +13,6 @@ import org.mapstruct.factory.Mappers;
  */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, uses = {BookMapper.class})
 public interface CopyBookMapper {
-    
-    CopyBookMapper MAPPER = Mappers.getMapper(CopyBookMapper.class);
     
     CopyBook fromDtoToCopyBook (CopyBookDto copyBookDto);
     

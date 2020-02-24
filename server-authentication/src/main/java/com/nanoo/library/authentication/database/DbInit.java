@@ -1,16 +1,14 @@
 package com.nanoo.library.authentication.database;
 
 import com.nanoo.library.authentication.model.entities.User;
-import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author nanoo

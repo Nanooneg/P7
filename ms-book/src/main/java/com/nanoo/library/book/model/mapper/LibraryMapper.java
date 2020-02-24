@@ -6,7 +6,6 @@ import com.nanoo.library.book.model.entities.Library;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
 
 /**
  * @author nanoo
@@ -14,8 +13,6 @@ import org.mapstruct.factory.Mappers;
  */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface LibraryMapper {
-    
-    LibraryMapper MAPPER = Mappers.getMapper(LibraryMapper.class);
     
     Library fromDtoToLibrary (LibraryDto libraryDto);
     

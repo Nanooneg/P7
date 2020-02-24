@@ -1,13 +1,11 @@
 package com.nanoo.library.book.model.dto;
 
 import com.nanoo.library.book.model.entities.Address;
+import java.io.Serializable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
-import java.util.Set;
 
 /**
  * @author nanoo

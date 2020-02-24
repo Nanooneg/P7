@@ -1,12 +1,10 @@
 package com.nanoo.library.book.model.dto;
 
+import java.io.Serializable;
 import java.util.Comparator;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 /**
  * @author nanoo

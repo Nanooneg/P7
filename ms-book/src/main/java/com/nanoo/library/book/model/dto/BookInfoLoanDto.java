@@ -1,13 +1,9 @@
 package com.nanoo.library.book.model.dto;
 
-import com.nanoo.library.book.model.entities.Author;
-import com.nanoo.library.book.model.entities.CopyBook;
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
-import java.util.Set;
 
 /**
  * @author nanoo

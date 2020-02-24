@@ -6,7 +6,6 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
 
 /**
  * @author nanoo
@@ -14,8 +13,6 @@ import org.mapstruct.factory.Mappers;
  */
 @Mapper(componentModel = "spring")
 public interface AddressMapper {
-  
-  AddressMapper MAPPER = Mappers.getMapper(AddressMapper.class);
   
   @Mappings({
     @Mapping(source = "city.name", target = "city")
