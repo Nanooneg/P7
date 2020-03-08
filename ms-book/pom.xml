@@ -166,7 +166,7 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-			<!--<plugin>
+			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>1.4.10</version>
@@ -187,7 +187,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>-->
+			</plugin>
 		</plugins>
 	</build>
 
