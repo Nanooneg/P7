@@ -10,8 +10,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 public class ClientWebApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ClientWebApplication.class, args);
-	}
+	public static void main(String[] args) { SpringApplication.run(ClientWebApplication.class, args); }
 
 }
